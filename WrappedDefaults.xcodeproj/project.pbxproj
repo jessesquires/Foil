@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		0BF54A8A25BF589E008484F8 /* WrappedDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF54A8025BF589E008484F8 /* WrappedDefaults.framework */; };
 		0BF54A8F25BF589E008484F8 /* WrappedDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */; };
-		0BF54A9D25BF58B1008484F8 /* WrappedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A9C25BF58B1008484F8 /* WrappedDefaults.swift */; };
+		0BF54A9D25BF58B1008484F8 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */; };
+		0BF5FD9025C14A7D0003B078 /* WrappedDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */; };
+		0BF5FD9625C14A960003B078 /* UserDefaultsSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,9 @@
 		0BF54A8925BF589E008484F8 /* WrappedDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrappedDefaultsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefaultsTests.swift; sourceTree = "<group>"; };
 		0BF54A9025BF589E008484F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BF54A9C25BF58B1008484F8 /* WrappedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefaults.swift; sourceTree = "<group>"; };
+		0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefault.swift; sourceTree = "<group>"; };
+		0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSerializable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				0BF54A8425BF589E008484F8 /* Info.plist */,
-				0BF54A9C25BF58B1008484F8 /* WrappedDefaults.swift */,
+				0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */,
+				0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */,
+				0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -80,8 +86,8 @@
 		0BF54A8D25BF589E008484F8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */,
 				0BF54A9025BF589E008484F8 /* Info.plist */,
+				0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -107,6 +113,7 @@
 				0BF54A7C25BF589E008484F8 /* Sources */,
 				0BF54A7D25BF589E008484F8 /* Frameworks */,
 				0BF54A7E25BF589E008484F8 /* Resources */,
+				0BF5FD8E25C149090003B078 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -189,12 +196,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0BF5FD8E25C149090003B078 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "\"${SRCROOT}/scripts/lint.zsh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0BF54A7C25BF589E008484F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF54A9D25BF58B1008484F8 /* WrappedDefaults.swift in Sources */,
+				0BF5FD9625C14A960003B078 /* UserDefaultsSerializable.swift in Sources */,
+				0BF5FD9025C14A7D0003B078 /* WrappedDefault.swift in Sources */,
+				0BF54A9D25BF58B1008484F8 /* UserDefaults+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
