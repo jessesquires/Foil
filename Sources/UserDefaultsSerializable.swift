@@ -23,6 +23,7 @@ public protocol UserDefaultsSerializable {
     var storedValue: StoredValue { get }
 
     /// Initializes the object using the provided value.
+    /// 
     /// - Parameter storedValue: The previously store value fetched from `UserDefaults`.
     init(storedValue: StoredValue)
 }
