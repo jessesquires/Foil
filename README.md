@@ -1,6 +1,13 @@
-# WrappedDefaults [![Actions Status](https://github.com/jessesquires/WrappedDefaults/workflows/CI/badge.svg)](https://github.com/jessesquires/WrappedDefaults/actions)
+# Foil [![Actions Status](https://github.com/jessesquires/Foil/workflows/CI/badge.svg)](https://github.com/jessesquires/Foil/actions)
 
 *A lightweight property wrapper for UserDefaults*
+
+Foil, as in, let me **wrap** and **store** this leftover food in some foil so I can eat it later. :wink:
+
+> [Foil](https://www.wordnik.com/words/aluminum%20foil):<br>
+> **noun**<br>
+> *North America*<br>
+> A very thin, pliable, easily torn sheet of aluminum used for cooking, packaging, cosmetics, and insulation.
 
 ## Usage
 
@@ -24,14 +31,14 @@
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'WrappedDefaults', '~> 1.0.0'
+pod 'Foil', '~> 1.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/WrappedDefaults.git", from: "1.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "1.0.0")
 ]
 ```
 
