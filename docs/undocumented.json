@@ -1,54 +1,33 @@
 {
   "warnings": [
     {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/UserDefaults+Extensions.swift",
-      "line": 17,
-      "symbol": "UserDefaults.save(_:for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/UserDefaults+Extensions.swift",
-      "line": 21,
-      "symbol": "UserDefaults.fetch(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/UserDefaults+Extensions.swift",
-      "line": 26,
-      "symbol": "UserDefaults.registerDefault(value:key:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/WrappedDefault.swift",
+      "file": "/Users/jsq/GitHub/Foil/Sources/WrappedDefault.swift",
       "line": 17,
       "symbol": "WrappedDefault",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/WrappedDefault.swift",
+      "file": "/Users/jsq/GitHub/Foil/Sources/WrappedDefault.swift",
       "line": 21,
       "symbol": "WrappedDefault.key",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/WrappedDefault.swift",
+      "file": "/Users/jsq/GitHub/Foil/Sources/WrappedDefault.swift",
       "line": 23,
       "symbol": "WrappedDefault.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jsq/GitHub/WrappedDefaults/Sources/WrappedDefault.swift",
+      "file": "/Users/jsq/GitHub/Foil/Sources/WrappedDefault.swift",
       "line": 32,
       "symbol": "WrappedDefault.init(keyName:defaultValue:userDefaults:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/jsq/GitHub/WrappedDefaults"
+  "source_directory": "/Users/jsq/GitHub/Foil"
 }
