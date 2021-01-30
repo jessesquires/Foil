@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1230"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0BF54A7F25BF589E008484F8"
-               BuildableName = "WrappedDefaults.framework"
-               BlueprintName = "WrappedDefaults"
-               ReferencedContainer = "container:WrappedDefaults.xcodeproj">
+               BuildableName = "Foil.framework"
+               BlueprintName = "Foil"
+               ReferencedContainer = "container:Foil.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0BF54A8825BF589E008484F8"
-               BuildableName = "WrappedDefaultsTests.xctest"
-               BlueprintName = "WrappedDefaultsTests"
-               ReferencedContainer = "container:WrappedDefaults.xcodeproj">
+               BuildableName = "FoilTests.xctest"
+               BlueprintName = "FoilTests"
+               ReferencedContainer = "container:Foil.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BF54A7F25BF589E008484F8"
-            BuildableName = "WrappedDefaults.framework"
-            BlueprintName = "WrappedDefaults"
-            ReferencedContainer = "container:WrappedDefaults.xcodeproj">
+            BuildableName = "Foil.framework"
+            BlueprintName = "Foil"
+            ReferencedContainer = "container:Foil.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

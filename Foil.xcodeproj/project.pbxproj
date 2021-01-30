@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BF54A8A25BF589E008484F8 /* WrappedDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF54A8025BF589E008484F8 /* WrappedDefaults.framework */; };
+		0BF54A8A25BF589E008484F8 /* Foil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF54A8025BF589E008484F8 /* Foil.framework */; };
 		0BF54A8F25BF589E008484F8 /* WrappedDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */; };
 		0BF54A9D25BF58B1008484F8 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */; };
 		0BF5FD9025C14A7D0003B078 /* WrappedDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */; };
@@ -25,9 +25,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BF54A8025BF589E008484F8 /* WrappedDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WrappedDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF54A8025BF589E008484F8 /* Foil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Foil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF54A8425BF589E008484F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BF54A8925BF589E008484F8 /* WrappedDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrappedDefaultsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF54A8925BF589E008484F8 /* FoilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoilTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF54A8E25BF589E008484F8 /* WrappedDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefaultsTests.swift; sourceTree = "<group>"; };
 		0BF54A9025BF589E008484F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF54A8A25BF589E008484F8 /* WrappedDefaults.framework in Frameworks */,
+				0BF54A8A25BF589E008484F8 /* Foil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +66,8 @@
 		0BF54A8125BF589E008484F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BF54A8025BF589E008484F8 /* WrappedDefaults.framework */,
-				0BF54A8925BF589E008484F8 /* WrappedDefaultsTests.xctest */,
+				0BF54A8025BF589E008484F8 /* Foil.framework */,
+				0BF54A8925BF589E008484F8 /* FoilTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,9 +105,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BF54A7F25BF589E008484F8 /* WrappedDefaults */ = {
+		0BF54A7F25BF589E008484F8 /* Foil */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF54A9425BF589E008484F8 /* Build configuration list for PBXNativeTarget "WrappedDefaults" */;
+			buildConfigurationList = 0BF54A9425BF589E008484F8 /* Build configuration list for PBXNativeTarget "Foil" */;
 			buildPhases = (
 				0BF54A7B25BF589E008484F8 /* Headers */,
 				0BF54A7C25BF589E008484F8 /* Sources */,
@@ -119,14 +119,14 @@
 			);
 			dependencies = (
 			);
-			name = WrappedDefaults;
+			name = Foil;
 			productName = WrappedDefaults;
-			productReference = 0BF54A8025BF589E008484F8 /* WrappedDefaults.framework */;
+			productReference = 0BF54A8025BF589E008484F8 /* Foil.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0BF54A8825BF589E008484F8 /* WrappedDefaultsTests */ = {
+		0BF54A8825BF589E008484F8 /* FoilTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF54A9725BF589E008484F8 /* Build configuration list for PBXNativeTarget "WrappedDefaultsTests" */;
+			buildConfigurationList = 0BF54A9725BF589E008484F8 /* Build configuration list for PBXNativeTarget "FoilTests" */;
 			buildPhases = (
 				0BF54A8525BF589E008484F8 /* Sources */,
 				0BF54A8625BF589E008484F8 /* Frameworks */,
@@ -137,9 +137,9 @@
 			dependencies = (
 				0BF54A8C25BF589E008484F8 /* PBXTargetDependency */,
 			);
-			name = WrappedDefaultsTests;
+			name = FoilTests;
 			productName = WrappedDefaultsTests;
-			productReference = 0BF54A8925BF589E008484F8 /* WrappedDefaultsTests.xctest */;
+			productReference = 0BF54A8925BF589E008484F8 /* FoilTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -150,6 +150,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
+				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					0BF54A7F25BF589E008484F8 = {
 						CreatedOnToolsVersion = 12.3;
@@ -160,8 +161,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 0BF54A7A25BF589E008484F8 /* Build configuration list for PBXProject "WrappedDefaults" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 0BF54A7A25BF589E008484F8 /* Build configuration list for PBXProject "Foil" */;
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -173,8 +174,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0BF54A7F25BF589E008484F8 /* WrappedDefaults */,
-				0BF54A8825BF589E008484F8 /* WrappedDefaultsTests */,
+				0BF54A7F25BF589E008484F8 /* Foil */,
+				0BF54A8825BF589E008484F8 /* FoilTests */,
 			);
 		};
 /* End PBXProject section */
@@ -241,7 +242,7 @@
 /* Begin PBXTargetDependency section */
 		0BF54A8C25BF589E008484F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0BF54A7F25BF589E008484F8 /* WrappedDefaults */;
+			target = 0BF54A7F25BF589E008484F8 /* Foil */;
 			targetProxy = 0BF54A8B25BF589E008484F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -399,7 +400,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.WrappedDefaults;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.Foil;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -426,7 +427,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.WrappedDefaults;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.Foil;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -448,7 +449,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.WrappedDefaultsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -469,7 +469,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.WrappedDefaultsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -479,7 +478,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BF54A7A25BF589E008484F8 /* Build configuration list for PBXProject "WrappedDefaults" */ = {
+		0BF54A7A25BF589E008484F8 /* Build configuration list for PBXProject "Foil" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF54A9225BF589E008484F8 /* Debug */,
@@ -488,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF54A9425BF589E008484F8 /* Build configuration list for PBXNativeTarget "WrappedDefaults" */ = {
+		0BF54A9425BF589E008484F8 /* Build configuration list for PBXNativeTarget "Foil" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF54A9525BF589E008484F8 /* Debug */,
@@ -497,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF54A9725BF589E008484F8 /* Build configuration list for PBXNativeTarget "WrappedDefaultsTests" */ = {
+		0BF54A9725BF589E008484F8 /* Build configuration list for PBXNativeTarget "FoilTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF54A9825BF589E008484F8 /* Debug */,

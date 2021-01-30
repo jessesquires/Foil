@@ -17,8 +17,8 @@ env:
   WATCHOS_SDK: watchsimulator7.2
   MACOS_SDK: macosx11.1
 
-  PROJECT: WrappedDefaults.xcodeproj
-  SCHEME: WrappedDefaults
+  PROJECT: Foil.xcodeproj
+  SCHEME: Foil
 
   IOS_DEST: "OS=14.3,name=iPhone 12 Mini"
   TVOS_DEST: "OS=14.3,name=Apple TV"

@@ -3,15 +3,15 @@
 //  https://www.jessesquires.com
 //
 //  Documentation
-//  https://jessesquires.github.io/WrappedDefaults
+//  https://jessesquires.github.io/Foil
 //
 //  GitHub
-//  https://github.com/jessesquires/WrappedDefaults
+//  https://github.com/jessesquires/Foil
 //
 //  Copyright © 2021-present Jesse Squires
 //
 
-import WrappedDefaults
+import Foil
 import XCTest
 
 final class UserDefaultWrapperTests: XCTestCase {

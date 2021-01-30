@@ -16,7 +16,7 @@ FOUND=$(jazzy --version)
 LINK="https://github.com/realm/jazzy"
 INSTALL="gem install jazzy"
 
-PROJECT="WrappedDefaults"
+PROJECT="Foil"
 
 if which jazzy >/dev/null; then
     jazzy \
