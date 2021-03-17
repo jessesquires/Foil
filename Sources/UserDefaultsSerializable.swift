@@ -14,6 +14,20 @@
 import Foundation
 
 /// Describes a value that can be saved to and fetched from `UserDefaults`.
+/// 
+/// Default conformances are provided for:
+///    - `Bool`
+///    - `Int`
+///    - `Float`
+///    - `Double`
+///    - `String`
+///    - `URL`
+///    - `Date`
+///    - `Data`
+///    - `Array`
+///    - `Set`
+///    - `Dictionary`
+///    - `RawRepresentable` types
 public protocol UserDefaultsSerializable {
 
     /// The type of the value that is stored in `UserDefaults`.
