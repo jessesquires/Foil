@@ -35,6 +35,10 @@ opt_in_rules:
   - toggle_bool
   - unavailable_function
   - no_space_in_method_call
+  - discouraged_assert
+  - legacy_objc_type
+  - file_name
+  - file_name_no_space
 
   # style
   - attributes
@@ -62,11 +66,16 @@ opt_in_rules:
   - empty_xctest_method
   - identical_operands
   - prohibited_super_call
-  - unused_import
   - unused_capture_list
   - duplicate_enum_cases
   - legacy_multiple
+  - balanced_xctest_lifecycle
+
+# Rules run by `swiftlint analyze` (experimental)
+analyzer_rules:
+  - unused_import
   - unused_declaration
+  - explicit_self
 
 line_length: 200
 file_length: 600
