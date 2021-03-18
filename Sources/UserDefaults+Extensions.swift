@@ -22,7 +22,7 @@ extension UserDefaults {
     /// - Parameters:
     ///   - value: The object to store in the defaults database.
     ///   - key: The key with which to associate the value.
-    public func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
+    func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
         if T.self == URL.self {
             // HACK: for URL
             // Attempt to insert non-property list object, NSInvalidArgumentException
@@ -35,7 +35,7 @@ extension UserDefaults {
     /// Removes the value of the specified default key.
     ///
     /// - Parameter key: The key whose value you want to remove.
-    public func delete(for key: String) {
+    func delete(for key: String) {
         self.removeObject(forKey: key)
     }
 
@@ -43,7 +43,7 @@ extension UserDefaults {
     ///
     /// - Parameter key: A key in the current user‘s defaults database.
     /// - Returns: The non-optional object associated with the specified key, or its default value.
-    public func fetch<T: UserDefaultsSerializable>(_ key: String) -> T {
+    func fetch<T: UserDefaultsSerializable>(_ key: String) -> T {
         self.fetchOptional(key)!
     }
 
@@ -51,7 +51,7 @@ extension UserDefaults {
     ///
     /// - Parameter key: A key in the current user‘s defaults database.
     /// - Returns: The object associated with the specified key, or `nil`.
-    public func fetchOptional<T: UserDefaultsSerializable>(_ key: String) -> T? {
+    func fetchOptional<T: UserDefaultsSerializable>(_ key: String) -> T? {
         let fetched: Any?
 
         if T.self == URL.self {
@@ -74,7 +74,7 @@ extension UserDefaults {
     /// - Parameters:
     ///   - value: The object to store in the registration domain database.
     ///   - key: The key with which to associate the value.
-    public func registerDefault<T: UserDefaultsSerializable>(value: T, key: String) {
+    func registerDefault<T: UserDefaultsSerializable>(value: T, key: String) {
         self.register(defaults: [key: value.storedValue])
     }
 }

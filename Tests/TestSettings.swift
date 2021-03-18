@@ -11,23 +11,52 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
-import Foil
+@testable import Foil
 import Foundation
 
-extension UserDefaults {
-    static func testSuite(name: String = UUID().uuidString) -> UserDefaults {
-        UserDefaults().reset(name: name)
-        return UserDefaults(suiteName: name)!
-    }
-
-    func reset(name: String = Bundle.main.bundleIdentifier!) {
-        self.removePersistentDomain(forName: name)
-    }
+enum TestFruit: String, UserDefaultsSerializable {
+    case apple
+    case orange
+    case banana
 }
 
 final class TestSettings {
 
-    private static var store = UserDefaults.testSuite()
+    static var store = UserDefaults.testSuite()
 
-    // TODO
+    @WrappedDefault(keyName: "flag", defaultValue: true, userDefaults: store)
+    var flag: Bool
+
+    @WrappedDefault(keyName: "count", defaultValue: 42, userDefaults: store)
+    var count: Int
+
+    @WrappedDefault(keyName: "mean", defaultValue: 4.2, userDefaults: store)
+    var mean: Float
+
+    @WrappedDefault(keyName: "average", defaultValue: 42.0, userDefaults: store)
+    var average: Double
+
+    @WrappedDefaultOptional(keyName: "username", userDefaults: store)
+    var username: String?
+
+    @WrappedDefaultOptional(keyName: "website", userDefaults: store)
+    var website: URL?
+
+    @WrappedDefault(keyName: "timestamp", defaultValue: .distantPast, userDefaults: store)
+    var timestamp: Date
+
+    @WrappedDefaultOptional(keyName: "data", userDefaults: store)
+    var data: Data?
+
+    @WrappedDefault(keyName: "list", defaultValue: [], userDefaults: store)
+    var list: [Double]
+
+    @WrappedDefault(keyName: "set", defaultValue: [1, 2, 3], userDefaults: store)
+    var set: Set<Int>
+
+    @WrappedDefault(keyName: "pairs", defaultValue: [:], userDefaults: store)
+    var pairs: [String: Int]
+
+    @WrappedDefault(keyName: "fruit", defaultValue: .apple, userDefaults: store)
+    var fruit: TestFruit
 }

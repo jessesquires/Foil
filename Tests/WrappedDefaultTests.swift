@@ -11,7 +11,7 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
-import Foil
+@testable import Foil
 import XCTest
 
 final class WrappedDefaultTests: XCTestCase {
@@ -180,21 +180,14 @@ final class WrappedDefaultTests: XCTestCase {
     }
 
     func test_WrappedValue_RawRepresentable() {
-        enum Values: Double, UserDefaultsSerializable {
-            case zero = 0.0
-            case one = 1.0
-            case two = 2.0
-            case three = 3.0
-        }
-
         let key = "key_\(#function)"
-        let defaultValue = Values.zero
+        let defaultValue = TestFruit.apple
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
         XCTAssertEqual(testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
-        let newValue = Values.two
+        let newValue = TestFruit.banana
         model.wrappedValue = newValue
         XCTAssertEqual(testDefaults.fetch(key), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
@@ -279,4 +272,26 @@ final class WrappedDefaultTests: XCTestCase {
         let fetchedValue: Date? = testDefaults.fetchOptional(key)
         XCTAssertNil(fetchedValue)
     }
+
+    // swiftlint:disable discouraged_optional_collection
+    func test_WrappedValue_DictionaryOptional() {
+        let key = "key_\(#function)"
+        var model = WrappedDefaultOptional<[String: TestFruit]>(keyName: key, userDefaults: testDefaults)
+
+        let defaultValue: [String: TestFruit]? = testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+
+        let newValue = ["key1": TestFruit.apple, "key2": .orange]
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+
+        model.wrappedValue = nil
+        XCTAssertNil(model.wrappedValue)
+
+        let fetchedValue: [String: TestFruit]? = testDefaults.fetchOptional(key)
+        XCTAssertNil(fetchedValue)
+    }
+    // swiftlint:enable discouraged_optional_collection
 }
