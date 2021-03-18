@@ -2,7 +2,7 @@
 
 *A lightweight [property wrapper](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) for UserDefaults*
 
-Foil, as in, let me **wrap** and **store** this leftover food in some foil so I can eat it later. :wink:
+Foil, as in, let me **wrap** and **store** this leftover food in some **foil** so I can eat it later. 🌯 😉
 
 > [Foil](https://www.wordnik.com/words/aluminum%20foil):<br>
 > **noun**<br>
