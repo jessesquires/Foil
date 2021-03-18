@@ -98,12 +98,10 @@ extension URL: UserDefaultsSerializable {
 
 /// :nodoc:
 extension Date: UserDefaultsSerializable {
-    public var storedValue: TimeInterval {
-        self.timeIntervalSince1970
-    }
+    public var storedValue: Self { self }
 
-    public init(storedValue: TimeInterval) {
-        self = Date(timeIntervalSince1970: storedValue)
+    public init(storedValue: Self) {
+        self = storedValue
     }
 }
 

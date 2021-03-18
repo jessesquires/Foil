@@ -108,20 +108,19 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
-    // TODO
-//    func test_WrappedValue_Date() {
-//        let key = "key_\(#function)"
-//        let defaultValue = Date.distantPast
-//        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
-//
-//        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
-//        XCTAssertEqual(model.wrappedValue, defaultValue)
-//
-//        let newValue = Date()
-//        model.wrappedValue = newValue
-//        XCTAssertEqual(testDefaults.fetch(key), newValue)
-//        XCTAssertEqual(model.wrappedValue, newValue)
-//    }
+    func test_WrappedValue_Date() {
+        let key = "key_\(#function)"
+        let defaultValue = Date.distantPast
+        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
+
+        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(model.wrappedValue, defaultValue)
+
+        let newValue = Date()
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+    }
 
     func test_WrappedValue_Data() {
         let key = "key_\(#function)"
