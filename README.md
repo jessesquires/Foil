@@ -13,6 +13,23 @@ Foil, as in, let me **wrap** and **store** this leftover food in some foil so I 
 
 > TODO: example usage
 
+### Supported types
+
+The following types are supported by default for use with `@WrappedDefault`. You can add your own types by conforming to `UserDefaultsSerializable`.
+
+- `Bool`
+- `Int`
+- `Float`
+- `Double`
+- `String`
+- `URL`
+- `Date`
+- `Data`
+- `Array`
+- `Set`
+- `Dictionary`
+- `RawRepresentable` types
+
 ## Supported Platforms
 
 - iOS 12.0+

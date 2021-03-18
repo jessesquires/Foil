@@ -13,6 +13,8 @@
 
 import Foundation
 
+// swiftlint:disable force_cast
+
 extension UserDefaults {
 
     /// Sets the value of the specified default key.
@@ -21,6 +23,12 @@ extension UserDefaults {
     ///   - value: The object to store in the defaults database.
     ///   - key: The key with which to associate the value.
     public func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
+        if T.self == URL.self {
+            // HACK: for URL
+            // Attempt to insert non-property list object, NSInvalidArgumentException
+            self.set(value as? URL, forKey: key)
+            return
+        }
         self.set(value.storedValue, forKey: key)
     }
 
@@ -29,8 +37,14 @@ extension UserDefaults {
     /// - Parameter key: A key in the current user‘s defaults database.
     /// - Returns: The object associated with the specified key, or its default value.
     public func fetch<T: UserDefaultsSerializable>(_ key: String) -> T {
-        // swiftlint:disable:next force_cast
-        T(storedValue: self.object(forKey: key) as! T.StoredValue)
+        if T.self == URL.self {
+            // HACK: for URL
+            // Could not cast value of type '_NSInlineData' to 'NSURL'
+            let storedURL = self.url(forKey: key)!
+            return T(storedValue: storedURL as! T.StoredValue)
+        }
+
+        return T(storedValue: self.object(forKey: key) as! T.StoredValue)
     }
 
     /// Adds the key-value pair to the registration domain.
@@ -42,3 +56,5 @@ extension UserDefaults {
         self.register(defaults: [key: value.storedValue])
     }
 }
+
+// swiftlint:enable force_cast
