@@ -32,19 +32,41 @@ extension UserDefaults {
         self.set(value.storedValue, forKey: key)
     }
 
+    /// Removes the value of the specified default key.
+    ///
+    /// - Parameter key: The key whose value you want to remove.
+    public func delete(for key: String) {
+        self.removeObject(forKey: key)
+    }
+
     /// Returns the object associated with the specified key.
     ///
     /// - Parameter key: A key in the current user‘s defaults database.
-    /// - Returns: The object associated with the specified key, or its default value.
+    /// - Returns: The non-optional object associated with the specified key, or its default value.
     public func fetch<T: UserDefaultsSerializable>(_ key: String) -> T {
+        self.fetchOptional(key)!
+    }
+
+    /// Returns the object associated with the specified key, if any exists.
+    ///
+    /// - Parameter key: A key in the current user‘s defaults database.
+    /// - Returns: The object associated with the specified key, or `nil`.
+    public func fetchOptional<T: UserDefaultsSerializable>(_ key: String) -> T? {
+        let fetched: Any?
+
         if T.self == URL.self {
             // HACK: for URL
             // Could not cast value of type '_NSInlineData' to 'NSURL'
-            let storedURL = self.url(forKey: key)!
-            return T(storedValue: storedURL as! T.StoredValue)
+            fetched = self.url(forKey: key)
+        } else {
+            fetched = self.object(forKey: key)
         }
 
-        return T(storedValue: self.object(forKey: key) as! T.StoredValue)
+        if fetched == nil {
+            return nil
+        }
+
+        return T(storedValue: fetched as! T.StoredValue)
     }
 
     /// Adds the key-value pair to the registration domain.

@@ -199,4 +199,84 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertEqual(testDefaults.fetch(key), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
+
+    func test_WrappedValue_IntOptional() {
+        let key = "key_\(#function)"
+        var model = WrappedDefaultOptional<Int>(keyName: key, userDefaults: testDefaults)
+
+        let defaultValue: Int? = testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+
+        let newValue = 666
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+
+        model.wrappedValue = nil
+        XCTAssertNil(model.wrappedValue)
+
+        let fetchedValue: Int? = testDefaults.fetchOptional(key)
+        XCTAssertNil(fetchedValue)
+    }
+
+    func test_WrappedValue_StringOptional() {
+        let key = "key_\(#function)"
+        var model = WrappedDefaultOptional<String>(keyName: key, userDefaults: testDefaults)
+
+        let defaultValue: String? = testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+
+        let newValue = "some text"
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+
+        model.wrappedValue = nil
+        XCTAssertNil(model.wrappedValue)
+
+        let fetchedValue: String? = testDefaults.fetchOptional(key)
+        XCTAssertNil(fetchedValue)
+    }
+
+    func test_WrappedValue_URLOptional() {
+        let key = "key_\(#function)"
+        var model = WrappedDefaultOptional<URL>(keyName: key, userDefaults: testDefaults)
+
+        let defaultValue: URL? = testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+
+        let newValue = URL(string: "www.jessesquires.com")
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+
+        model.wrappedValue = nil
+        XCTAssertNil(model.wrappedValue)
+
+        let fetchedValue: URL? = testDefaults.fetchOptional(key)
+        XCTAssertNil(fetchedValue)
+    }
+
+    func test_WrappedValue_DateOptional() {
+        let key = "key_\(#function)"
+        var model = WrappedDefaultOptional<Date>(keyName: key, userDefaults: testDefaults)
+
+        let defaultValue: Date? = testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+
+        let newValue = Date()
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+
+        model.wrappedValue = nil
+        XCTAssertNil(model.wrappedValue)
+
+        let fetchedValue: Date? = testDefaults.fetchOptional(key)
+        XCTAssertNil(fetchedValue)
+    }
 }

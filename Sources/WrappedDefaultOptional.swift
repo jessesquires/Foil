@@ -14,36 +14,35 @@
 import Foundation
 
 /// A property wrapper that uses `UserDefaults` as a backing store,
-/// whose `wrappedValue` is non-optional and provides a **non-optional default value**.
+/// whose `wrappedValue` is optional and provides a **does not provide default value**.
 @propertyWrapper
-public struct WrappedDefault<T: UserDefaultsSerializable> {
-    private let _defaultValue: T
+public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
 
     /// The key for the value in `UserDefaults`.
     public let key: String
 
-    /// The value retreived from `UserDefaults`.
-    public var wrappedValue: T {
+    /// The value retreived from `UserDefaults`, if any exists.
+    public var wrappedValue: T? {
         get {
-            self._userDefaults.fetch(self.key)
+            self._userDefaults.fetchOptional(self.key)
         }
         set {
-            self._userDefaults.save(newValue, for: self.key)
+            if let newValue = newValue {
+                self._userDefaults.save(newValue, for: self.key)
+            } else {
+                self._userDefaults.delete(for: self.key)
+            }
         }
     }
 
     /// Initializes the property wrapper.
     /// - Parameters:
     ///   - keyName: The key for the value in `UserDefaults`.
-    ///   - defaultValue: The default value for the specified key.
     ///   - userDefaults: The `UserDefaults` backing store.
     public init(keyName: String,
-                defaultValue: T,
                 userDefaults: UserDefaults = .standard) {
         self.key = keyName
-        self._defaultValue = defaultValue
         self._userDefaults = userDefaults
-        userDefaults.registerDefault(value: defaultValue, key: keyName)
     }
 }
