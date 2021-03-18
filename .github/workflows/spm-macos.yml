@@ -1,0 +1,27 @@
+name: SwiftPM Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  # https://github.com/actions/virtual-environments/tree/main/images/macos
+  DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+
+jobs:
+  main:
+    name: SwiftPM Build
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: xcode version
+        run: xcodebuild -version -sdk
+
+      - name: swift build
+        run: swift build
