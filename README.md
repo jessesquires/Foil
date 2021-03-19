@@ -4,7 +4,7 @@
 
 #### Why the name?
 
-Foil, as in, let me quickly and easily **wrap** and **store** this leftover food in some **foil** so I can eat it later. 🌯 😉
+Foil, as in let me quickly and easily **wrap** and **store** this leftover food in some **foil** so I can eat it later. 🌯 😉
 
 > [Foil](https://www.wordnik.com/words/aluminum%20foil):<br>
 > **noun**<br>
@@ -14,7 +14,7 @@ Foil, as in, let me quickly and easily **wrap** and **store** this leftover food
 ## Usage
 
 You can use `@WrappedDefault` for non-optional values and `@WrappedDefaultOptional` for optional ones. 
-You may wish to store all your user defaults in one place, however, that is not necessary. Any property on any class can use this wrapper.
+You may wish to store all your user defaults in one place, however, that is not necessary. **Any** property on **any type** can use this wrapper.
 
 ```swift
 final class AppSettings {
@@ -36,6 +36,8 @@ func userDidToggleSetting(_ sender: UISwitch) {
     AppSettings.shared.flagEnabled = sender.isOn
 }
 ```
+
+There is also an included example app project.
 
 ### Using `enum` keys
 
