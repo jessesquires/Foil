@@ -65,7 +65,7 @@
 <p><em>A lightweight <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348">property wrapper</a> for UserDefaults</em></p>
 <h4 id='why-the-name' class='heading'>Why the name?</h4>
 
-<p>Foil, as in, let me quickly and easily <strong>wrap</strong> and <strong>store</strong> this leftover food in some <strong>foil</strong> so I can eat it later. 🌯 😉</p>
+<p>Foil, as in let me quickly and easily <strong>wrap</strong> and <strong>store</strong> this leftover food in some <strong>foil</strong> so I can eat it later. 🌯 😉</p>
 
 <blockquote>
 <p><a href="https://www.wordnik.com/words/aluminum%20foil">Foil</a>:<br>
@@ -76,7 +76,7 @@ A very thin, pliable, easily torn sheet of aluminum used for cooking, packaging,
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p>You can use <code><a href="Structs/WrappedDefault.html">@WrappedDefault</a></code> for non-optional values and <code><a href="Structs/WrappedDefaultOptional.html">@WrappedDefaultOptional</a></code> for optional ones. 
-You may wish to store all your user defaults in one place, however, that is not necessary. Any property on any class can use this wrapper.</p>
+You may wish to store all your user defaults in one place, however, that is not necessary. <strong>Any</strong> property on <strong>any type</strong> can use this wrapper.</p>
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
@@ -96,6 +96,8 @@ You may wish to store all your user defaults in one place, however, that is not 
     <span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">flagEnabled</span> <span class="o">=</span> <span class="n">sender</span><span class="o">.</span><span class="n">isOn</span>
 <span class="p">}</span>
 </code></pre>
+
+<p>There is also an included example app project.</p>
 <h3 id='using-code-enum-code-keys' class='heading'>Using <code>enum</code> keys</h3>
 
 <p>If you prefer using an <code>enum</code> for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unneccessary.</p>
