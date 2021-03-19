@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UserDefaultsSerializable Protocol Reference</title>
+    <title>WrappedDefaultOptional Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/UserDefaultsSerializable" class="dashAnchor"></a>
-    <a title="UserDefaultsSerializable Protocol Reference"></a>
+    <a name="//apple_ref/swift/Struct/WrappedDefaultOptional" class="dashAnchor"></a>
+    <a title="WrappedDefaultOptional Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Foil 1.0.0 Docs</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Foil Reference</a>
         <img id="carat" src="../img/carat.png" />
-        UserDefaultsSerializable Protocol Reference
+        WrappedDefaultOptional Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -60,32 +60,17 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>UserDefaultsSerializable</h1>
+            <h1>WrappedDefaultOptional</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UserDefaultsSerializable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@propertyWrapper</span>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">WrappedDefaultOptional</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Describes a value that can be saved to and fetched from <code>UserDefaults</code>.</p>
-
-<p>Default conformances are provided for:</p>
-
-<ul>
-<li><code>Bool</code></li>
-<li><code>Int</code></li>
-<li><code>Float</code></li>
-<li><code>Double</code></li>
-<li><code>String</code></li>
-<li><code>URL</code></li>
-<li><code>Date</code></li>
-<li><code>Data</code></li>
-<li><code>Array</code></li>
-<li><code>Set</code></li>
-<li><code>Dictionary</code></li>
-<li><code>RawRepresentable</code> types</li>
-</ul>
+            <p>A property wrapper that uses <code>UserDefaults</code> as a backing store,
+whose <code>wrappedValue</code> is optional and provides a <strong>does not provide default value</strong>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -94,9 +79,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Foil24UserDefaultsSerializableP11StoredValueQa"></a>
-                    <a name="//apple_ref/swift/Alias/StoredValue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Foil24UserDefaultsSerializableP11StoredValueQa">StoredValue</a>
+                    <a name="/s:4Foil22WrappedDefaultOptionalV3keySSvp"></a>
+                    <a name="//apple_ref/swift/Property/key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Foil22WrappedDefaultOptionalV3keySSvp">key</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -104,14 +89,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The type of the value that is stored in <code>UserDefaults</code>.</p>
+                        <p>The key for the value in <code>UserDefaults</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">StoredValue</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -121,9 +106,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Foil24UserDefaultsSerializableP11storedValue06StoredF0Qzvp"></a>
-                    <a name="//apple_ref/swift/Property/storedValue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Foil24UserDefaultsSerializableP11storedValue06StoredF0Qzvp">storedValue</a>
+                    <a name="/s:4Foil22WrappedDefaultOptionalV12wrappedValuexSgvp"></a>
+                    <a name="//apple_ref/swift/Property/wrappedValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Foil22WrappedDefaultOptionalV12wrappedValuexSgvp">wrappedValue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -131,14 +116,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The value to store in <code>UserDefaults</code>.</p>
+                        <p>The value retreived from <code>UserDefaults</code>, if any exists.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">storedValue</span><span class="p">:</span> <span class="kt"><a href="../Protocols/UserDefaultsSerializable.html#/s:4Foil24UserDefaultsSerializableP11StoredValueQa">StoredValue</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -148,9 +133,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Foil24UserDefaultsSerializableP11storedValuex06StoredF0Qz_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(storedValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Foil24UserDefaultsSerializableP11storedValuex06StoredF0Qz_tcfc">init(storedValue:<wbr>)</a>
+                    <a name="/s:4Foil22WrappedDefaultOptionalV7keyName12userDefaultsACyxGSS_So06NSUserH0Ctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(keyName:userDefaults:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Foil22WrappedDefaultOptionalV7keyName12userDefaultsACyxGSS_So06NSUserH0Ctcfc">init(keyName:<wbr>userDefaults:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -158,14 +143,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes the object using the provided value.</p>
+                        <p>Initializes the property wrapper.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">storedValue</span><span class="p">:</span> <span class="kt"><a href="../Protocols/UserDefaultsSerializable.html#/s:4Foil24UserDefaultsSerializableP11StoredValueQa">StoredValue</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">userDefaults</span><span class="p">:</span> <span class="kt">UserDefaults</span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -176,12 +162,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>storedValue</em>
+                                <em>keyName</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The previously store value fetched from <code>UserDefaults</code>.</p>
+                                  <p>The key for the value in <code>UserDefaults</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userDefaults</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>UserDefaults</code> backing store. The default value is <code>.standard</code>.</p>
                                 </div>
                               </td>
                             </tr>

@@ -16,7 +16,7 @@
     <a title="Foil  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Foil Docs</a> (100% documented)</p>
+        <p><a href="index.html">Foil 1.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="search.json">
@@ -36,14 +36,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Extensions/UserDefaults.html">UserDefaults</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -57,6 +49,9 @@
               <li class="nav-group-task">
                 <a href="Structs/WrappedDefault.html">WrappedDefault</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/WrappedDefaultOptional.html">WrappedDefaultOptional</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -67,9 +62,10 @@
             
             <h1 id='foil-a-href-https-github-com-jessesquires-foil-actions-img-src-https-github-com-jessesquires-foil-workflows-ci-badge-svg-alt-actions-status-a' class='heading'>Foil <a href="https://github.com/jessesquires/Foil/actions"><img src="https://github.com/jessesquires/Foil/workflows/CI/badge.svg" alt="Actions Status"></a></h1>
 
-<p><em>A lightweight property wrapper for UserDefaults</em></p>
+<p><em>A lightweight <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348">property wrapper</a> for UserDefaults</em></p>
+<h4 id='why-the-name' class='heading'>Why the name?</h4>
 
-<p>Foil, as in, let me <strong>wrap</strong> and <strong>store</strong> this leftover food in some foil so I can eat it later. :wink:</p>
+<p>Foil, as in, let me quickly and easily <strong>wrap</strong> and <strong>store</strong> this leftover food in some <strong>foil</strong> so I can eat it later. 🌯 😉</p>
 
 <blockquote>
 <p><a href="https://www.wordnik.com/words/aluminum%20foil">Foil</a>:<br>
@@ -79,12 +75,53 @@ A very thin, pliable, easily torn sheet of aluminum used for cooking, packaging,
 </blockquote>
 <h2 id='usage' class='heading'>Usage</h2>
 
-<blockquote>
-<p>TODO: example usage</p>
-</blockquote>
+<p>You can use <code><a href="Structs/WrappedDefault.html">@WrappedDefault</a></code> for non-optional values and <code><a href="Structs/WrappedDefaultOptional.html">@WrappedDefaultOptional</a></code> for optional ones. 
+You may wish to store all your user defaults in one place, however, that is not necessary. Any property on any class can use this wrapper.</p>
+<pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
+
+    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"flagEnabled"</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">flagEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+
+    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"totalCount"</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">totalCount</span><span class="p">:</span> <span class="kt">Int</span>
+
+    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"timestamp"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+
+<span class="kd">func</span> <span class="nf">userDidToggleSetting</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISwitch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">flagEnabled</span> <span class="o">=</span> <span class="n">sender</span><span class="o">.</span><span class="n">isOn</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='using-code-enum-code-keys' class='heading'>Using <code>enum</code> keys</h3>
+
+<p>If you prefer using an <code>enum</code> for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unneccessary.</p>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">AppSettingsKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CaseIterable</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">flagEnabled</span>
+    <span class="k">case</span> <span class="n">totalCount</span>
+    <span class="k">case</span> <span class="n">timestamp</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">WrappedDefault</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="n">defaultValue</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">WrappedDefaultOptional</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 <h3 id='supported-types' class='heading'>Supported types</h3>
 
-<p>The following types are supported by default for use with <code><a href="Structs/WrappedDefault.html">@WrappedDefault</a></code>. You can add your own types by conforming to <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code>.</p>
+<p>The following types are supported by default for use with <code><a href="Structs/WrappedDefault.html">@WrappedDefault</a></code>. </p>
+
+<p>Adding support for custom types is possible by conforming to <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code>. However, <strong>this is highly discouraged</strong>. <code>UserDefaults</code> is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via <code>Codable</code>) instead.</p>
 
 <ul>
 <li><code>Bool</code></li>
@@ -99,6 +136,12 @@ A very thin, pliable, easily torn sheet of aluminum used for cooking, packaging,
 <li><code>Set</code></li>
 <li><code>Dictionary</code></li>
 <li><code>RawRepresentable</code> types</li>
+</ul>
+<h2 id='additional-resources' class='heading'>Additional Resources</h2>
+
+<ul>
+<li><a href="http://dscoder.com/defaults.html">NSUserDefaults in Practice</a>, the excellent guide by <a href="https://twitter.com/Catfish_Man">David Smith</a></li>
+<li><a href="https://developer.apple.com/documentation/foundation/userdefaults">UserDefaults documentation</a></li>
 </ul>
 <h2 id='supported-platforms' class='heading'>Supported Platforms</h2>
 

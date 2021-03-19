@@ -17,11 +17,6 @@ import Foundation
 
 extension UserDefaults {
 
-    /// Sets the value of the specified default key.
-    /// 
-    /// - Parameters:
-    ///   - value: The object to store in the defaults database.
-    ///   - key: The key with which to associate the value.
     func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
         if T.self == URL.self {
             // HACK: for URL
@@ -32,25 +27,14 @@ extension UserDefaults {
         self.set(value.storedValue, forKey: key)
     }
 
-    /// Removes the value of the specified default key.
-    ///
-    /// - Parameter key: The key whose value you want to remove.
     func delete(for key: String) {
         self.removeObject(forKey: key)
     }
 
-    /// Returns the object associated with the specified key.
-    ///
-    /// - Parameter key: A key in the current user‘s defaults database.
-    /// - Returns: The non-optional object associated with the specified key, or its default value.
     func fetch<T: UserDefaultsSerializable>(_ key: String) -> T {
         self.fetchOptional(key)!
     }
 
-    /// Returns the object associated with the specified key, if any exists.
-    ///
-    /// - Parameter key: A key in the current user‘s defaults database.
-    /// - Returns: The object associated with the specified key, or `nil`.
     func fetchOptional<T: UserDefaultsSerializable>(_ key: String) -> T? {
         let fetched: Any?
 
@@ -69,11 +53,6 @@ extension UserDefaults {
         return T(storedValue: fetched as! T.StoredValue)
     }
 
-    /// Adds the key-value pair to the registration domain.
-    ///
-    /// - Parameters:
-    ///   - value: The object to store in the registration domain database.
-    ///   - key: The key with which to associate the value.
     func registerDefault<T: UserDefaultsSerializable>(value: T, key: String) {
         self.register(defaults: [key: value.storedValue])
     }

@@ -17,7 +17,7 @@
     <a title="WrappedDefault Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Foil Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Foil 1.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="../search.json">
@@ -37,14 +37,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -57,6 +49,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/WrappedDefault.html">WrappedDefault</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WrappedDefaultOptional.html">WrappedDefaultOptional</a>
               </li>
             </ul>
           </li>
@@ -74,7 +69,8 @@
 
                 </div>
               </div>
-            <p>A property wrapper that uses <code>UserDefaults</code> as a backing store.</p>
+            <p>A property wrapper that uses <code>UserDefaults</code> as a backing store,
+whose <code>wrappedValue</code> is non-optional and provides a <strong>non-optional default value</strong>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -196,7 +192,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The <code>UserDefaults</code> backing store.</p>
+                                  <p>The <code>UserDefaults</code> backing store. The default value is <code>.standard</code>.</p>
                                 </div>
                               </td>
                             </tr>
