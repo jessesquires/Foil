@@ -15,6 +15,7 @@
 		0BEEA2EE26041EB20035387F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEEA2EC26041EB20035387F /* LaunchScreen.storyboard */; };
 		0BEEA306260421290035387F /* Foil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEEA2FE26041FED0035387F /* Foil.framework */; };
 		0BEEA307260421290035387F /* Foil.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEEA2FE26041FED0035387F /* Foil.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0BEEA30A260421BE0035387F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEA309260421BE0035387F /* AppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		0BEEA2ED26041EB20035387F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BEEA2EF26041EB20035387F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BEEA2F826041FED0035387F /* Foil.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Foil.xcodeproj; path = ../Foil.xcodeproj; sourceTree = "<group>"; };
+		0BEEA309260421BE0035387F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,12 +96,13 @@
 			isa = PBXGroup;
 			children = (
 				0BEEA2E126041EB00035387F /* AppDelegate.swift */,
+				0BEEA309260421BE0035387F /* AppSettings.swift */,
+				0BEEA2EA26041EB20035387F /* Assets.xcassets */,
+				0BEEA2EF26041EB20035387F /* Info.plist */,
+				0BEEA2EC26041EB20035387F /* LaunchScreen.storyboard */,
+				0BEEA2E726041EB00035387F /* Main.storyboard */,
 				0BEEA2E326041EB00035387F /* SceneDelegate.swift */,
 				0BEEA2E526041EB00035387F /* ViewController.swift */,
-				0BEEA2E726041EB00035387F /* Main.storyboard */,
-				0BEEA2EA26041EB20035387F /* Assets.xcassets */,
-				0BEEA2EC26041EB20035387F /* LaunchScreen.storyboard */,
-				0BEEA2EF26041EB20035387F /* Info.plist */,
 			);
 			path = ExampleApp;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				0BEEA2E626041EB00035387F /* ViewController.swift in Sources */,
 				0BEEA2E226041EB00035387F /* AppDelegate.swift in Sources */,
+				0BEEA30A260421BE0035387F /* AppSettings.swift in Sources */,
 				0BEEA2E426041EB00035387F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
