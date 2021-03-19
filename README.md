@@ -120,7 +120,7 @@ Alternatively, you can add the package [directly via Xcode](https://developer.ap
 
 ## Documentation
 
-You can read the [documentation here](https://jessesquires.github.io/WrappedDefaults). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+You can read the [documentation here](https://jessesquires.github.io/Foil). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
 
 ## Contributing
 
