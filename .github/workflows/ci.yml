@@ -20,6 +20,9 @@ env:
   PROJECT: Foil.xcodeproj
   SCHEME: Foil
 
+  EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
+  EXAMPLE_SCHEME: ExampleApp
+
   IOS_DEST: "OS=14.4,name=iPhone 12 Mini"
   TVOS_DEST: "OS=14.3,name=Apple TV"
   WATCHOS_DEST: "OS=7.2,name=Apple Watch Series 6 - 44mm"
@@ -104,4 +107,21 @@ jobs:
               -scheme "$SCHEME" \
               -sdk "$MACOS_SDK" \
               -destination "$MACOS_DEST" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  build-example:
+    name: build example project
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: build
+        run: |
+          set -o pipefail
+          xcodebuild clean build \
+              -project "$EXAMPLE_PROJECT" \
+              -scheme "$EXAMPLE_SCHEME" \
+              -sdk "$IOS_SDK" \
+              -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c

@@ -13,7 +13,7 @@ jobs:
 
       - name: install jazzy
         run: gem install jazzy --no-document
-  
+
       - name: generate docs
         run: ./scripts/build_docs.zsh
 
