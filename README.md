@@ -1,6 +1,8 @@
 # Foil [![Actions Status](https://github.com/jessesquires/Foil/workflows/CI/badge.svg)](https://github.com/jessesquires/Foil/actions)
 
-*A lightweight [property wrapper](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) for UserDefaults*
+*A lightweight [property wrapper](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) for UserDefaults done right*
+
+## About
 
 #### Why the name?
 
