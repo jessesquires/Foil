@@ -52,6 +52,13 @@ final class ViewController: UITableViewController {
             } else {
                 cell.detailTextLabel?.text = "nil"
             }
+
+        case .option:
+            if let option = AppSettings.shared.option {
+                cell.detailTextLabel?.text = option
+            } else {
+                cell.detailTextLabel?.text = "nil"
+            }
         }
 
         return cell
@@ -61,13 +68,16 @@ final class ViewController: UITableViewController {
         let key = AppSettingsKey.allCases[indexPath.row]
         switch key {
         case .flagEnabled:
-            AppSettings.shared.flagEnabled = Bool.random()
+            AppSettings.shared.flagEnabled.toggle()
 
         case .totalCount:
             AppSettings.shared.totalCount = Int.random(in: 0...1_000)
 
         case .timestamp:
             AppSettings.shared.timestamp = Date() + TimeInterval.random(in: 0...(60 * 60 * 24 * 30))
+
+        case .option:
+            AppSettings.shared.option = [nil, "\(UUID().uuidString.dropLast(32))"].randomElement()!
         }
 
         UserDefaults.standard.synchronize()

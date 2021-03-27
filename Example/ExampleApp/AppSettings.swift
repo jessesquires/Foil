@@ -10,6 +10,7 @@ enum AppSettingsKey: String, CaseIterable {
     case flagEnabled
     case totalCount
     case timestamp
+    case option
 }
 
 final class AppSettings {
@@ -23,6 +24,9 @@ final class AppSettings {
 
     @WrappedDefaultOptional(key: .timestamp)
     var timestamp: Date?
+
+    @WrappedDefaultOptional(key: .option)
+    var option: String?
 
     private init() { }
 
