@@ -4,6 +4,8 @@
 
 ## About
 
+Read the post: [A better approach to writing a UserDefaults Property Wrapper](https://www.jessesquires.com/blog/2021/03/26/a-better-approach-to-writing-a-userdefaults-property-wrapper/)
+
 #### Why the name?
 
 Foil, as in let me quickly and easily **wrap** and **store** this leftover food in some **foil** so I can eat it later. 🌯 😉
@@ -15,19 +17,19 @@ Foil, as in let me quickly and easily **wrap** and **store** this leftover food 
 
 ## Usage
 
-You can use `@WrappedDefault` for non-optional values and `@WrappedDefaultOptional` for optional ones. 
+You can use `@WrappedDefault` for non-optional values and `@WrappedDefaultOptional` for optional ones.
 You may wish to store all your user defaults in one place, however, that is not necessary. **Any** property on **any type** can use this wrapper.
 
 ```swift
 final class AppSettings {
     static let shared = AppSettings()
-    
+
     @WrappedDefault(keyName: "flagEnabled", defaultValue: true)
     var flagEnabled: Bool
-    
+
     @WrappedDefault(keyName: "totalCount", defaultValue: 0)
     var totalCount: Int
-    
+
     @WrappedDefaultOptional(keyName: "timestamp")
     var timestamp: Date?
 }
@@ -67,7 +69,7 @@ extension WrappedDefaultOptional {
 
 ### Supported types
 
-The following types are supported by default for use with `@WrappedDefault`. 
+The following types are supported by default for use with `@WrappedDefault`.
 
 Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged**. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
 
