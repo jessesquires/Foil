@@ -14,7 +14,7 @@
 import Foundation
 
 /// A property wrapper that uses `UserDefaults` as a backing store,
-/// whose `wrappedValue` is optional and provides a **does not provide default value**.
+/// whose `wrappedValue` is optional and **does not provide default value**.
 @propertyWrapper
 public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
