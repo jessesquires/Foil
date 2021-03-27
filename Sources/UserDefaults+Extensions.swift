@@ -19,8 +19,9 @@ extension UserDefaults {
 
     func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
         if T.self == URL.self {
-            // HACK: for URL
-            // Attempt to insert non-property list object, NSInvalidArgumentException
+            // Hack for URL, which is special
+            // See: http://dscoder.com/defaults.html
+            // Error: Attempt to insert non-property list object, NSInvalidArgumentException
             self.set(value as? URL, forKey: key)
             return
         }
@@ -39,8 +40,9 @@ extension UserDefaults {
         let fetched: Any?
 
         if T.self == URL.self {
-            // HACK: for URL
-            // Could not cast value of type '_NSInlineData' to 'NSURL'
+            // Hack for URL, which is special
+            // See: http://dscoder.com/defaults.html
+            // Errpr: Could not cast value of type '_NSInlineData' to 'NSURL'
             fetched = self.url(forKey: key)
         } else {
             fetched = self.object(forKey: key)
