@@ -90,6 +90,8 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 - [NSUserDefaults in Practice](http://dscoder.com/defaults.html), the excellent guide by [David Smith](https://twitter.com/Catfish_Man)
 - [UserDefaults documentation](https://developer.apple.com/documentation/foundation/userdefaults)
+- [Preferences and Settings Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Introduction/Introduction.html#//apple_ref/doc/uid/10000059i-CH1-SW1)
+- [Property List Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/Introduction/Introduction.html#//apple_ref/doc/uid/10000048i)
 
 ## Supported Platforms
 
