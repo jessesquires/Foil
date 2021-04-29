@@ -67,6 +67,29 @@ extension WrappedDefaultOptional {
 }
 ```
 
+### Observing with Combine
+
+To support KVO monitoring via Combine, use the `NSObject.KeyValueObservingPublisher` helpers [provided by Apple](https://developer.apple.com/documentation/combine/performing-key-value-observing-with-combine). This requires your object to inherit from `NSObject` and adding `@objc dynamic` to the properties you would like to observe:
+
+```swift
+final class AppSettings: NSObject {
+    static let shared = AppSettings()
+
+    @WrappedDefaultOptional(keyName: "nickname")
+    @objc dynamic var nickname: String?
+}
+
+// Usage
+
+AppSettings.shared
+    .publisher(for: \.nickname, options: [.new])
+    .sink { print($0) }
+    .store(in: &cancellable)
+
+AppSettings.shared.nickname = "abc123"
+// prints "abc123" from `.sink`
+```
+
 ### Supported types
 
 The following types are supported by default for use with `@WrappedDefault`.

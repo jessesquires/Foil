@@ -13,10 +13,12 @@
 
 @testable import Foil
 import XCTest
+import Combine
 
 final class IntegrationTests: XCTestCase {
 
     let settings = TestSettings()
+    var cancellable = Set<AnyCancellable>()
 
     func test_Integration_Bool() {
         let defaultValue = settings.flag
@@ -132,5 +134,23 @@ final class IntegrationTests: XCTestCase {
         let newValue = TestFruit.orange
         settings.fruit = newValue
         XCTAssertEqual(TestSettings.store.fetch("fruit"), newValue)
+    }
+
+    func test_Integration_Publisher() {
+        let promise = expectation(description: #function)
+        var publishedValue: String?
+
+        settings
+            .publisher(for: \.nickname, options: [.new])
+            .sink {
+                publishedValue = $0
+                promise.fulfill()
+            }
+            .store(in: &cancellable)
+
+        settings.nickname = "abc123"
+        wait(for: [promise], timeout: 5)
+
+        XCTAssertEqual(settings.nickname, publishedValue)
     }
 }
