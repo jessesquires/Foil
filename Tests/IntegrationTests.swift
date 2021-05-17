@@ -11,9 +11,9 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
+import Combine
 @testable import Foil
 import XCTest
-import Combine
 
 final class IntegrationTests: XCTestCase {
 
