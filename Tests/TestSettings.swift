@@ -20,7 +20,7 @@ enum TestFruit: String, UserDefaultsSerializable {
     case banana
 }
 
-final class TestSettings {
+final class TestSettings: NSObject {
 
     static var store = UserDefaults.testSuite()
 
@@ -59,4 +59,7 @@ final class TestSettings {
 
     @WrappedDefault(keyName: "fruit", defaultValue: .apple, userDefaults: store)
     var fruit: TestFruit
+
+    @WrappedDefaultOptional(keyName: "nickname", userDefaults: store)
+    @objc dynamic var nickname: String?
 }
