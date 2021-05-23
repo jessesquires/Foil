@@ -25,13 +25,13 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     /// The value retreived from `UserDefaults`, if any exists.
     public var wrappedValue: T? {
         get {
-            self._userDefaults.fetchOptional(self.key)
+            T.fetchOptional(forKey: self.key, from: self._userDefaults)
         }
         set {
             if let newValue = newValue {
-                self._userDefaults.save(newValue, for: self.key)
+                T.set(newValue, forKey: self.key, from: self._userDefaults)
             } else {
-                self._userDefaults.delete(for: self.key)
+                self._userDefaults.removeObject(forKey: self.key)
             }
         }
     }

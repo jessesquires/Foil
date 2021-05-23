@@ -33,12 +33,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = true
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Bool.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = false
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Bool.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -47,12 +47,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = 42
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Int.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = 666
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Int.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -61,12 +61,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = Float(42.0)
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Float.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = Float(66.6)
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Float.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -75,12 +75,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = Double(42.0)
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Double.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = Double(66.6)
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Double.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -89,12 +89,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = "default-value"
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(String.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = "new-value"
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(String.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -103,12 +103,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = URL(string: "https://hexedbits.com")!
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(URL.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = URL(string: "https://jessesquires.com")!
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(URL.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -117,12 +117,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = Date.distantPast
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Date.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = Date()
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Date.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -131,12 +131,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = "default-data".data(using: .utf8)!
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Data.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = "new-data".data(using: .utf8)!
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Data.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -145,12 +145,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = [1, 2, 3]
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Array.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = [4, 5, 6]
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Array.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -159,12 +159,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = Set(["one", "two", "three"])
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Set.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = Set(["four", "five", "size"])
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Set.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -174,12 +174,12 @@ final class WrappedDefaultTests: XCTestCase {
                             "key2": 4.2]
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(Dictionary.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = ["key3": 0.42]
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Dictionary.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -188,12 +188,12 @@ final class WrappedDefaultTests: XCTestCase {
         let defaultValue = TestFruit.apple
         var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
 
-        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(TestFruit.fetch(forKey: key, from: testDefaults), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
         let newValue = TestFruit.banana
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(TestFruit.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
@@ -201,19 +201,19 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         var model = WrappedDefaultOptional<Int>(keyName: key, userDefaults: testDefaults)
 
-        let defaultValue: Int? = testDefaults.fetchOptional(key)
+        let defaultValue: Int? = Int.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
         let newValue = 666
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Int.fetchOptional(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
         XCTAssertNil(model.wrappedValue)
 
-        let fetchedValue: Int? = testDefaults.fetchOptional(key)
+        let fetchedValue: Int? = Int.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(fetchedValue)
     }
 
@@ -221,19 +221,19 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         var model = WrappedDefaultOptional<String>(keyName: key, userDefaults: testDefaults)
 
-        let defaultValue: String? = testDefaults.fetchOptional(key)
+        let defaultValue: String? = String.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
         let newValue = "some text"
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(String.fetchOptional(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
         XCTAssertNil(model.wrappedValue)
 
-        let fetchedValue: String? = testDefaults.fetchOptional(key)
+        let fetchedValue: String? = String.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(fetchedValue)
     }
 
@@ -241,19 +241,19 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         var model = WrappedDefaultOptional<URL>(keyName: key, userDefaults: testDefaults)
 
-        let defaultValue: URL? = testDefaults.fetchOptional(key)
+        let defaultValue: URL? = URL.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
         let newValue = URL(string: "www.jessesquires.com")
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(URL.fetchOptional(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
         XCTAssertNil(model.wrappedValue)
 
-        let fetchedValue: URL? = testDefaults.fetchOptional(key)
+        let fetchedValue: URL? = URL.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(fetchedValue)
     }
 
@@ -261,19 +261,19 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         var model = WrappedDefaultOptional<Date>(keyName: key, userDefaults: testDefaults)
 
-        let defaultValue: Date? = testDefaults.fetchOptional(key)
+        let defaultValue: Date? = Date.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
         let newValue = Date()
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Date.fetchOptional(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
         XCTAssertNil(model.wrappedValue)
 
-        let fetchedValue: Date? = testDefaults.fetchOptional(key)
+        let fetchedValue: Date? = Date.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(fetchedValue)
     }
 
@@ -282,19 +282,19 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         var model = WrappedDefaultOptional<[String: TestFruit]>(keyName: key, userDefaults: testDefaults)
 
-        let defaultValue: [String: TestFruit]? = testDefaults.fetchOptional(key)
+        let defaultValue: [String: TestFruit]? = Dictionary.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
         let newValue = ["key1": TestFruit.apple, "key2": .orange]
         model.wrappedValue = newValue
-        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(Dictionary.fetchOptional(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
         XCTAssertNil(model.wrappedValue)
 
-        let fetchedValue: [String: TestFruit]? = testDefaults.fetchOptional(key)
+        let fetchedValue: [String: TestFruit]? = Dictionary.fetchOptional(forKey: key, from: testDefaults)
         XCTAssertNil(fetchedValue)
     }
     // swiftlint:enable discouraged_optional_collection

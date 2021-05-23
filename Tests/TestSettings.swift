@@ -30,6 +30,9 @@ final class TestSettings: NSObject {
     @WrappedDefault(keyName: "count", defaultValue: 42, userDefaults: store)
     var count: Int
 
+    @WrappedDefaultOptional(keyName: "countOptional", userDefaults: store)
+    var countOptional: Int?
+
     @WrappedDefault(keyName: "mean", defaultValue: 4.2, userDefaults: store)
     var mean: Float
 
@@ -62,4 +65,22 @@ final class TestSettings: NSObject {
 
     @WrappedDefaultOptional(keyName: "nickname", userDefaults: store)
     @objc dynamic var nickname: String?
+
+    @WrappedDefaultOptional(keyName: "custom", userDefaults: store)
+    var custom: CustomType?
+}
+
+struct CustomType {
+    let abc: String
+    let xyz: Int
+}
+
+extension CustomType: UserDefaultsSerializable {
+    var storedValue: String { "\(abc)|\(xyz)" }
+
+    init(storedValue: String) {
+        let split = storedValue.split(separator: "|")
+        self.abc = String(split[0])
+        self.xyz = Int(split[1]) ?? 0
+    }
 }

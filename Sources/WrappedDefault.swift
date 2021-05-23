@@ -25,10 +25,10 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
     /// The value retreived from `UserDefaults`.
     public var wrappedValue: T {
         get {
-            self._userDefaults.fetch(self.key)
+            T.fetch(forKey: self.key, from: self._userDefaults)
         }
         set {
-            self._userDefaults.save(newValue, for: self.key)
+            T.set(newValue, forKey: self.key, from: self._userDefaults)
         }
     }
 
@@ -42,6 +42,6 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
                 userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
-        userDefaults.registerDefault(value: defaultValue, key: keyName)
+        userDefaults.register(defaults: [keyName: defaultValue.storedValue])
     }
 }

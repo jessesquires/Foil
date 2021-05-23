@@ -40,77 +40,101 @@ public protocol UserDefaultsSerializable {
     /// 
     /// - Parameter storedValue: The previously store value fetched from `UserDefaults`.
     init(storedValue: StoredValue)
+
+    /// Returns the object associated with the specified key in the user‘s defaults database.
+    /// - Parameters:
+    ///   - defaultName: A key in the current user‘s defaults database.
+    ///   - userDefaults: The user’s defaults database, where you store key-value pairs persistently across launches of your app.
+    static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self
+
+    /// Returns the object associated with the specified key in the user‘s defaults database.
+    /// - Parameters:
+    ///   - defaultName: A key in the current user‘s defaults database.
+    ///   - userDefaults: The user’s defaults database, where you store key-value pairs persistently across launches of your app.
+    static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self?
+
+    /// Sets the value of the specified default key in the user‘s defaults database.
+    /// - Parameters:
+    ///   - value: The object to store in the defaults database.
+    ///   - defaultName: The key with which to associate the value.
+    ///   - userDefaults: The user’s defaults database, where you store key-value pairs persistently across launches of your app.
+    static func set(_ value: Self, forKey defaultName: String, from userDefaults: UserDefaults)
 }
 
-/// :nodoc:
-extension Bool: UserDefaultsSerializable {
+extension UserDefaultsSerializable {
     public var storedValue: Self { self }
 
     public init(storedValue: Self) {
         self = storedValue
+    }
+
+    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
+        fetchOptional(forKey: defaultName, from: userDefaults)!
+    }
+
+    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
+        guard let object = userDefaults.object(forKey: defaultName) as? StoredValue else { return nil }
+        return Self(storedValue: object)
+    }
+
+    public static func set(_ value: Self, forKey defaultName: String, from userDefaults: UserDefaults) {
+        userDefaults.set(value.storedValue, forKey: defaultName)
+    }
+}
+
+/// :nodoc:
+extension Bool: UserDefaultsSerializable {
+    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
+        userDefaults.bool(forKey: defaultName)
     }
 }
 
 /// :nodoc:
 extension Int: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
+        userDefaults.integer(forKey: defaultName)
     }
 }
 
 /// :nodoc:
 extension Float: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
+        userDefaults.float(forKey: defaultName)
     }
 }
 
 /// :nodoc:
 extension Double: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
+        userDefaults.double(forKey: defaultName)
     }
 }
 
 /// :nodoc:
 extension String: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
+        userDefaults.string(forKey: defaultName)
     }
 }
 
 /// :nodoc:
 extension URL: UserDefaultsSerializable {
-    public var storedValue: Self { self }
+    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
+        userDefaults.url(forKey: defaultName)
+    }
 
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func set(_ value: Self, forKey defaultName: String, from userDefaults: UserDefaults) {
+        userDefaults.set(value, forKey: defaultName)
     }
 }
 
 /// :nodoc:
-extension Date: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
-    }
-}
+extension Date: UserDefaultsSerializable {}
 
 /// :nodoc:
 extension Data: UserDefaultsSerializable {
-    public var storedValue: Self { self }
-
-    public init(storedValue: Self) {
-        self = storedValue
+    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
+        userDefaults.data(forKey: defaultName)
     }
 }
 
