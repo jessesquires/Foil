@@ -83,39 +83,25 @@ extension UserDefaultsSerializable {
 }
 
 /// :nodoc:
-extension Bool: UserDefaultsSerializable {
-    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
-        userDefaults.bool(forKey: defaultName)
-    }
-}
+extension Bool: UserDefaultsSerializable {}
 
 /// :nodoc:
-extension Int: UserDefaultsSerializable {
-    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
-        userDefaults.integer(forKey: defaultName)
-    }
-}
+extension Int: UserDefaultsSerializable {}
 
 /// :nodoc:
-extension Float: UserDefaultsSerializable {
-    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
-        userDefaults.float(forKey: defaultName)
-    }
-}
+extension Float: UserDefaultsSerializable {}
 
 /// :nodoc:
-extension Double: UserDefaultsSerializable {
-    public static func fetch(forKey defaultName: String, from userDefaults: UserDefaults) -> Self {
-        userDefaults.double(forKey: defaultName)
-    }
-}
+extension Double: UserDefaultsSerializable {}
 
 /// :nodoc:
-extension String: UserDefaultsSerializable {
-    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
-        userDefaults.string(forKey: defaultName)
-    }
-}
+extension String: UserDefaultsSerializable {}
+
+/// :nodoc:
+extension Date: UserDefaultsSerializable {}
+
+/// :nodoc:
+extension Data: UserDefaultsSerializable {}
 
 /// :nodoc:
 extension URL: UserDefaultsSerializable {
@@ -125,16 +111,6 @@ extension URL: UserDefaultsSerializable {
 
     public static func set(_ value: Self, forKey defaultName: String, from userDefaults: UserDefaults) {
         userDefaults.set(value, forKey: defaultName)
-    }
-}
-
-/// :nodoc:
-extension Date: UserDefaultsSerializable {}
-
-/// :nodoc:
-extension Data: UserDefaultsSerializable {
-    public static func fetchOptional(forKey defaultName: String, from userDefaults: UserDefaults) -> Self? {
-        userDefaults.data(forKey: defaultName)
     }
 }
 
