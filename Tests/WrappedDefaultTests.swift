@@ -207,7 +207,7 @@ final class WrappedDefaultTests: XCTestCase {
 
         let newValue = 666
         model.wrappedValue = newValue
-        XCTAssertEqual(Int.fetchOptional(forKey: key, from: testDefaults), newValue)
+        XCTAssertEqual(Int.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
@@ -227,7 +227,7 @@ final class WrappedDefaultTests: XCTestCase {
 
         let newValue = "some text"
         model.wrappedValue = newValue
-        XCTAssertEqual(String.fetchOptional(forKey: key, from: testDefaults), newValue)
+        XCTAssertEqual(String.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
