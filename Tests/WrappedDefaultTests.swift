@@ -247,7 +247,7 @@ final class WrappedDefaultTests: XCTestCase {
 
         let newValue = URL(string: "www.jessesquires.com")
         model.wrappedValue = newValue
-        XCTAssertEqual(URL.fetchOptional(forKey: key, from: testDefaults), newValue)
+        XCTAssertEqual(URL.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
@@ -267,7 +267,7 @@ final class WrappedDefaultTests: XCTestCase {
 
         let newValue = Date()
         model.wrappedValue = newValue
-        XCTAssertEqual(Date.fetchOptional(forKey: key, from: testDefaults), newValue)
+        XCTAssertEqual(Date.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
@@ -288,7 +288,7 @@ final class WrappedDefaultTests: XCTestCase {
 
         let newValue = ["key1": TestFruit.apple, "key2": .orange]
         model.wrappedValue = newValue
-        XCTAssertEqual(Dictionary.fetchOptional(forKey: key, from: testDefaults), newValue)
+        XCTAssertEqual(Dictionary.fetch(forKey: key, from: testDefaults), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
 
         model.wrappedValue = nil
