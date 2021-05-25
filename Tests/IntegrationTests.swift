@@ -97,7 +97,7 @@ final class IntegrationTests: XCTestCase {
         XCTAssertEqual(TestSettings.store.fetch("data"), newValue)
 
         settings.data = nil
-        XCTAssertNil(TestSettings.store.fetchOptional("data") as URL?)
+        XCTAssertNil(TestSettings.store.fetchOptional("data") as Data?)
     }
 
     func test_Integration_Array() {
