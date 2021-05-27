@@ -20,6 +20,23 @@ enum TestFruit: String, UserDefaultsSerializable {
     case banana
 }
 
+struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
+    enum Key: String {
+        case key1, key2, key3
+    }
+
+    var rawValue: [String: TestFruit]
+
+    init(rawValue: [String: TestFruit]) {
+        self.rawValue = rawValue
+    }
+
+    subscript(_ key: Key) -> TestFruit? {
+        get { rawValue[key.rawValue] }
+        set { rawValue[key.rawValue] = newValue }
+    }
+}
+
 final class TestSettings: NSObject {
 
     static var store = UserDefaults.testSuite()
@@ -59,6 +76,9 @@ final class TestSettings: NSObject {
 
     @WrappedDefault(keyName: "fruit", defaultValue: .apple, userDefaults: store)
     var fruit: TestFruit
+
+    @WrappedDefault(keyName: "customRawRepresented", defaultValue: TestCustomRepresented(rawValue: [:]), userDefaults: store)
+    var customRawRepresented: TestCustomRepresented
 
     @WrappedDefaultOptional(keyName: "nickname", userDefaults: store)
     @objc dynamic var nickname: String?
