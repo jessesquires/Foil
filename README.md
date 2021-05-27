@@ -98,6 +98,7 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 - `Bool`
 - `Int`
+- `UInt`
 - `Float`
 - `Double`
 - `String`
