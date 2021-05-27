@@ -30,6 +30,9 @@ final class TestSettings: NSObject {
     @WrappedDefault(keyName: "count", defaultValue: 42, userDefaults: store)
     var count: Int
 
+    @WrappedDefault(keyName: "max", defaultValue: 42, userDefaults: store)
+    var max: UInt
+
     @WrappedDefault(keyName: "mean", defaultValue: 4.2, userDefaults: store)
     var mean: Float
 

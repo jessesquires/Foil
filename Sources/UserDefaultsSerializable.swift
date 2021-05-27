@@ -61,6 +61,15 @@ extension Int: UserDefaultsSerializable {
 }
 
 /// :nodoc:
+extension UInt: UserDefaultsSerializable {
+    public var storedValue: Self { self }
+
+    public init(storedValue: Self) {
+        self = storedValue
+    }
+}
+
+/// :nodoc:
 extension Float: UserDefaultsSerializable {
     public var storedValue: Self { self }
 

@@ -37,6 +37,15 @@ final class IntegrationTests: XCTestCase {
         XCTAssertEqual(TestSettings.store.fetch("count"), newValue)
     }
 
+    func test_Integration_UInt() {
+        let defaultValue = settings.max
+        XCTAssertEqual(defaultValue, 42)
+
+        let newValue = UInt(666)
+        settings.max = newValue
+        XCTAssertEqual(TestSettings.store.fetch("max"), newValue)
+    }
+
     func test_Integration_Float() {
         let defaultValue = settings.mean
         XCTAssertEqual(defaultValue, 4.2)
