@@ -18,6 +18,7 @@ import Foundation
 /// Default conformances are provided for:
 ///    - `Bool`
 ///    - `Int`
+///    - `UInt`
 ///    - `Float`
 ///    - `Double`
 ///    - `String`
