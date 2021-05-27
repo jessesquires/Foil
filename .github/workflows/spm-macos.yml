@@ -1,3 +1,6 @@
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
 name: SwiftPM Integration
 
 on:
@@ -9,7 +12,6 @@ on:
       - main
 
 env:
-  # https://github.com/actions/virtual-environments/tree/main/images/macos
   DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
 
 jobs:

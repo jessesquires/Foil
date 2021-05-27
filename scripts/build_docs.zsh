@@ -5,9 +5,7 @@
 #
 #  Copyright © 2020-present Jesse Squires
 #
-#  Docs by jazzy
-#  https://github.com/realm/jazzy/releases/latest
-#  ------------------------------
+#  Jazzy: https://github.com/realm/jazzy/releases/latest
 #  Generates documentation using jazzy and checks for installation.
 
 VERSION="0.13.7"
