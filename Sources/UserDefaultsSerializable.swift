@@ -157,10 +157,10 @@ extension Dictionary: UserDefaultsSerializable where Key == String, Value: UserD
 }
 
 /// :nodoc:
-extension UserDefaultsSerializable where Self: RawRepresentable {
-    public var storedValue: RawValue { self.rawValue }
+extension UserDefaultsSerializable where Self: RawRepresentable, Self.RawValue: UserDefaultsSerializable {
+    public var storedValue: RawValue.StoredValue { self.rawValue.storedValue }
 
-    public init(storedValue: RawValue) {
-        self = Self(rawValue: storedValue)!
+    public init(storedValue: RawValue.StoredValue) {
+        self = Self(rawValue: Self.RawValue(storedValue: storedValue))!
     }
 }

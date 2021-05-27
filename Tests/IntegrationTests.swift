@@ -145,6 +145,22 @@ final class IntegrationTests: XCTestCase {
         XCTAssertEqual(TestSettings.store.fetch("fruit"), newValue)
     }
 
+    func test_Integration_Custom_RawRepresentable() {
+        let defaultValue = settings.customRawRepresented
+        XCTAssert(defaultValue.rawValue.isEmpty)
+
+        var newValue = TestFruit.apple
+        settings.customRawRepresented[.key1] = newValue
+        XCTAssertEqual(settings.customRawRepresented[.key1], newValue)
+
+        newValue = TestFruit.orange
+        settings.customRawRepresented[.key2] = newValue
+        XCTAssertEqual(settings.customRawRepresented[.key2], newValue)
+
+        let expectedValue = ["key1": TestFruit.apple.rawValue, "key2": TestFruit.orange.rawValue]
+        XCTAssertEqual(TestSettings.store.fetch("customRawRepresented"), expectedValue)
+    }
+
     func test_Integration_Publisher() {
         let promise = expectation(description: #function)
         var publishedValue: String?
