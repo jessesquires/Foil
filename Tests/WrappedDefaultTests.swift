@@ -56,6 +56,20 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertEqual(model.wrappedValue, newValue)
     }
 
+    func test_WrappedValue_UInt() {
+        let key = "key_\(#function)"
+        let defaultValue = UInt(42)
+        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: testDefaults)
+
+        XCTAssertEqual(testDefaults.fetch(key), defaultValue)
+        XCTAssertEqual(model.wrappedValue, defaultValue)
+
+        let newValue = UInt(666)
+        model.wrappedValue = newValue
+        XCTAssertEqual(testDefaults.fetch(key), newValue)
+        XCTAssertEqual(model.wrappedValue, newValue)
+    }
+
     func test_WrappedValue_Float() {
         let key = "key_\(#function)"
         let defaultValue = Float(42.0)
