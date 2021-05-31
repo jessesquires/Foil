@@ -42,7 +42,7 @@ extension UserDefaults {
         if T.self == URL.self {
             // Hack for URL, which is special
             // See: http://dscoder.com/defaults.html
-            // Errpr: Could not cast value of type '_NSInlineData' to 'NSURL'
+            // Error: Could not cast value of type '_NSInlineData' to 'NSURL'
             fetched = self.url(forKey: key)
         } else {
             fetched = self.object(forKey: key)
