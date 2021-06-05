@@ -11,10 +11,7 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
-#if canImport(Combine)
 import Combine
-#endif
-
 @testable import Foil
 import XCTest
 
