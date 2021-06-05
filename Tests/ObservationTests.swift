@@ -11,11 +11,14 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
+#if canImport(Combine)
 import Combine
+#endif
+
 @testable import Foil
 import XCTest
 
-@available(iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 final class ObservationTests: XCTestCase {
 
     let settings = TestSettings()
