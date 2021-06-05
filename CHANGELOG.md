@@ -7,6 +7,15 @@ NEXT
 
 - TBA
 
+1.2.0
+-----
+
+This release closes the [1.2.0 milestone](https://github.com/jessesquires/Foil/milestone/2?closed=1).
+
+- Fix deployment target inconsistencies between CocoaPods and SwiftPM. ([#18](https://github.com/jessesquires/Foil/issues/18), [@kambala-decapitator](https://github.com/kambala-decapitator), [@jessesquires](https://github.com/jessesquires))
+
+- Lower deployment targets to support iOS/tvOS 9.0 and above. ([#16](https://github.com/jessesquires/Foil/issues/16), [@kambala-decapitator](https://github.com/kambala-decapitator), [@jessesquires](https://github.com/jessesquires))
+
 1.1.0
 -----
 
