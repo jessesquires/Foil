@@ -8,12 +8,12 @@ on:
     types: [synchronize, opened, reopened, labeled, unlabeled, edited]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
 jobs:
   main:
     name: Review, Lint, Verify
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2

@@ -18,24 +18,24 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator14.4
-  IOS_DEST: "OS=14.4,name=iPhone 12 Mini"
+  IOS_SDK: iphonesimulator14.5
+  IOS_DEST: "OS=14.5,name=iPhone 12 Mini"
 
-  TVOS_SDK: appletvsimulator14.3
-  TVOS_DEST: "OS=14.3,name=Apple TV"
+  TVOS_SDK: appletvsimulator14.5
+  TVOS_DEST: "OS=14.5,name=Apple TV"
 
   WATCHOS_SDK: watchsimulator7.2
   WATCHOS_DEST: "OS=7.2,name=Apple Watch Series 6 - 44mm"
 
-  MACOS_SDK: macosx11.1
+  MACOS_SDK: macosx11.3
   MACOS_DEST: "arch=x86_64"
 
 jobs:
   env-details:
     name: Environment details
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: xcode version
         run: xcodebuild -version -sdk
@@ -47,7 +47,7 @@ jobs:
 
   test-iOS:
     name: iOS unit test
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
 
   test-tvOS:
     name: tvOS unit test
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -80,16 +80,16 @@ jobs:
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   test-watchOS:
-    name: watchOS build
-    runs-on: macOS-latest
+    name: watchOS test
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
 
-      - name: build
+      - name: test
         run: |
           set -o pipefail
-          xcodebuild clean build \
+          xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$WATCHOS_SDK" \
@@ -98,7 +98,7 @@ jobs:
 
   test-macOS:
     name: macOS unit test
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -115,7 +115,7 @@ jobs:
 
   build-example:
     name: build example project
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
