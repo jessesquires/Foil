@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BA3823F2602C498005D7B2E /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3823E2602C498005D7B2E /* IntegrationTests.swift */; };
 		0BA382422602C4D2005D7B2E /* TestSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA382372602C1A7005D7B2E /* TestSettings.swift */; };
+		0BC99BA8266C27AE009B8CD4 /* ObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC99BA7266C27AE009B8CD4 /* ObservationTests.swift */; };
 		0BEEA2B22603F8390035387F /* WrappedDefaultOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEA2B12603F8390035387F /* WrappedDefaultOptional.swift */; };
 		0BEEA2BC260403560035387F /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEA2BB260403560035387F /* UserDefaults+Extensions.swift */; };
 		0BF54A8A25BF589E008484F8 /* Foil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF54A8025BF589E008484F8 /* Foil.framework */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0BA382372602C1A7005D7B2E /* TestSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSettings.swift; sourceTree = "<group>"; };
 		0BA3823E2602C498005D7B2E /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		0BC99BA7266C27AE009B8CD4 /* ObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationTests.swift; sourceTree = "<group>"; };
 		0BEEA2B12603F8390035387F /* WrappedDefaultOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefaultOptional.swift; sourceTree = "<group>"; };
 		0BEEA2BB260403560035387F /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		0BF54A8025BF589E008484F8 /* Foil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Foil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 			children = (
 				0BF54A9025BF589E008484F8 /* Info.plist */,
 				0BA3823E2602C498005D7B2E /* IntegrationTests.swift */,
+				0BC99BA7266C27AE009B8CD4 /* ObservationTests.swift */,
 				0BA382372602C1A7005D7B2E /* TestSettings.swift */,
 				0BEEA2BB260403560035387F /* UserDefaults+Extensions.swift */,
 				0BF54A8E25BF589E008484F8 /* WrappedDefaultTests.swift */,
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC99BA8266C27AE009B8CD4 /* ObservationTests.swift in Sources */,
 				0BA382422602C4D2005D7B2E /* TestSettings.swift in Sources */,
 				0BF54A8F25BF589E008484F8 /* WrappedDefaultTests.swift in Sources */,
 				0BA3823F2602C498005D7B2E /* IntegrationTests.swift in Sources */,
@@ -316,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -327,7 +331,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 5.0;
@@ -380,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -390,7 +394,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -472,8 +476,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -496,8 +498,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};

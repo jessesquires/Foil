@@ -119,8 +119,8 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 ## Supported Platforms
 
-- iOS 12.0+
-- tvOS 12.0+
+- iOS 9.0+
+- tvOS 9.0+
 - watchOS 5.0+
 - macOS 10.13+
 
