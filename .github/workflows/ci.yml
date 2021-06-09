@@ -26,8 +26,8 @@ env:
   TVOS_SDK: appletvsimulator14.5
   TVOS_DEST: "OS=14.5,name=Apple TV"
 
-  WATCHOS_SDK: watchsimulator7.2
-  WATCHOS_DEST: "OS=7.2,name=Apple Watch Series 6 - 44mm"
+  WATCHOS_SDK: watchsimulator7.4
+  WATCHOS_DEST: "OS=7.4,name=Apple Watch Series 6 - 44mm"
 
   MACOS_SDK: macosx11.3
   MACOS_DEST: "arch=x86_64"
