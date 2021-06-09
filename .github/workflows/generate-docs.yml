@@ -9,7 +9,7 @@ on:
 jobs:
   main:
     name: Create docs PR
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
