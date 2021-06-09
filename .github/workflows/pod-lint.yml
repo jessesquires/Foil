@@ -1,7 +1,7 @@
 # GitHub Actions Virtual Environments
 # https://github.com/actions/virtual-environments/
 
-name: CI
+name: Pod Lint
 
 on:
   push:
