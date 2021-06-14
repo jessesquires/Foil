@@ -7,9 +7,19 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/spm-macos.yml'
+      - 'Package*'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
   pull_request:
     branches:
       - main
+    paths:
+      - '.github/workflows/spm-macos.yml'
+      - 'Package*'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer

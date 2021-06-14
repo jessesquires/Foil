@@ -7,9 +7,19 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
+      - 'Example/**/*.*'
   pull_request:
     branches:
       - main
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
+      - 'Example/**/*.*'
 
 env:
   PROJECT: Foil.xcodeproj

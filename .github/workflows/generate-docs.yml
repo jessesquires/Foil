@@ -6,6 +6,9 @@ name: Generate Documentation
 on:
   - workflow_dispatch
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+
 jobs:
   main:
     name: Create docs PR

@@ -10,6 +10,11 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - '.github/workflows/pod-lint.yml'
+      - '*.podspec'
+      - 'Gemfile*'
+      - 'Sources/**/*.*'
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
@@ -36,4 +41,4 @@ jobs:
           bundler-cache: true
 
       - name: pod lint
-        run: bundle exec pod lib lint
+        run: bundle exec pod lib lint --verbose
