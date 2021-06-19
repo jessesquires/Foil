@@ -15,7 +15,7 @@ LINK="https://github.com/realm/SwiftLint"
 INSTALL="brew install swiftlint"
 
 if which swiftlint >/dev/null; then
-    swiftlint --fix --config ./.swiftlint.yml && swiftlint --config ./.swiftlint.yml
+    swiftlint --config ./.swiftlint.yml
 else
     echo "
     Error: SwiftLint not installed!
