@@ -14,7 +14,7 @@
 import Foundation
 
 /// Describes a value that can be saved to and fetched from `UserDefaults`.
-/// 
+///
 /// Default conformances are provided for:
 ///    - `Bool`
 ///    - `Int`
@@ -38,7 +38,7 @@ public protocol UserDefaultsSerializable {
     var storedValue: StoredValue { get }
 
     /// Initializes the object using the provided value.
-    /// 
+    ///
     /// - Parameter storedValue: The previously store value fetched from `UserDefaults`.
     init(storedValue: StoredValue)
 }

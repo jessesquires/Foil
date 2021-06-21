@@ -32,8 +32,8 @@ struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
     }
 
     subscript(_ key: Key) -> TestFruit? {
-        get { rawValue[key.rawValue] }
-        set { rawValue[key.rawValue] = newValue }
+        get { self.rawValue[key.rawValue] }
+        set { self.rawValue[key.rawValue] = newValue }
     }
 }
 

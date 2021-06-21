@@ -12,7 +12,6 @@
 //
 
 import Combine
-@testable import Foil
 import XCTest
 
 @available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
@@ -22,20 +21,20 @@ final class ObservationTests: XCTestCase {
     var cancellable = Set<AnyCancellable>()
 
     func test_Integration_Publisher() {
-        let promise = expectation(description: #function)
+        let promise = self.expectation(description: #function)
         var publishedValue: String?
 
-        settings
+        self.settings
             .publisher(for: \.nickname, options: [.new])
             .sink {
                 publishedValue = $0
                 promise.fulfill()
             }
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
 
-        settings.nickname = "abc123"
-        wait(for: [promise], timeout: 5)
+        self.settings.nickname = "abc123"
+        self.wait(for: [promise], timeout: 5)
 
-        XCTAssertEqual(settings.nickname, publishedValue)
+        XCTAssertEqual(self.settings.nickname, publishedValue)
     }
 }
