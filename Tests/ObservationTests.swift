@@ -18,23 +18,44 @@ import XCTest
 final class ObservationTests: XCTestCase {
 
     let settings = TestSettings()
+
     var cancellable = Set<AnyCancellable>()
 
+    var observer: NSKeyValueObservation?
+
     func test_Integration_Publisher() {
-        let promise = self.expectation(description: #function)
+        let expectation = self.expectation(description: #function)
         var publishedValue: String?
 
         self.settings
-            .publisher(for: \.nickname, options: [.new])
-            .sink {
-                publishedValue = $0
-                promise.fulfill()
+            .publisher(for: \.userId, options: [.new])
+            .sink { newValue in
+                publishedValue = newValue
+                expectation.fulfill()
             }
             .store(in: &self.cancellable)
 
-        self.settings.nickname = "abc123"
-        self.wait(for: [promise], timeout: 5)
+        self.settings.userId = "test_publisher"
+        self.wait(for: [expectation], timeout: 5)
 
-        XCTAssertEqual(self.settings.nickname, publishedValue)
+        XCTAssertEqual(self.settings.userId, publishedValue)
+    }
+
+    func test_Integration_KVO() {
+        let expectation = self.expectation(description: #function)
+        var changedValue: String?
+
+        self.observer = settings.observe(\.userId, options: [.new, .old]) { _, change in
+            guard let newValue = change.newValue else {
+                return
+            }
+            changedValue = newValue
+            expectation.fulfill()
+        }
+
+        self.settings.userId = "test_kvo"
+        self.wait(for: [expectation], timeout: 5)
+
+        XCTAssertEqual(self.settings.userId, changedValue)
     }
 }

@@ -83,6 +83,6 @@ final class TestSettings: NSObject {
     @WrappedDefault(keyName: "customRawRepresented", defaultValue: TestCustomRepresented(rawValue: [:]), userDefaults: store)
     var customRawRepresented: TestCustomRepresented
 
-    @WrappedDefaultOptional(keyName: "nickname", userDefaults: store)
-    @objc dynamic var nickname: String?
+    @WrappedDefaultOptional(keyName: "userId", userDefaults: store)
+    @objc dynamic var userId: String?
 }
