@@ -84,17 +84,17 @@ final class AppSettings: NSObject {
 
 ```swift
 let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings, change in
-    print("property changed")
+    print(change)
 }
 ```
 
 #### Using Combine
 
-```
+```swift
 AppSettings.shared
     .publisher(for: \.userId, options: [.new])
     .sink {
-        print("changed to \($0)")
+        print($0)
     }
     .store(in: &cancellable)
 ```
