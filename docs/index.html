@@ -122,25 +122,28 @@ You may wish to store all your user defaults in one place, however, that is not 
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<h3 id='observing-with-combine' class='heading'>Observing with Combine</h3>
+<h3 id='observing-changes' class='heading'>Observing changes</h3>
 
-<p>To support KVO monitoring via Combine, use the <code>NSObject.KeyValueObservingPublisher</code> helpers <a href="https://developer.apple.com/documentation/combine/performing-key-value-observing-with-combine">provided by Apple</a>. This requires your object to inherit from <code>NSObject</code> and adding <code>@objc dynamic</code> to the properties you would like to observe:</p>
+<p>There are <a href="https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/">many ways to observe property changes</a>. The most common are by using Key-Value Observing or a Combine Publisher. Both require the object with the property to inherit from <code>NSObject</code> and the property must be declared as <code>@objc dynamic</code>.</p>
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span><span class="p">:</span> <span class="kt">NSObject</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"nickname"</span><span class="p">)</span>
-    <span class="kd">@objc</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
+    <span class="kd">@objc</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
 <span class="p">}</span>
-
-<span class="c1">// Usage</span>
-
-<span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span>
-    <span class="o">.</span><span class="nf">publisher</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="n">nickname</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="k">new</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+</code></pre>
+<h4 id='using-kvo' class='heading'>Using KVO</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">observer</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">observe</span><span class="p">(\</span><span class="o">.</span><span class="n">userId</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="k">new</span><span class="p">])</span> <span class="p">{</span> <span class="n">settings</span><span class="p">,</span> <span class="n">change</span> <span class="k">in</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='using-combine' class='heading'>Using Combine</h4>
+<pre class="highlight swift"><code><span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span>
+    <span class="o">.</span><span class="nf">publisher</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="n">userId</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="k">new</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">sink</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+    <span class="p">}</span>
     <span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">cancellable</span><span class="p">)</span>
-
-<span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="s">"abc123"</span>
-<span class="c1">// prints "abc123" from `.sink`</span>
 </code></pre>
 <h3 id='supported-types' class='heading'>Supported types</h3>
 
@@ -226,7 +229,7 @@ You may wish to store all your user defaults in one place, however, that is not 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://jessesquires.com" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2021-06-05)</p>
+          <p>&copy; 2021 <a class="link" href="https://jessesquires.com" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2021-08-08)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
