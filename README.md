@@ -67,27 +67,36 @@ extension WrappedDefaultOptional {
 }
 ```
 
-### Observing with Combine
+### Observing changes
 
-To support KVO monitoring via Combine, use the `NSObject.KeyValueObservingPublisher` helpers [provided by Apple](https://developer.apple.com/documentation/combine/performing-key-value-observing-with-combine). This requires your object to inherit from `NSObject` and adding `@objc dynamic` to the properties you would like to observe:
+There are [many ways to observe property changes](https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/). The most common are by using Key-Value Observing or a Combine Publisher. Both require the object with the property to inherit from `NSObject` and the property must be declared as `@objc dynamic`.
 
 ```swift
 final class AppSettings: NSObject {
     static let shared = AppSettings()
 
-    @WrappedDefaultOptional(keyName: "nickname")
-    @objc dynamic var nickname: String?
+    @WrappedDefaultOptional(keyName: "userId")
+    @objc dynamic var userId: String?
 }
+```
 
-// Usage
+#### Using KVO
 
+```swift
+let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings, change in
+    print("property changed")
+}
+```
+
+#### Using Combine
+
+```
 AppSettings.shared
-    .publisher(for: \.nickname, options: [.new])
-    .sink { print($0) }
+    .publisher(for: \.userId, options: [.new])
+    .sink {
+        print("changed to \($0)")
+    }
     .store(in: &cancellable)
-
-AppSettings.shared.nickname = "abc123"
-// prints "abc123" from `.sink`
 ```
 
 ### Supported types
