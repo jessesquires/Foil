@@ -2,6 +2,8 @@
 
 *A lightweight [property wrapper](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) for UserDefaults done right*
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjessesquires%2FFoil%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/jessesquires/Foil) <br> [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjessesquires%2FFoil%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/jessesquires/Foil)
+
 ## About
 
 Read the post: [A better approach to writing a UserDefaults Property Wrapper](https://www.jessesquires.com/blog/2021/03/26/a-better-approach-to-writing-a-userdefaults-property-wrapper/)
