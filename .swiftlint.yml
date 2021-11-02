@@ -39,6 +39,7 @@ opt_in_rules:
   - legacy_objc_type
   - file_name
   - file_name_no_space
+  - discouraged_none_name
 
   # style
   - attributes
