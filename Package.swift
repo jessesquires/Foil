@@ -33,12 +33,10 @@ let package = Package(
     targets: [
         .target(
             name: "Foil",
-            path: "Sources",
-            exclude: ["Info.plist"]),
+            path: "Sources"),
         .testTarget(name: "FoilTests",
                     dependencies: ["Foil"],
-                    path: "Tests",
-                    exclude: ["Info.plist"])
+                    path: "Tests")
     ],
     swiftLanguageVersions: [.v5]
 )
