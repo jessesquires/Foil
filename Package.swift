@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version
 // of Swift required to build this package.
 // ----------------------------------------------------
@@ -33,12 +33,10 @@ let package = Package(
     targets: [
         .target(
             name: "Foil",
-            path: "Sources",
-            exclude: ["Info.plist"]),
+            path: "Sources"),
         .testTarget(name: "FoilTests",
                     dependencies: ["Foil"],
-                    path: "Tests",
-                    exclude: ["Info.plist"])
+                    path: "Tests")
     ],
     swiftLanguageVersions: [.v5]
 )
