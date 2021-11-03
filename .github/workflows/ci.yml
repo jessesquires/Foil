@@ -60,6 +60,9 @@ jobs:
       - name: unit tests
         run: |
           set -o pipefail
+          rm -rf Foil.xcodeproj
+          xcodebuild test -scheme Foil -sdk iphonesimulator15.0 -destination "OS=15.0,name=iPhone 13 Mini" | xcpretty -c
+
         # WORKAROUND
         # Xcode 13 is fucking drunk.
         # It won't run iOS tests because of some obscure code signing error.
@@ -71,10 +74,8 @@ jobs:
         #
         # Instead, for now, we can run the tests "through SwiftPM" using `Package.swift`.
         # To do this, we need to delete the Xcode project, then use xcodebuild similar to before.
-
-          rm -rf Foil.xcodeproj
-          xcodebuild test -scheme Foil -sdk iphonesimulator15.0 -destination "OS=15.0,name=iPhone 13 Mini" | xcpretty -c
-
+        #
+        # OLD:
         # xcodebuild clean test \
         #     -project "$PROJECT" \
         #     -scheme "$SCHEME" \
