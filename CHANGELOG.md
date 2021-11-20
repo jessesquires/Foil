@@ -7,6 +7,29 @@ NEXT
 
 - TBA
 
+2.0.0
+-----
+
+This release closes the [2.0.0 milestone](https://github.com/jessesquires/Foil/milestone/3?closed=1).
+
+### Breaking
+
+- Implemented more succinct implicit initialization. See example below. ([#36](https://github.com/jessesquires/Foil/issues/36), [@jessesquires](https://github.com/jessesquires))
+
+```swift
+// OLD
+@WrappedDefault(keyName: "flag", defaultValue: true)
+var flag: Bool
+
+// NEW
+@WrappedDefault(key: "flag")
+var flag = true
+```
+
+### Changed
+
+- Various project infra updates: Xcode 13, Swift 5.5, etc. ([#34](https://github.com/jessesquires/Foil/issues/34), [@jessesquires](https://github.com/jessesquires))
+
 1.2.0
 -----
 
