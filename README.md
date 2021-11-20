@@ -26,13 +26,13 @@ You may wish to store all your user defaults in one place, however, that is not 
 final class AppSettings {
     static let shared = AppSettings()
 
-    @WrappedDefault(keyName: "flagEnabled", defaultValue: true)
-    var flagEnabled: Bool
+    @WrappedDefault(key: "flagEnabled")
+    var flagEnabled = true
 
-    @WrappedDefault(keyName: "totalCount", defaultValue: 0)
-    var totalCount: Int
+    @WrappedDefault(key: "totalCount")
+    var totalCount = 0
 
-    @WrappedDefaultOptional(keyName: "timestamp")
+    @WrappedDefaultOptional(key: "timestamp")
     var timestamp: Date?
 }
 
@@ -57,14 +57,14 @@ enum AppSettingsKey: String, CaseIterable {
 }
 
 extension WrappedDefault {
-    init(key: AppSettingsKey, defaultValue: T) {
-        self.init(keyName: key.rawValue, defaultValue: defaultValue)
+    init(wrappedValue: T, _ key: AppSettingsKey) {
+        self.init(wrappedValue: wrappedValue, key: key.rawValue)
     }
 }
 
 extension WrappedDefaultOptional {
-    init(key: AppSettingsKey) {
-        self.init(keyName: key.rawValue)
+    init(_ key: AppSettingsKey) {
+        self.init(key: key.rawValue)
     }
 }
 ```
@@ -77,7 +77,7 @@ There are [many ways to observe property changes](https://www.jessesquires.com/b
 final class AppSettings: NSObject {
     static let shared = AppSettings()
 
-    @WrappedDefaultOptional(keyName: "userId")
+    @WrappedDefaultOptional(key: "userId")
     @objc dynamic var userId: String?
 }
 ```
@@ -146,14 +146,14 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'Foil', '~> 1.0.0'
+pod 'Foil', '~> 2.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "1.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "2.0.0")
 ]
 ```
 
@@ -172,7 +172,7 @@ Interested in making contributions to this project? Please review the guides bel
 - [Support and Help](https://github.com/jessesquires/.github/blob/main/SUPPORT.md)
 - [Security Policy](https://github.com/jessesquires/.github/blob/main/SECURITY.md)
 
-Also, consider [sponsoring this project](https://www.jessesquires.com/sponsor/) or [buying my apps](https://www.hexedbits.com)! ✌️
+Also consider [sponsoring this project](https://github.com/sponsors/jessesquires) or [buying my apps](https://www.hexedbits.com)! ✌️
 
 ## Credits
 
