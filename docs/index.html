@@ -16,19 +16,19 @@
     <a title="Foil  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Foil 1.2.0 Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right">
+        <p><a href="index.html">Foil 2.0.0 Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
         <a href="index.html">Foil Reference</a>
-        <img id="carat" src="img/carat.png" />
+        <img id="carat" src="img/carat.png" alt=""/>
         Foil  Reference
       </p>
     </div>
@@ -63,6 +63,8 @@
             <h1 id='foil-a-href-https-github-com-jessesquires-foil-actions-img-src-https-github-com-jessesquires-foil-workflows-ci-badge-svg-alt-actions-status-a' class='heading'>Foil <a href="https://github.com/jessesquires/Foil/actions"><img src="https://github.com/jessesquires/Foil/workflows/CI/badge.svg" alt="Actions Status"></a></h1>
 
 <p><em>A lightweight <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348">property wrapper</a> for UserDefaults done right</em></p>
+
+<p><a href="https://swiftpackageindex.com/jessesquires/Foil"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjessesquires%2FFoil%2Fbadge%3Ftype%3Dswift-versions" alt=""></a> <br> <a href="https://swiftpackageindex.com/jessesquires/Foil"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjessesquires%2FFoil%2Fbadge%3Ftype%3Dplatforms" alt=""></a></p>
 <h2 id='about' class='heading'>About</h2>
 
 <p>Read the post: <a href="https://www.jessesquires.com/blog/2021/03/26/a-better-approach-to-writing-a-userdefaults-property-wrapper/">A better approach to writing a UserDefaults Property Wrapper</a></p>
@@ -83,13 +85,13 @@ You may wish to store all your user defaults in one place, however, that is not 
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
-    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"flagEnabled"</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-    <span class="k">var</span> <span class="nv">flagEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"flagEnabled"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">flagEnabled</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"totalCount"</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">var</span> <span class="nv">totalCount</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"totalCount"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">totalCount</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"timestamp"</span><span class="p">)</span>
+    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"timestamp"</span><span class="p">)</span>
     <span class="k">var</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span>
 <span class="p">}</span>
 
@@ -111,14 +113,14 @@ You may wish to store all your user defaults in one place, however, that is not 
 <span class="p">}</span>
 
 <span class="kd">extension</span> <span class="kt">WrappedDefault</span> <span class="p">{</span>
-    <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="n">defaultValue</span><span class="p">)</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="n">wrappedValue</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">extension</span> <span class="kt">WrappedDefaultOptional</span> <span class="p">{</span>
-    <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -128,7 +130,7 @@ You may wish to store all your user defaults in one place, however, that is not 
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span><span class="p">:</span> <span class="kt">NSObject</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">keyName</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
+    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
     <span class="kd">@objc</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
 <span class="p">}</span>
 </code></pre>
@@ -185,17 +187,17 @@ You may wish to store all your user defaults in one place, however, that is not 
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>Swift 5.3+</li>
-<li>Xcode 12.0+</li>
+<li>Swift 5.5+</li>
+<li>Xcode 13.0+</li>
 <li><a href="https://github.com/realm/SwiftLint">SwiftLint</a></li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 <h3 id='a-href-http-cocoapods-org-cocoapods-a' class='heading'><a href="http://cocoapods.org">CocoaPods</a></h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Foil'</span><span class="p">,</span> <span class="s1">'~&gt; 1.0.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Foil'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0.0'</span>
 </code></pre>
 <h3 id='a-href-https-swift-org-package-manager-swift-package-manager-a' class='heading'><a href="https://swift.org/package-manager/">Swift Package Manager</a></h3>
 <pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/jessesquires/Foil.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/jessesquires/Foil.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"2.0.0"</span><span class="p">)</span>
 <span class="p">]</span>
 </code></pre>
 
@@ -214,7 +216,7 @@ You may wish to store all your user defaults in one place, however, that is not 
 <li><a href="https://github.com/jessesquires/.github/blob/main/SECURITY.md">Security Policy</a></li>
 </ul>
 
-<p>Also, consider <a href="https://www.jessesquires.com/sponsor/">sponsoring this project</a> or <a href="https://www.hexedbits.com">buying my apps</a>! ✌️</p>
+<p>Also consider <a href="https://github.com/sponsors/jessesquires">sponsoring this project</a> or <a href="https://www.hexedbits.com">buying my apps</a>! ✌️</p>
 <h2 id='credits' class='heading'>Credits</h2>
 
 <p>Created and maintained by <a href="https://www.jessesquires.com"><strong>Jesse Squires</strong></a>.</p>
@@ -229,11 +231,10 @@ You may wish to store all your user defaults in one place, however, that is not 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://jessesquires.com" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2021-08-08)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2021-11-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>
