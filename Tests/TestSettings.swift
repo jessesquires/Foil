@@ -41,48 +41,48 @@ final class TestSettings: NSObject {
 
     static var store = UserDefaults.testSuite()
 
-    @WrappedDefault(keyName: "flag", defaultValue: true, userDefaults: store)
-    var flag: Bool
+    @WrappedDefault(key: "flag", userDefaults: store)
+    var flag = true
 
-    @WrappedDefault(keyName: "count", defaultValue: 42, userDefaults: store)
-    var count: Int
+    @WrappedDefault(key: "count", userDefaults: store)
+    var count = 42
 
-    @WrappedDefault(keyName: "max", defaultValue: 42, userDefaults: store)
-    var max: UInt
+    @WrappedDefault(key: "max", userDefaults: store)
+    var max = UInt(42)
 
-    @WrappedDefault(keyName: "mean", defaultValue: 4.2, userDefaults: store)
-    var mean: Float
+    @WrappedDefault(key: "mean", userDefaults: store)
+    var mean = Float(4.2)
 
-    @WrappedDefault(keyName: "average", defaultValue: 42.0, userDefaults: store)
-    var average: Double
+    @WrappedDefault(key: "average", userDefaults: store)
+    var average = 42.0
 
-    @WrappedDefaultOptional(keyName: "username", userDefaults: store)
+    @WrappedDefaultOptional(key: "username", userDefaults: store)
     var username: String?
 
-    @WrappedDefaultOptional(keyName: "website", userDefaults: store)
+    @WrappedDefaultOptional(key: "website", userDefaults: store)
     var website: URL?
 
-    @WrappedDefault(keyName: "timestamp", defaultValue: .distantPast, userDefaults: store)
-    var timestamp: Date
+    @WrappedDefault(key: "timestamp", userDefaults: store)
+    var timestamp = Date.distantPast
 
-    @WrappedDefaultOptional(keyName: "data", userDefaults: store)
+    @WrappedDefaultOptional(key: "data", userDefaults: store)
     var data: Data?
 
-    @WrappedDefault(keyName: "list", defaultValue: [], userDefaults: store)
-    var list: [Double]
+    @WrappedDefault(key: "list", userDefaults: store)
+    var list = [Double]()
 
-    @WrappedDefault(keyName: "set", defaultValue: [1, 2, 3], userDefaults: store)
-    var set: Set<Int>
+    @WrappedDefault(key: "set", userDefaults: store)
+    var set = Set([1, 2, 3])
 
-    @WrappedDefault(keyName: "pairs", defaultValue: [:], userDefaults: store)
-    var pairs: [String: Int]
+    @WrappedDefault(key: "pairs", userDefaults: store)
+    var pairs = [String: Int]()
 
-    @WrappedDefault(keyName: "fruit", defaultValue: .apple, userDefaults: store)
-    var fruit: TestFruit
+    @WrappedDefault(key: "fruit", userDefaults: store)
+    var fruit = TestFruit.apple
 
-    @WrappedDefault(keyName: "customRawRepresented", defaultValue: TestCustomRepresented(rawValue: [:]), userDefaults: store)
-    var customRawRepresented: TestCustomRepresented
+    @WrappedDefault(key: "customRawRepresented", userDefaults: store)
+    var customRawRepresented = TestCustomRepresented(rawValue: [:])
 
-    @WrappedDefaultOptional(keyName: "userId", userDefaults: store)
+    @WrappedDefaultOptional(key: "userId", userDefaults: store)
     @objc dynamic var userId: String?
 }

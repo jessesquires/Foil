@@ -16,16 +16,16 @@ enum AppSettingsKey: String, CaseIterable {
 final class AppSettings {
     static let shared = AppSettings()
 
-    @WrappedDefault(key: .flagEnabled, defaultValue: true)
-    var flagEnabled: Bool
+    @WrappedDefault(.flagEnabled)
+    var flagEnabled = true
 
-    @WrappedDefault(key: .totalCount, defaultValue: 0)
-    var totalCount: Int
+    @WrappedDefault(.totalCount)
+    var totalCount = 0
 
-    @WrappedDefaultOptional(key: .timestamp)
+    @WrappedDefaultOptional(.timestamp)
     var timestamp: Date?
 
-    @WrappedDefaultOptional(key: .option)
+    @WrappedDefaultOptional(.option)
     var option: String?
 
     private init() { }
@@ -37,13 +37,13 @@ final class AppSettings {
 }
 
 extension WrappedDefault {
-    init(key: AppSettingsKey, defaultValue: T) {
-        self.init(keyName: key.rawValue, defaultValue: defaultValue)
+    init(wrappedValue: T, _ key: AppSettingsKey) {
+        self.init(wrappedValue: wrappedValue, key: key.rawValue)
     }
 }
 
 extension WrappedDefaultOptional {
-    init(key: AppSettingsKey) {
-        self.init(keyName: key.rawValue)
+    init(_ key: AppSettingsKey) {
+        self.init(key: key.rawValue)
     }
 }

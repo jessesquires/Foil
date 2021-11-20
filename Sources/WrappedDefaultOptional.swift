@@ -40,8 +40,7 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     /// - Parameters:
     ///   - keyName: The key for the value in `UserDefaults`.
     ///   - userDefaults: The `UserDefaults` backing store. The default value is `.standard`.
-    public init(keyName: String,
-                userDefaults: UserDefaults = .standard) {
+    public init(key keyName: String, userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
     }
