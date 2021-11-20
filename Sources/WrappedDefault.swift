@@ -22,7 +22,7 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
     /// The key for the value in `UserDefaults`.
     public let key: String
 
-    /// The value retreived from `UserDefaults`.
+    /// The value retrieved from `UserDefaults`.
     public var wrappedValue: T {
         get {
             self._userDefaults.fetch(self.key)
@@ -34,14 +34,12 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
 
     /// Initializes the property wrapper.
     /// - Parameters:
+    ///   - wrappedValue: The default value to register for the specified key.
     ///   - keyName: The key for the value in `UserDefaults`.
-    ///   - defaultValue: The default value to register for the specified key.
     ///   - userDefaults: The `UserDefaults` backing store. The default value is `.standard`.
-    public init(keyName: String,
-                defaultValue: T,
-                userDefaults: UserDefaults = .standard) {
+    public init(wrappedValue: T, key keyName: String, userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
-        userDefaults.registerDefault(value: defaultValue, key: keyName)
+        userDefaults.registerDefault(value: wrappedValue, key: keyName)
     }
 }

@@ -31,7 +31,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Bool() {
         let key = "key_\(#function)"
         let defaultValue = true
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -45,7 +45,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Int() {
         let key = "key_\(#function)"
         let defaultValue = 42
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -59,7 +59,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_UInt() {
         let key = "key_\(#function)"
         let defaultValue = UInt(42)
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -73,7 +73,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Float() {
         let key = "key_\(#function)"
         let defaultValue = Float(42.0)
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -87,7 +87,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Double() {
         let key = "key_\(#function)"
         let defaultValue = Double(42.0)
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -101,7 +101,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_String() {
         let key = "key_\(#function)"
         let defaultValue = "default-value"
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -115,7 +115,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_URL() {
         let key = "key_\(#function)"
         let defaultValue = URL(string: "https://hexedbits.com")!
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -129,7 +129,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Date() {
         let key = "key_\(#function)"
         let defaultValue = Date.distantPast
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -143,7 +143,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Data() {
         let key = "key_\(#function)"
         let defaultValue = "default-data".data(using: .utf8)!
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -157,7 +157,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Array() {
         let key = "key_\(#function)"
         let defaultValue = [1, 2, 3]
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -171,7 +171,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_Set() {
         let key = "key_\(#function)"
         let defaultValue = Set(["one", "two", "three"])
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -186,7 +186,7 @@ final class WrappedDefaultTests: XCTestCase {
         let key = "key_\(#function)"
         let defaultValue = ["key1": 42.0,
                             "key2": 4.2]
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -200,7 +200,7 @@ final class WrappedDefaultTests: XCTestCase {
     func test_WrappedValue_RawRepresentable() {
         let key = "key_\(#function)"
         let defaultValue = TestFruit.apple
-        var model = WrappedDefault(keyName: key, defaultValue: defaultValue, userDefaults: self.testDefaults)
+        var model = WrappedDefault(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
@@ -213,7 +213,7 @@ final class WrappedDefaultTests: XCTestCase {
 
     func test_WrappedValue_IntOptional() {
         let key = "key_\(#function)"
-        var model = WrappedDefaultOptional<Int>(keyName: key, userDefaults: self.testDefaults)
+        var model = WrappedDefaultOptional<Int>(key: key, userDefaults: self.testDefaults)
 
         let defaultValue: Int? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(defaultValue)
@@ -233,7 +233,7 @@ final class WrappedDefaultTests: XCTestCase {
 
     func test_WrappedValue_StringOptional() {
         let key = "key_\(#function)"
-        var model = WrappedDefaultOptional<String>(keyName: key, userDefaults: self.testDefaults)
+        var model = WrappedDefaultOptional<String>(key: key, userDefaults: self.testDefaults)
 
         let defaultValue: String? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(defaultValue)
@@ -253,7 +253,7 @@ final class WrappedDefaultTests: XCTestCase {
 
     func test_WrappedValue_URLOptional() {
         let key = "key_\(#function)"
-        var model = WrappedDefaultOptional<URL>(keyName: key, userDefaults: self.testDefaults)
+        var model = WrappedDefaultOptional<URL>(key: key, userDefaults: self.testDefaults)
 
         let defaultValue: URL? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(defaultValue)
@@ -273,7 +273,7 @@ final class WrappedDefaultTests: XCTestCase {
 
     func test_WrappedValue_DateOptional() {
         let key = "key_\(#function)"
-        var model = WrappedDefaultOptional<Date>(keyName: key, userDefaults: self.testDefaults)
+        var model = WrappedDefaultOptional<Date>(key: key, userDefaults: self.testDefaults)
 
         let defaultValue: Date? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(defaultValue)
@@ -294,7 +294,7 @@ final class WrappedDefaultTests: XCTestCase {
     // swiftlint:disable discouraged_optional_collection
     func test_WrappedValue_DictionaryOptional() {
         let key = "key_\(#function)"
-        var model = WrappedDefaultOptional<[String: TestFruit]>(keyName: key, userDefaults: self.testDefaults)
+        var model = WrappedDefaultOptional<[String: TestFruit]>(key: key, userDefaults: self.testDefaults)
 
         let defaultValue: [String: TestFruit]? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(defaultValue)
