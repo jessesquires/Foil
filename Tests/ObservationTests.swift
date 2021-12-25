@@ -27,11 +27,12 @@ final class ObservationTests: XCTestCase {
         let expectation = self.expectation(description: #function)
         var publishedValue: String?
 
-        self.settings
-            .publisher(for: \.userId, options: [.new])
+        self.settings.$userId
             .sink { newValue in
                 publishedValue = newValue
-                expectation.fulfill()
+                if newValue == "test_publisher" {
+                    expectation.fulfill()
+                }
             }
             .store(in: &self.cancellable)
 

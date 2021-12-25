@@ -27,11 +27,11 @@
             </objects>
             <point key="canvasLocation" x="2408.695652173913" y="57.589285714285708"/>
         </scene>
-        <!--Item-->
+        <!--Example-->
         <scene sceneID="atg-eB-hIm">
             <objects>
                 <navigationController toolbarHidden="NO" id="XxT-hh-v2S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Gtk-yk-EbZ"/>
+                    <tabBarItem key="tabBarItem" title="Example" id="Gtk-yk-EbZ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UFY-h1-JS7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -99,6 +99,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QOV-Zk-VuO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YqT-nn-ul4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -111,11 +112,11 @@
             </objects>
             <point key="canvasLocation" x="463.768115942029" y="57.589285714285708"/>
         </scene>
-        <!--Item-->
+        <!--Combine Example-->
         <scene sceneID="CQo-QX-Tih">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zf-9Z-6TF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cuf-gX-29c"/>
+                    <tabBarItem key="tabBarItem" title="Combine Example" id="cuf-gX-29c"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="anf-E0-vRG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

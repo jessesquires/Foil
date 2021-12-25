@@ -16,12 +16,9 @@ final class CombineExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.exampleSwitch.isOn = AppSettings.shared.flagEnabled
-        updateLabel(with: AppSettings.shared.flagEnabled)
-        
-        AppSettings.shared.publisher(for: \.flagEnabled, options: [.new])
+        AppSettings.shared.$flagEnabled
             .sink { newValue in
-                print(newValue)
+                self.exampleSwitch.isOn = newValue
                 self.updateLabel(with: newValue)
             }
             .store(in: &bag)
