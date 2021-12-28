@@ -19,7 +19,7 @@ import Foundation
 @propertyWrapper
 public struct WrappedDefault<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
-    private let publisher: CurrentValueSubject<T, Never>
+    private let _publisher: CurrentValueSubject<T, Never>
 
     /// The key for the value in `UserDefaults`.
     public let key: String
@@ -31,12 +31,12 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         }
         set {
             self._userDefaults.save(newValue, for: self.key)
-            self.publisher.send(newValue)
+            self._publisher.send(newValue)
         }
     }
 
     public var projectedValue: AnyPublisher<T, Never> {
-        publisher.eraseToAnyPublisher()
+        _publisher.eraseToAnyPublisher()
     }
 
     /// Initializes the property wrapper.
@@ -49,6 +49,8 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         self._userDefaults = userDefaults
 
         userDefaults.registerDefault(value: wrappedValue, key: keyName)
-        self.publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
+        
+        // has to be initialized after `registerDefault`, as `fetch` assumes that registerDefault has been called before and uses force unwrap
+        self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
     }
 }
