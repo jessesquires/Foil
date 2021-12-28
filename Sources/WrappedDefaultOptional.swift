@@ -39,7 +39,7 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
             }
         }
     }
-    
+
     public var projectedValue: AnyPublisher<T?, Never> {
         publisher.eraseToAnyPublisher()
     }

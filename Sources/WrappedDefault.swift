@@ -34,7 +34,7 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
             self.publisher.send(newValue)
         }
     }
-    
+
     public var projectedValue: AnyPublisher<T, Never> {
         publisher.eraseToAnyPublisher()
     }
@@ -47,7 +47,7 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
     public init(wrappedValue: T, key keyName: String, userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
-        
+
         userDefaults.registerDefault(value: wrappedValue, key: keyName)
         self.publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
     }
