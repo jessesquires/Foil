@@ -92,8 +92,7 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
-| `receiveValue` will fire immediately with the current value of `userId` and on every change after
-| --- |
+> `receiveValue` will fire immediately with the current value of `userId` and on every change after
 
 ```swift
 AppSettings.shared.$userId
@@ -105,8 +104,8 @@ AppSettings.shared.$userId
 
 ##### Combine Alternative with KVO
 
-| :warning: `userId` needs `@objc dynamic` annotation and `AppSettings` need to inherit from `NSObject`
-| --- |
+> :warning: `userId` needs `@objc dynamic` annotation and `AppSettings` need to inherit from `NSObject`
+> `receiveValue` will fire only on changes to wrapped objects value, it will not publish the initial value as the example above
 
 ```swift
 AppSettings.shared
