@@ -20,10 +20,10 @@ import PackageDescription
 let package = Package(
     name: "Foil",
     platforms: [
-        .iOS(.v9),
-        .tvOS(.v9),
-        .watchOS(.v5),
-        .macOS(.v10_13)
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
+        .macOS(.v11)
     ],
     products: [
         .library(
