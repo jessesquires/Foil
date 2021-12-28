@@ -71,7 +71,7 @@ extension WrappedDefaultOptional {
 
 ### Observing changes
 
-There are [many ways to observe property changes](https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/). The most common are by using Key-Value Observing or a Combine Publisher. Both require the object with the property to inherit from `NSObject` and the property must be declared as `@objc dynamic`.
+There are [many ways to observe property changes](https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/). The most common are by using Key-Value Observing or a Combine Publisher. KVO observing requires the object with the property to inherit from `NSObject` and the property must be declared as `@objc dynamic`.
 
 ```swift
 final class AppSettings: NSObject {
@@ -79,6 +79,9 @@ final class AppSettings: NSObject {
 
     @WrappedDefaultOptional(key: "userId")
     @objc dynamic var userId: String?
+
+    @WrappedDefaultOptional(key: "average")
+    var average: Double?
 }
 ```
 
@@ -92,10 +95,11 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
-> `receiveValue` will fire immediately with the current value of `userId` and on every change after
+> `average` does not need `@objc dynamic` annotation
+> `receiveValue` will fire immediately with the current value of `average` and on every change after
 
 ```swift
-AppSettings.shared.$userId
+AppSettings.shared.$average
     .sink {
         print($0)
     }
