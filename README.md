@@ -92,6 +92,22 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
+| `receiveValue` will fire immediately with the current value of `userId` and on every change after
+| --- |
+
+```swift
+AppSettings.shared.$userId
+    .sink {
+        print($0)
+    }
+    .store(in: &cancellable)
+```
+
+##### Combine Alternative with KVO
+
+| :warning: `userId` needs `@objc dynamic` annotation and `AppSettings` need to inherit from `NSObject`
+| --- |
+
 ```swift
 AppSettings.shared
     .publisher(for: \.userId, options: [.new])
@@ -130,10 +146,10 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 ## Supported Platforms
 
-- iOS 9.0+
-- tvOS 9.0+
-- watchOS 5.0+
-- macOS 10.13+
+- iOS 13.0+
+- tvOS 13.0+
+- watchOS 6.0+
+- macOS 11+
 
 ## Requirements
 
