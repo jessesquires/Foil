@@ -23,16 +23,40 @@ final class ObservationTests: XCTestCase {
 
     var observer: NSKeyValueObservation?
 
+    func test_Integration_projectedValue() {
+        let expectation = self.expectation(description: #function)
+        var publishedValue: Double?
+
+        let expectedValue = 1_000.0
+
+        self.settings.$average
+            .sink { newValue in
+                publishedValue = newValue
+
+                // receiveValue in sink triggers twice:
+                // 1. with the initial value 42
+                // 2. when new value is set
+                if newValue == expectedValue {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &self.cancellable)
+
+        self.settings.average = expectedValue
+        self.wait(for: [expectation], timeout: 5)
+
+        XCTAssertEqual(self.settings.average, publishedValue)
+    }
+
     func test_Integration_Publisher() {
         let expectation = self.expectation(description: #function)
         var publishedValue: String?
 
-        self.settings.$userId
+        self.settings
+            .publisher(for: \.userId, options: [.new]) // property needs to have @objc dynamiv annotations
             .sink { newValue in
                 publishedValue = newValue
-                if newValue == "test_publisher" {
-                    expectation.fulfill()
-                }
+                expectation.fulfill()
             }
             .store(in: &self.cancellable)
 
