@@ -95,8 +95,7 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
-> `average` does not need `@objc dynamic` annotation
-> `receiveValue` will fire immediately with the current value of `average` and on every change after
+**Note:** that `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
 
 ```swift
 AppSettings.shared.$average
@@ -106,10 +105,9 @@ AppSettings.shared.$average
     .store(in: &cancellable)
 ```
 
-##### Combine Alternative with KVO
+#### Combine Alternative with KVO
 
-> :warning: `userId` needs `@objc dynamic` annotation and `AppSettings` need to inherit from `NSObject`
-> `receiveValue` will fire only on changes to wrapped objects value, it will not publish the initial value as the example above
+**Note:** in this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
 
 ```swift
 AppSettings.shared
