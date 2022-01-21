@@ -7,6 +7,23 @@ NEXT
 
 - TBA
 
+3.0.0
+-----
+
+This release closes the [3.0.0 milestone](https://github.com/jessesquires/Foil/milestone/4?closed=1).
+
+### New
+
+- Refined the Combine API for responding to changes. This removes the need for the `.publisher(for:)` KVO API call. See the updated documentation for additional details. ([#38](https://github.com/jessesquires/Foil/issues/38), [@JonnyBeeGod](https://github.com/JonnyBeeGod))
+
+### Breaking
+
+- Updated minimum deployment targets for all platforms
+    - iOS 13.0
+    - tvOS 13.0
+    - watchOS 6.0
+    - macOS 11.0
+
 2.0.0
 -----
 
