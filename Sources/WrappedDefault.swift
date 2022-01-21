@@ -36,7 +36,7 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
     }
 
     public var projectedValue: AnyPublisher<T, Never> {
-        _publisher.eraseToAnyPublisher()
+        self._publisher.eraseToAnyPublisher()
     }
 
     /// Initializes the property wrapper.
@@ -47,10 +47,11 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
     public init(wrappedValue: T, key keyName: String, userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
-
         userDefaults.registerDefault(value: wrappedValue, key: keyName)
-        
-        // has to be initialized after `registerDefault`, as `fetch` assumes that registerDefault has been called before and uses force unwrap
+
+        // Publisher must be initialized after `registerDefault`,
+        // because `fetch` assumes that `registerDefault` has been called before
+        // and uses force unwrap
         self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
     }
 }

@@ -14,6 +14,8 @@
 import Combine
 import XCTest
 
+let timeout = TimeInterval(5)
+
 @available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 final class ObservationTests: XCTestCase {
 
@@ -23,17 +25,16 @@ final class ObservationTests: XCTestCase {
 
     var observer: NSKeyValueObservation?
 
-    func test_Integration_projectedValue() {
+    func test_Integration_ProjectedValue() {
         let expectation = self.expectation(description: #function)
-        var publishedValue: Double?
-
         let expectedValue = 1_000.0
+        var publishedValue: Double?
 
         self.settings.$average
             .sink { newValue in
                 publishedValue = newValue
 
-                // receiveValue in sink triggers twice:
+                // `receiveValue` in sink triggers twice:
                 // 1. with the initial value 42
                 // 2. when new value is set
                 if newValue == expectedValue {
@@ -43,7 +44,7 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         self.settings.average = expectedValue
-        self.wait(for: [expectation], timeout: 5)
+        self.wait(for: [expectation], timeout: timeout)
 
         XCTAssertEqual(self.settings.average, publishedValue)
     }
@@ -53,7 +54,7 @@ final class ObservationTests: XCTestCase {
         var publishedValue: String?
 
         self.settings
-            .publisher(for: \.userId, options: [.new]) // property needs to have @objc dynamiv annotations
+            .publisher(for: \.userId, options: [.new])
             .sink { newValue in
                 publishedValue = newValue
                 expectation.fulfill()
@@ -61,7 +62,7 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         self.settings.userId = "test_publisher"
-        self.wait(for: [expectation], timeout: 5)
+        self.wait(for: [expectation], timeout: timeout)
 
         XCTAssertEqual(self.settings.userId, publishedValue)
     }
@@ -79,7 +80,7 @@ final class ObservationTests: XCTestCase {
         }
 
         self.settings.userId = "test_kvo"
-        self.wait(for: [expectation], timeout: 5)
+        self.wait(for: [expectation], timeout: timeout)
 
         XCTAssertEqual(self.settings.userId, changedValue)
     }

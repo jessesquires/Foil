@@ -31,7 +31,7 @@
         <scene sceneID="atg-eB-hIm">
             <objects>
                 <navigationController toolbarHidden="NO" id="XxT-hh-v2S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Example" id="Gtk-yk-EbZ"/>
+                    <tabBarItem key="tabBarItem" title="Example" image="gear" catalog="system" id="Gtk-yk-EbZ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UFY-h1-JS7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -116,7 +116,7 @@
         <scene sceneID="CQo-QX-Tih">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zf-9Z-6TF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Combine Example" id="cuf-gX-29c"/>
+                    <tabBarItem key="tabBarItem" title="Combine Example" image="arrow.triangle.2.circlepath" catalog="system" id="cuf-gX-29c"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="anf-E0-vRG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -133,6 +133,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -41,7 +41,7 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     }
 
     public var projectedValue: AnyPublisher<T?, Never> {
-        _publisher.eraseToAnyPublisher()
+        self._publisher.eraseToAnyPublisher()
     }
 
     /// Initializes the property wrapper.

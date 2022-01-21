@@ -1,5 +1,14 @@
 //
-//  Created by Jonas Reichert on 25.12.21.
+//  Created by Jesse Squires
+//  https://www.jessesquires.com
+//
+//  Documentation
+//  https://jessesquires.github.io/Foil
+//
+//  GitHub
+//  https://github.com/jessesquires/Foil
+//
+//  Copyright © 2021-present Jesse Squires
 //
 
 import Combine
@@ -21,7 +30,7 @@ final class CombineExampleViewController: UIViewController {
                 self.exampleSwitch.isOn = newValue
                 self.updateLabel(with: newValue)
             }
-            .store(in: &bag)
+            .store(in: &self.bag)
     }
 
     @IBAction func valueChanged(_ sender: UISwitch) {
@@ -29,6 +38,6 @@ final class CombineExampleViewController: UIViewController {
     }
 
     private func updateLabel(with newValue: Bool) {
-        exampleLabel.text = "\(newValue)"
+        self.exampleLabel.text = "\(newValue)"
     }
 }
