@@ -1,7 +1,15 @@
 //
-// Created by Jesse Squires on 3/18/21.
-// Copyright © 2021 Hexed Bits. All rights reserved.
-// 
+//  Created by Jesse Squires
+//  https://www.jessesquires.com
+//
+//  Documentation
+//  https://jessesquires.github.io/Foil
+//
+//  GitHub
+//  https://github.com/jessesquires/Foil
+//
+//  Copyright © 2021-present Jesse Squires
+//
 
 import Foil
 import Foundation
@@ -13,11 +21,11 @@ enum AppSettingsKey: String, CaseIterable {
     case option
 }
 
-final class AppSettings {
+final class AppSettings: NSObject {
     static let shared = AppSettings()
 
     @WrappedDefault(.flagEnabled)
-    var flagEnabled = true
+    @objc dynamic var flagEnabled = true
 
     @WrappedDefault(.totalCount)
     var totalCount = 0
@@ -28,7 +36,7 @@ final class AppSettings {
     @WrappedDefaultOptional(.option)
     var option: String?
 
-    private init() { }
+    override private init() { }
 
     func reset(for key: AppSettingsKey) {
         UserDefaults.standard.removeObject(forKey: key.rawValue)

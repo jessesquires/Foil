@@ -11,6 +11,7 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
+import Combine
 import Foundation
 
 /// A property wrapper that uses `UserDefaults` as a backing store,
@@ -18,6 +19,7 @@ import Foundation
 @propertyWrapper
 public struct WrappedDefault<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
+    private let _publisher: CurrentValueSubject<T, Never>
 
     /// The key for the value in `UserDefaults`.
     public let key: String
@@ -29,7 +31,12 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         }
         set {
             self._userDefaults.save(newValue, for: self.key)
+            self._publisher.send(newValue)
         }
+    }
+
+    public var projectedValue: AnyPublisher<T, Never> {
+        self._publisher.eraseToAnyPublisher()
     }
 
     /// Initializes the property wrapper.
@@ -41,5 +48,10 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         self.key = keyName
         self._userDefaults = userDefaults
         userDefaults.registerDefault(value: wrappedValue, key: keyName)
+
+        // Publisher must be initialized after `registerDefault`,
+        // because `fetch` assumes that `registerDefault` has been called before
+        // and uses force unwrap
+        self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
     }
 }

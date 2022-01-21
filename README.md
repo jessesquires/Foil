@@ -71,7 +71,7 @@ extension WrappedDefaultOptional {
 
 ### Observing changes
 
-There are [many ways to observe property changes](https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/). The most common are by using Key-Value Observing or a Combine Publisher. Both require the object with the property to inherit from `NSObject` and the property must be declared as `@objc dynamic`.
+There are [many ways to observe property changes](https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/). The most common are by using Key-Value Observing or a Combine Publisher. KVO observing requires the object with the property to inherit from `NSObject` and the property must be declared as `@objc dynamic`.
 
 ```swift
 final class AppSettings: NSObject {
@@ -79,6 +79,9 @@ final class AppSettings: NSObject {
 
     @WrappedDefaultOptional(key: "userId")
     @objc dynamic var userId: String?
+
+    @WrappedDefaultOptional(key: "average")
+    var average: Double?
 }
 ```
 
@@ -91,6 +94,20 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 ```
 
 #### Using Combine
+
+**Note:** that `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
+
+```swift
+AppSettings.shared.$average
+    .sink {
+        print($0)
+    }
+    .store(in: &cancellable)
+```
+
+#### Combine Alternative with KVO
+
+**Note:** in this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
 
 ```swift
 AppSettings.shared
@@ -130,10 +147,10 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 ## Supported Platforms
 
-- iOS 9.0+
-- tvOS 9.0+
-- watchOS 5.0+
-- macOS 10.13+
+- iOS 13.0+
+- tvOS 13.0+
+- watchOS 6.0+
+- macOS 11+
 
 ## Requirements
 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XxT-hh-v2S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QOV-Zk-VuO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,19 +25,20 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsF-xM-gsl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1499" y="58"/>
+            <point key="canvasLocation" x="2408.695652173913" y="57.589285714285708"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Example-->
         <scene sceneID="atg-eB-hIm">
             <objects>
                 <navigationController toolbarHidden="NO" id="XxT-hh-v2S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Example" image="gear" catalog="system" id="Gtk-yk-EbZ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UFY-h1-JS7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HDr-MP-Xcj">
-                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -43,7 +47,96 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIX-ii-De3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="58"/>
+            <point key="canvasLocation" x="1373.913043478261" y="57.589285714285708"/>
+        </scene>
+        <!--Combine Example-->
+        <scene sceneID="xLy-9Z-oDJ">
+            <objects>
+                <viewController id="vcD-65-jFA" customClass="CombineExampleViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QkP-9c-5gf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7IB-6X-UEM">
+                                <rect key="frame" x="16" y="435" width="382" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-KK-B3T">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-Gr-Lgj">
+                                        <rect key="frame" x="333" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="valueChanged:" destination="vcD-65-jFA" eventType="valueChanged" id="A4Y-Yr-Hx1"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Hn-OU-UPq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7IB-6X-UEM" firstAttribute="centerY" secondItem="8Hn-OU-UPq" secondAttribute="centerY" id="DLO-3M-ESW"/>
+                            <constraint firstItem="7IB-6X-UEM" firstAttribute="leading" secondItem="8Hn-OU-UPq" secondAttribute="leading" constant="16" id="E5E-ct-Qam"/>
+                            <constraint firstItem="8Hn-OU-UPq" firstAttribute="trailing" secondItem="7IB-6X-UEM" secondAttribute="trailing" constant="16" id="OOh-t6-4LJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Combine Example" id="Tnk-VD-7KI"/>
+                    <connections>
+                        <outlet property="exampleLabel" destination="Kch-KK-B3T" id="rSn-H9-IHV"/>
+                        <outlet property="exampleSwitch" destination="2Ym-Gr-Lgj" id="CUq-Ve-XUJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQB-65-Cc7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373.913043478261" y="853.79464285714278"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="F0C-CX-4hV">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QOV-Zk-VuO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YqT-nn-ul4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="XxT-hh-v2S" kind="relationship" relationship="viewControllers" id="V7R-yB-xe6"/>
+                        <segue destination="5zf-9Z-6TF" kind="relationship" relationship="viewControllers" id="cDY-4H-cB7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lk8-Pv-mYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.768115942029" y="57.589285714285708"/>
+        </scene>
+        <!--Combine Example-->
+        <scene sceneID="CQo-QX-Tih">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zf-9Z-6TF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Combine Example" image="arrow.triangle.2.circlepath" catalog="system" id="cuf-gX-29c"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="anf-E0-vRG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vcD-65-jFA" kind="relationship" relationship="rootViewController" id="Yum-6I-JOM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wj7-8r-Pew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.768115942029" y="853.79464285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -14,10 +14,10 @@ Pod::Spec.new do |s|
 
    s.swift_version = '5.5'
 
-   s.ios.deployment_target = '9.0'
-   s.tvos.deployment_target = '9.0'
-   s.watchos.deployment_target = '5.0'
-   s.osx.deployment_target = '10.13'
+   s.ios.deployment_target = '13.0'
+   s.tvos.deployment_target = '13.0'
+   s.watchos.deployment_target = '6.0'
+   s.osx.deployment_target = '11.0'
 
    s.requires_arc = true
 end
