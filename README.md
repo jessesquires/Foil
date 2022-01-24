@@ -10,7 +10,7 @@ Read the post: [A better approach to writing a UserDefaults Property Wrapper](ht
 
 #### Why the name?
 
-Foil, as in let me quickly and easily **wrap** and **store** this leftover food in some **foil** so I can eat it later. 🌯 😉
+Foil, as in "let me quickly and easily **wrap** and **store** this leftover food in some **foil** so I can eat it later." 🌯 😉
 
 > [Foil](https://www.wordnik.com/words/aluminum%20foil):<br>
 > **noun**<br>
@@ -163,14 +163,14 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'Foil', '~> 2.0.0'
+pod 'Foil', '~> 3.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "2.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "3.0.0")
 ]
 ```
 
