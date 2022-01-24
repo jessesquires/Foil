@@ -40,6 +40,7 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
         }
     }
 
+    /// A publisher that delivers updates to subscribers.
     public var projectedValue: AnyPublisher<T?, Never> {
         self._publisher.eraseToAnyPublisher()
     }
