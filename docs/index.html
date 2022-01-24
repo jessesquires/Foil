@@ -16,7 +16,7 @@
     <a title="Foil  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Foil 2.0.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">Foil 3.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
@@ -70,7 +70,7 @@
 <p>Read the post: <a href="https://www.jessesquires.com/blog/2021/03/26/a-better-approach-to-writing-a-userdefaults-property-wrapper/">A better approach to writing a UserDefaults Property Wrapper</a></p>
 <h4 id='why-the-name' class='heading'>Why the name?</h4>
 
-<p>Foil, as in let me quickly and easily <strong>wrap</strong> and <strong>store</strong> this leftover food in some <strong>foil</strong> so I can eat it later. 🌯 😉</p>
+<p>Foil, as in &ldquo;let me quickly and easily <strong>wrap</strong> and <strong>store</strong> this leftover food in some <strong>foil</strong> so I can eat it later.&rdquo; 🌯 😉</p>
 
 <blockquote>
 <p><a href="https://www.wordnik.com/words/aluminum%20foil">Foil</a>:<br>
@@ -126,12 +126,15 @@ You may wish to store all your user defaults in one place, however, that is not 
 </code></pre>
 <h3 id='observing-changes' class='heading'>Observing changes</h3>
 
-<p>There are <a href="https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/">many ways to observe property changes</a>. The most common are by using Key-Value Observing or a Combine Publisher. Both require the object with the property to inherit from <code>NSObject</code> and the property must be declared as <code>@objc dynamic</code>.</p>
+<p>There are <a href="https://www.jessesquires.com/blog/2021/08/08/different-ways-to-observe-properties-in-swift/">many ways to observe property changes</a>. The most common are by using Key-Value Observing or a Combine Publisher. KVO observing requires the object with the property to inherit from <code>NSObject</code> and the property must be declared as <code>@objc dynamic</code>.</p>
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span><span class="p">:</span> <span class="kt">NSObject</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
     <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
     <span class="kd">@objc</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+
+    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"average"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">average</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span>
 <span class="p">}</span>
 </code></pre>
 <h4 id='using-kvo' class='heading'>Using KVO</h4>
@@ -140,6 +143,17 @@ You may wish to store all your user defaults in one place, however, that is not 
 <span class="p">}</span>
 </code></pre>
 <h4 id='using-combine' class='heading'>Using Combine</h4>
+
+<p><strong>Note:</strong> that <code>average</code> does not need the <code>@objc dynamic</code> annotation, <code>.receiveValue</code> will fire immediately with the current value of <code>average</code> and on every change after.</p>
+<pre class="highlight swift"><code><span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="err">$</span><span class="n">average</span>
+    <span class="o">.</span><span class="n">sink</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">cancellable</span><span class="p">)</span>
+</code></pre>
+<h4 id='combine-alternative-with-kvo' class='heading'>Combine Alternative with KVO</h4>
+
+<p><strong>Note:</strong> in this case, <code>userId</code> needs the <code>@objc dynamic</code> annotation and <code>AppSettings</code> needs to inherit from <code>NSObject</code>. Then <code>receiveValue</code> will fire only on changes to wrapped object&rsquo;s value. It will not publish the initial value as in the example above.</p>
 <pre class="highlight swift"><code><span class="kt">AppSettings</span><span class="o">.</span><span class="n">shared</span>
     <span class="o">.</span><span class="nf">publisher</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="n">userId</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="k">new</span><span class="p">])</span>
     <span class="o">.</span><span class="n">sink</span> <span class="p">{</span>
@@ -179,10 +193,10 @@ You may wish to store all your user defaults in one place, however, that is not 
 <h2 id='supported-platforms' class='heading'>Supported Platforms</h2>
 
 <ul>
-<li>iOS 9.0+</li>
-<li>tvOS 9.0+</li>
-<li>watchOS 5.0+</li>
-<li>macOS 10.13+</li>
+<li>iOS 13.0+</li>
+<li>tvOS 13.0+</li>
+<li>watchOS 6.0+</li>
+<li>macOS 11+</li>
 </ul>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
@@ -193,11 +207,11 @@ You may wish to store all your user defaults in one place, however, that is not 
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 <h3 id='a-href-http-cocoapods-org-cocoapods-a' class='heading'><a href="http://cocoapods.org">CocoaPods</a></h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Foil'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Foil'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0.0'</span>
 </code></pre>
 <h3 id='a-href-https-swift-org-package-manager-swift-package-manager-a' class='heading'><a href="https://swift.org/package-manager/">Swift Package Manager</a></h3>
 <pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/jessesquires/Foil.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"2.0.0"</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/jessesquires/Foil.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"3.0.0"</span><span class="p">)</span>
 <span class="p">]</span>
 </code></pre>
 
@@ -231,7 +245,7 @@ You may wish to store all your user defaults in one place, however, that is not 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2021-11-19)</p>
+          <p>&copy; 2022 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2022-01-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
