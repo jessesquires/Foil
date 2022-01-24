@@ -16,7 +16,6 @@ import XCTest
 
 let timeout = TimeInterval(5)
 
-@available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 final class ObservationTests: XCTestCase {
 
     let settings = TestSettings()
@@ -24,6 +23,11 @@ final class ObservationTests: XCTestCase {
     var cancellable = Set<AnyCancellable>()
 
     var observer: NSKeyValueObservation?
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        TestSettings.reset()
+    }
 
     func test_Integration_ProjectedValue() {
         let expectation = self.expectation(description: #function)

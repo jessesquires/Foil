@@ -38,8 +38,14 @@ struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
 }
 
 final class TestSettings: NSObject {
+    static let suiteName = UUID().uuidString
 
-    static var store = UserDefaults.testSuite()
+    static let store = UserDefaults.testSuite(name: suiteName)
+
+    // swiftlint:disable:next type_contents_order
+    static func reset() {
+        Self.store.reset(name: Self.suiteName)
+    }
 
     @WrappedDefault(key: "flag", userDefaults: store)
     var flag = true

@@ -18,6 +18,11 @@ final class IntegrationTests: XCTestCase {
 
     let settings = TestSettings()
 
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        TestSettings.reset()
+    }
+
     func test_Integration_Bool() {
         let defaultValue = self.settings.flag
         XCTAssertTrue(defaultValue)
