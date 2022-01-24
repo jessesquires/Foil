@@ -12,7 +12,7 @@
 PROJECT="Foil.xcodeproj"
 SCHEME="Foil"
 
-VERSION="0.45.0"
+VERSION="0.46.1"
 
 FOUND=$(swiftlint version)
 LINK="https://github.com/realm/SwiftLint"

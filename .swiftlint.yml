@@ -1,3 +1,7 @@
+# SwiftLint configuration
+# Rule directory: https://realm.github.io/SwiftLint/rule-directory.html
+# GitHub: https://github.com/realm/SwiftLint
+
 excluded:
   - Pods
   - docs
@@ -57,6 +61,7 @@ opt_in_rules:
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
   - vertical_whitespace_between_cases
+  - prefer_self_in_static_references
 
   # lint
   - overridden_super_call
@@ -76,6 +81,7 @@ analyzer_rules:
   - unused_import
   - unused_declaration
   - explicit_self
+  - capture_variable
 
 line_length: 200
 file_length: 600
@@ -90,6 +96,9 @@ nesting:
   function_level: 2
   check_nesting_in_closures_and_statements: true
   always_allow_one_type_in_functions: false
+
+identifier_name:
+  allowed_symbols: ['_']
 
 type_contents_order:
   order:
