@@ -91,13 +91,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQB-65-Cc7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1373.913043478261" y="853.79464285714278"/>
+            <point key="canvasLocation" x="2407" y="854"/>
         </scene>
         <!--SwiftUI Example-->
         <scene sceneID="aYl-9w-e1l">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wg-hq-V21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController id="qeM-ea-Ji2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qeM-ea-Ji2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="SwiftUI Example" image="sparkles" catalog="system" id="51J-9b-V70"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PDi-2h-UFd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -163,7 +163,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wj7-8r-Pew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463.768115942029" y="853.79464285714278"/>
+            <point key="canvasLocation" x="1374" y="854"/>
         </scene>
     </scenes>
     <resources>

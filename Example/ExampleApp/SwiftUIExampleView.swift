@@ -40,8 +40,8 @@ struct SwiftUIExampleView: View {
     }
 }
 
-final class SwiftUIExampleHostViewController: UIHostingController<SwiftUIExampleView>{
-    required init?(coder aDecoder: NSCoder){
+final class SwiftUIExampleHostViewController: UIHostingController<SwiftUIExampleView> {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: SwiftUIExampleView())
     }
 }
