@@ -93,6 +93,39 @@
             </objects>
             <point key="canvasLocation" x="1373.913043478261" y="853.79464285714278"/>
         </scene>
+        <!--SwiftUI Example-->
+        <scene sceneID="aYl-9w-e1l">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6wg-hq-V21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="qeM-ea-Ji2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SwiftUI Example" image="sparkles" catalog="system" id="51J-9b-V70"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PDi-2h-UFd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OgM-4o-cBL" kind="relationship" relationship="rootViewController" id="VIL-ja-D7w"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-660"/>
+        </scene>
+        <!--SwiftUI Example Host View Controller-->
+        <scene sceneID="ucB-nk-qWe">
+            <objects>
+                <viewController id="OgM-4o-cBL" customClass="SwiftUIExampleHostViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aNI-2s-dlg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mMZ-Ch-Lub"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hgT-XT-2Q9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sxs-Cw-MZC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407" y="-660"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F0C-CX-4hV">
             <objects>
@@ -106,6 +139,7 @@
                     <connections>
                         <segue destination="XxT-hh-v2S" kind="relationship" relationship="viewControllers" id="V7R-yB-xe6"/>
                         <segue destination="5zf-9Z-6TF" kind="relationship" relationship="viewControllers" id="cDY-4H-cB7"/>
+                        <segue destination="qeM-ea-Ji2" kind="relationship" relationship="viewControllers" id="Hgw-tR-g5M"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lk8-Pv-mYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,6 +169,7 @@
     <resources>
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="sparkles" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
