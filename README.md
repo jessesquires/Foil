@@ -47,7 +47,7 @@ There is also an included example app project.
 
 ### Using `enum` keys
 
-If you prefer using an `enum` for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unneccessary.
+If you prefer using an `enum` for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unnecessary.
 
 ```swift
 enum AppSettingsKey: String, CaseIterable {
