@@ -16,6 +16,7 @@
 		0BEEA306260421290035387F /* Foil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEEA2FE26041FED0035387F /* Foil.framework */; };
 		0BEEA307260421290035387F /* Foil.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEEA2FE26041FED0035387F /* Foil.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0BEEA30A260421BE0035387F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEA309260421BE0035387F /* AppSettings.swift */; };
+		8BC9315B27D87B9E0077E21F /* SwiftUIExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC9315A27D87B9E0077E21F /* SwiftUIExampleView.swift */; };
 		DD7A60F927777AD2009FBF27 /* CombineExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A60F827777AD2009FBF27 /* CombineExampleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		0BEEA2EF26041EB20035387F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BEEA2F826041FED0035387F /* Foil.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Foil.xcodeproj; path = ../Foil.xcodeproj; sourceTree = "<group>"; };
 		0BEEA309260421BE0035387F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		8BC9315A27D87B9E0077E21F /* SwiftUIExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleView.swift; sourceTree = "<group>"; };
 		DD7A60F827777AD2009FBF27 /* CombineExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 				0BEEA309260421BE0035387F /* AppSettings.swift */,
 				0BEEA2EA26041EB20035387F /* Assets.xcassets */,
 				DD7A60F827777AD2009FBF27 /* CombineExampleViewController.swift */,
+				8BC9315A27D87B9E0077E21F /* SwiftUIExampleView.swift */,
 				0BEEA2EF26041EB20035387F /* Info.plist */,
 				0BEEA2EC26041EB20035387F /* LaunchScreen.storyboard */,
 				0BEEA2E726041EB00035387F /* Main.storyboard */,
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BEEA2E626041EB00035387F /* ViewController.swift in Sources */,
+				8BC9315B27D87B9E0077E21F /* SwiftUIExampleView.swift in Sources */,
 				DD7A60F927777AD2009FBF27 /* CombineExampleViewController.swift in Sources */,
 				0BEEA2E226041EB00035387F /* AppDelegate.swift in Sources */,
 				0BEEA30A260421BE0035387F /* AppSettings.swift in Sources */,
