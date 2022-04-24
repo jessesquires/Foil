@@ -14,29 +14,17 @@
 import SwiftUI
 
 struct SwiftUIExampleView: View {
-    @State private var flagEnabled = false
+
+    @ObservedObject private var settings: AppSettings = .shared
 
     var body: some View {
         VStack {
-            Toggle(isOn: $flagEnabled) {
-                Text(flagEnabled.description)
-            }
-            GroupBox {
-                Button("Simulate outside trigger") {
-                    AppSettings.shared.flagEnabled.toggle()
-                }
+            Toggle(isOn: $settings.flagEnabled) {
+                Text(settings.flagEnabled.description)
             }
         }
         .padding()
         .navigationTitle("SwiftUI Example")
-        .onChange(of: flagEnabled) {
-            // User interaction stores into settings
-            AppSettings.shared.flagEnabled = $0
-        }
-        .onReceive(AppSettings.shared.$flagEnabled) {
-            // Listen to settings change
-            flagEnabled = $0
-        }
     }
 }
 

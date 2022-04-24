@@ -21,20 +21,36 @@ enum AppSettingsKey: String, CaseIterable {
     case option
 }
 
-final class AppSettings: NSObject {
+final class AppSettings: NSObject, ObservableObject {
     static let shared = AppSettings()
 
     @WrappedDefault(.flagEnabled)
-    @objc dynamic var flagEnabled = true
+    @objc dynamic var flagEnabled = true {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefault(.totalCount)
-    var totalCount = 0
+    var totalCount = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefaultOptional(.timestamp)
-    var timestamp: Date?
+    var timestamp: Date? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefaultOptional(.option)
-    var option: String?
+    var option: String? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     override private init() { }
 
