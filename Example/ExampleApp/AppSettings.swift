@@ -32,13 +32,25 @@ final class AppSettings: NSObject, ObservableObject {
     }
 
     @WrappedDefault(.totalCount)
-    var totalCount = 0
+    var totalCount = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefaultOptional(.timestamp)
-    var timestamp: Date?
+    var timestamp: Date? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefaultOptional(.option)
-    var option: String?
+    var option: String? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     override private init() { }
 
