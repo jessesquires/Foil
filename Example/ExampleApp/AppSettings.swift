@@ -21,11 +21,15 @@ enum AppSettingsKey: String, CaseIterable {
     case option
 }
 
-final class AppSettings: NSObject {
+final class AppSettings: NSObject, ObservableObject {
     static let shared = AppSettings()
 
     @WrappedDefault(.flagEnabled)
-    @objc dynamic var flagEnabled = true
+    @objc dynamic var flagEnabled = true {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @WrappedDefault(.totalCount)
     var totalCount = 0
