@@ -5,7 +5,9 @@ The changelog for `Foil`. Also see the [releases](https://github.com/jessesquire
 NEXT
 -----
 
-- TBA
+### New
+
+- The publisher projected by the property wrapper now sends values when user defaults changes from anywhere, not just from the property wrapper's setter. ([@nolanw](https://github.com/nolanw))
 
 3.0.0
 -----

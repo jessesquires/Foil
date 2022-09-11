@@ -20,6 +20,7 @@ import Foundation
 public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
     private let _publisher: CurrentValueSubject<T?, Never>
+    private let _observer: ObserverTrampoline
 
     /// The key for the value in `UserDefaults`.
     public let key: String
@@ -32,10 +33,8 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
         set {
             if let newValue = newValue {
                 self._userDefaults.save(newValue, for: self.key)
-                self._publisher.send(newValue)
             } else {
                 self._userDefaults.delete(for: self.key)
-                self._publisher.send(nil)
             }
         }
     }
@@ -53,5 +52,8 @@ public struct WrappedDefaultOptional<T: UserDefaultsSerializable> {
         self.key = keyName
         self._userDefaults = userDefaults
         self._publisher = CurrentValueSubject<T?, Never>(userDefaults.fetchOptional(keyName))
+        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [_publisher] in
+            _publisher.send(userDefaults.fetchOptional(keyName))
+        }
     }
 }
