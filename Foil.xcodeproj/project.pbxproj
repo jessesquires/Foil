@@ -17,6 +17,7 @@
 		0BF54A9D25BF58B1008484F8 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */; };
 		0BF5FD9025C14A7D0003B078 /* WrappedDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */; };
 		0BF5FD9625C14A960003B078 /* UserDefaultsSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */; };
+		1CC00F2428DAB1FC00EC2C63 /* ObserverTrampoline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC00F2328DAB1FC00EC2C63 /* ObserverTrampoline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedDefault.swift; sourceTree = "<group>"; };
 		0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSerializable.swift; sourceTree = "<group>"; };
+		1CC00F2328DAB1FC00EC2C63 /* ObserverTrampoline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverTrampoline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		0BF54A8225BF589E008484F8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1CC00F2328DAB1FC00EC2C63 /* ObserverTrampoline.swift */,
 				0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */,
 				0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */,
 				0BF5FD8F25C14A7D0003B078 /* WrappedDefault.swift */,
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF5FD9625C14A960003B078 /* UserDefaultsSerializable.swift in Sources */,
+				1CC00F2428DAB1FC00EC2C63 /* ObserverTrampoline.swift in Sources */,
 				0BEEA2B22603F8390035387F /* WrappedDefaultOptional.swift in Sources */,
 				0BF5FD9025C14A7D0003B078 /* WrappedDefault.swift in Sources */,
 				0BF54A9D25BF58B1008484F8 /* UserDefaults+Extensions.swift in Sources */,
