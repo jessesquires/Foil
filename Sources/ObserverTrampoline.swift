@@ -24,6 +24,8 @@ final class ObserverTrampoline: NSObject {
     private let block: () -> Void
 
     init(userDefaults: UserDefaults, key: String, block: @escaping () -> Void) {
+        assert(!key.hasPrefix("@"), "Cannot observe a user default key starting with '@'")
+        assert(!key.contains("."), "Cannot observe a user default key containing '.'")
         self.userDefaults = userDefaults
         self.key = key
         self.block = block

@@ -11,6 +11,7 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
+@testable import Foil
 import Combine
 import XCTest
 
