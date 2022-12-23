@@ -23,11 +23,11 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_13.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
   IOS_DEST: "platform=iOS Simulator,name=iPhone 13 Mini,OS=latest"
   TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
-  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 7 - 41mm,OS=latest"
+  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 8 (41mm),OS=latest"
   MACOS_DEST: "platform=macOS,arch=x86_64"
 
 jobs:

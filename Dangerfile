@@ -27,7 +27,7 @@ end
 # All pull requests should be submitted to main branch
 # -----------------------------------------------------------------------------
 if github.branch_for_base != "main"
-    warn("Pull requests should be submitted to the main branch only.")
+    warn("Pull requests should be submitted to the `main` branch only.")
 end
 
 # -----------------------------------------------------------------------------
