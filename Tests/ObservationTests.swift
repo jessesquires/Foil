@@ -11,15 +11,13 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
-@testable import Foil
 import Combine
+@testable import Foil
 import XCTest
 
 let timeout = TimeInterval(5)
 
 final class ObservationTests: XCTestCase {
-
-    let settings = TestSettings()
 
     var cancellable = Set<AnyCancellable>()
 
@@ -31,11 +29,12 @@ final class ObservationTests: XCTestCase {
     }
 
     func test_Integration_ProjectedValue() {
+        let settings = TestSettings()
         let expectation = self.expectation(description: #function)
         let expectedValue = 1_000.0
         var publishedValue: Double?
 
-        self.settings.$average
+        settings.$average
             .sink { newValue in
                 publishedValue = newValue
 
@@ -48,18 +47,19 @@ final class ObservationTests: XCTestCase {
             }
             .store(in: &self.cancellable)
 
-        self.settings.average = expectedValue
+        settings.average = expectedValue
         self.wait(for: [expectation], timeout: timeout)
 
-        XCTAssertEqual(self.settings.average, publishedValue)
+        XCTAssertEqual(settings.average, publishedValue)
     }
 
     func test_Integration_ProjectedValue_ExternalChange() {
+        let settings = TestSettings()
         let expectation = self.expectation(description: #function)
         let expectedValue = 1_000.0
         var publishedValue: Double?
 
-        self.settings.$average
+        settings.$average
             .sink { newValue in
                 publishedValue = newValue
 
@@ -69,17 +69,18 @@ final class ObservationTests: XCTestCase {
             }
             .store(in: &self.cancellable)
 
-        type(of: self.settings).store.set(expectedValue, forKey: "average")
+        type(of: settings).store.set(expectedValue, forKey: "average")
         self.wait(for: [expectation], timeout: timeout)
 
-        XCTAssertEqual(self.settings.average, publishedValue)
+        XCTAssertEqual(settings.average, publishedValue)
     }
 
     func test_Integration_Publisher() {
+        let settings = TestSettings()
         let expectation = self.expectation(description: #function)
         var publishedValue: String?
 
-        self.settings
+        settings
             .publisher(for: \.userId, options: [.new])
             .sink { newValue in
                 publishedValue = newValue
@@ -87,13 +88,14 @@ final class ObservationTests: XCTestCase {
             }
             .store(in: &self.cancellable)
 
-        self.settings.userId = "test_publisher"
+        settings.userId = "test_publisher"
         self.wait(for: [expectation], timeout: timeout)
 
-        XCTAssertEqual(self.settings.userId, publishedValue)
+        XCTAssertEqual(settings.userId, publishedValue)
     }
 
     func test_Integration_KVO() {
+        let settings = TestSettings()
         let expectation = self.expectation(description: #function)
         var changedValue: String?
 
@@ -105,9 +107,9 @@ final class ObservationTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.settings.userId = "test_kvo"
+        settings.userId = "test_kvo"
         self.wait(for: [expectation], timeout: timeout)
 
-        XCTAssertEqual(self.settings.userId, changedValue)
+        XCTAssertEqual(settings.userId, changedValue)
     }
 }
