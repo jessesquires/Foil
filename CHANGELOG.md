@@ -5,9 +5,23 @@ The changelog for `Foil`. Also see the [releases](https://github.com/jessesquire
 NEXT
 -----
 
+- TBA
+
+4.0.0
+-----
+
 ### New
 
-- The publisher projected by the property wrapper now sends values when user defaults changes from anywhere, not just from the property wrapper's setter. ([@nolanw](https://github.com/nolanw))
+- The publisher projected by the property wrapper now sends values when user defaults changes from anywhere. Previously, only when using the property wrapper's setter would the projected publisher send a new value. ([#61](https://github.com/jessesquires/Foil/pull/61), [@nolanw](https://github.com/nolanw))
+
+### Breaking
+
+- Due to [#61](https://github.com/jessesquires/Foil/pull/61) (see above), there are some (potentially) breaking changes with key names. If any of your keys are named like the following examples and you need to observe changes, you will need to migrate your key names.
+    - Key names starting with an `@` character **do not** notify observers on updates.
+        - Example: `@my-key-name`
+    - Key names containing a `.` character _anywhere_ in the name **do not** notify observers on updates. (This is a side-effect of `KeyPaths` which include periods.)
+        - Example: `com.myApp.my-key-name`
+
 
 3.0.0
 -----
