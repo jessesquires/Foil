@@ -55,7 +55,7 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         // and uses force unwrap
         self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
 
-        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [_publisher] in
+        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [unowned _publisher] in
             _publisher.send(userDefaults.fetch(keyName))
         }
     }
