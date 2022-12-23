@@ -27,7 +27,7 @@ env:
 
   IOS_DEST: "platform=iOS Simulator,name=iPhone 13 Mini,OS=latest"
   TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
-  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 8 - 41mm,OS=latest"
+  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 8 (41mm),OS=latest"
   MACOS_DEST: "platform=macOS,arch=x86_64"
 
 jobs:
