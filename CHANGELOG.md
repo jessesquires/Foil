@@ -10,6 +10,8 @@ NEXT
 4.0.0
 -----
 
+This release closes the [4.0.0 milestone](https://github.com/jessesquires/Foil/milestone/5?closed=1).
+
 ### New
 
 - The publisher projected by the property wrapper now sends values when user defaults changes from anywhere. Previously, only when using the property wrapper's setter would the projected publisher send a new value. ([#61](https://github.com/jessesquires/Foil/pull/61), [@nolanw](https://github.com/nolanw))
@@ -22,6 +24,10 @@ NEXT
     - Key names containing a `.` character _anywhere_ in the name **do not** notify observers on updates. (This is a side-effect of `KeyPaths` which include periods.)
         - Example: `com.myApp.my-key-name`
 
+### Changed
+
+- Upgrade to Xcode 14
+- Upgrade to Swift 5.7
 
 3.0.0
 -----

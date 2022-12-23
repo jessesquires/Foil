@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
    s.name = 'Foil'
-   s.version = '3.0.0'
+   s.version = '4.0.0'
    s.license = 'MIT'
 
    s.summary = 'A lightweight property wrapper for UserDefaults'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
    s.source = { :git => 'https://github.com/jessesquires/Foil.git', :tag => s.version }
    s.source_files = 'Sources/*.swift'
 
-   s.swift_version = '5.5'
+   s.swift_version = '5.7'
 
    s.ios.deployment_target = '13.0'
    s.tvos.deployment_target = '13.0'

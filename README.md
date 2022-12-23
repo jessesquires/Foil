@@ -163,14 +163,14 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'Foil', '~> 3.0.0'
+pod 'Foil', '~> 4.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "3.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "4.0.0")
 ]
 ```
 
