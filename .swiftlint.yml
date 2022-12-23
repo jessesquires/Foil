@@ -44,6 +44,9 @@ opt_in_rules:
   - file_name
   - file_name_no_space
   - discouraged_none_name
+  - return_value_from_void_function
+  - prefer_zero_over_explicit_init
+  - shorthand_optional_binding
 
   # style
   - attributes
@@ -62,12 +65,12 @@ opt_in_rules:
   - unneeded_parentheses_in_closure_argument
   - vertical_whitespace_between_cases
   - prefer_self_in_static_references
+  - comma_inheritance
 
   # lint
   - overridden_super_call
   - override_in_extension
   - yoda_condition
-  - anyobject_protocol
   - array_init
   - empty_xctest_method
   - identical_operands
@@ -75,10 +78,11 @@ opt_in_rules:
   - unused_capture_list
   - duplicate_enum_cases
   - legacy_multiple
+  - accessibility_label_for_image
 
 # Rules run by `swiftlint analyze` (experimental)
 analyzer_rules:
-  - unused_import
+  # - unused_import
   - unused_declaration
   - explicit_self
   - capture_variable
