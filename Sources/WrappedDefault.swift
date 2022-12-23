@@ -20,6 +20,7 @@ import Foundation
 public struct WrappedDefault<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
     private let _publisher: CurrentValueSubject<T, Never>
+    private let _observer: ObserverTrampoline
 
     /// The key for the value in `UserDefaults`.
     public let key: String
@@ -31,7 +32,6 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         }
         set {
             self._userDefaults.save(newValue, for: self.key)
-            self._publisher.send(newValue)
         }
     }
 
@@ -54,5 +54,9 @@ public struct WrappedDefault<T: UserDefaultsSerializable> {
         // because `fetch` assumes that `registerDefault` has been called before
         // and uses force unwrap
         self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
+
+        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [_publisher] in
+            _publisher.send(userDefaults.fetch(keyName))
+        }
     }
 }

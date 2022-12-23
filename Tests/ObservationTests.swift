@@ -11,6 +11,7 @@
 //  Copyright © 2021-present Jesse Squires
 //
 
+@testable import Foil
 import Combine
 import XCTest
 
@@ -48,6 +49,27 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         self.settings.average = expectedValue
+        self.wait(for: [expectation], timeout: timeout)
+
+        XCTAssertEqual(self.settings.average, publishedValue)
+    }
+
+    func test_Integration_ProjectedValue_ExternalChange() {
+        let expectation = self.expectation(description: #function)
+        let expectedValue = 1_000.0
+        var publishedValue: Double?
+
+        self.settings.$average
+            .sink { newValue in
+                publishedValue = newValue
+
+                if newValue == expectedValue {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &self.cancellable)
+
+        type(of: self.settings).store.set(expectedValue, forKey: "average")
         self.wait(for: [expectation], timeout: timeout)
 
         XCTAssertEqual(self.settings.average, publishedValue)
