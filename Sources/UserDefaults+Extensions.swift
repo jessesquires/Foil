@@ -52,7 +52,11 @@ extension UserDefaults {
             return nil
         }
 
-        return T(storedValue: fetched as! T.StoredValue)
+        guard let storedValue = fetched as? T.StoredValue else {
+            return nil
+        }
+
+        return T(storedValue: storedValue)
     }
 
     func registerDefault<T: UserDefaultsSerializable>(value: T, key: String) {
