@@ -10,6 +10,8 @@ NEXT
 4.0.1
 -----
 
+This release closes the [4.0.1 milestone](https://github.com/jessesquires/Foil/milestone/6?closed=1).
+
 ### Fixed
 
 - `WrappedDefaultOptional` no longer crashes when the type stored in `UserDefaults` does not match the type being requested, `nil` is now returned instead. ([#70](https://github.com/jessesquires/Foil/pull/70), [@ejensen](https://github.com/ejensen))
