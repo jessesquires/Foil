@@ -322,5 +322,4 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
     }
-
 }
