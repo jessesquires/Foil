@@ -5,9 +5,14 @@ The changelog for `Foil`. Also see the [releases](https://github.com/jessesquire
 NEXT
 -----
 
-### Changed
+- TBA
 
-- `WrappedDefaultOptional` no longer crashes when the type stored in the defaults does not match the type being requested. `nil` is now returned instead.
+4.0.1
+-----
+
+### Fixed
+
+- `WrappedDefaultOptional` no longer crashes when the type stored in `UserDefaults` does not match the type being requested, `nil` is now returned instead. ([#70](https://github.com/jessesquires/Foil/pull/70), [@ejensen](https://github.com/ejensen))
 
 4.0.0
 -----
