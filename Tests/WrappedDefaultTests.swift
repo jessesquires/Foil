@@ -312,4 +312,14 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertNil(fetchedValue)
     }
     // swiftlint:enable discouraged_optional_collection
+
+    func test_WrappedValue_MismatchedOptional() {
+        let key = "key_\(#function)"
+        let model = WrappedDefaultOptional<Date>(key: key, userDefaults: self.testDefaults)
+        testDefaults.save("not-a-date", for: key)
+
+        let defaultValue: Date? = self.testDefaults.fetchOptional(key)
+        XCTAssertNil(defaultValue)
+        XCTAssertNil(model.wrappedValue)
+    }
 }
