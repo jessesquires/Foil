@@ -124,6 +124,8 @@ The following types are supported by default for use with `@WrappedDefault`.
 
 Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged**. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
 
+While `Foil` directly supports storing `Codable` types, you should **use this sparingly** and _only_ for small objects with few properties.
+
 - `Bool`
 - `Int`
 - `UInt`
@@ -137,6 +139,7 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 - `Set`
 - `Dictionary`
 - `RawRepresentable` types
+- `Codable` types
 
 ## Additional Resources
 
