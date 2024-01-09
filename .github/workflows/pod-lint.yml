@@ -35,4 +35,5 @@ jobs:
           bundler-cache: true
 
       - name: pod lint
-        run: bundle exec pod lib lint --verbose
+        run: pod lib lint --verbose
+        # run: bundle exec pod lib lint --verbose
