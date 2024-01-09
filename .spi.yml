@@ -1,0 +1,5 @@
+# https://swiftpackageindex.com/SwiftPackageIndex/SPIManifest/1.1.1/documentation/spimanifest
+version: 1
+builder:
+  configs:
+  - documentation_targets: [Foil]
