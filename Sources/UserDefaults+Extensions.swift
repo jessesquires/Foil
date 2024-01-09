@@ -13,8 +13,6 @@
 
 import Foundation
 
-// swiftlint:disable force_cast
-
 extension UserDefaults {
 
     func save<T: UserDefaultsSerializable>(_ value: T, for key: String) {
@@ -63,5 +61,3 @@ extension UserDefaults {
         self.register(defaults: [key: value.storedValue])
     }
 }
-
-// swiftlint:enable force_cast
