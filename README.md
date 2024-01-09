@@ -154,8 +154,8 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 ## Requirements
 
-- Swift 5.7+
-- Xcode 14.0+
+- Swift 5.9+
+- Xcode 15.0+
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation

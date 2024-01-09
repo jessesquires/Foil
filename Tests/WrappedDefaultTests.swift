@@ -19,10 +19,6 @@ final class WrappedDefaultTests: XCTestCase {
     let domain = UUID().uuidString
     lazy var testDefaults = UserDefaults.testSuite(name: self.domain)
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         self.testDefaults.reset(name: self.domain)

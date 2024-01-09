@@ -9,10 +9,13 @@
 #
 #  Runs SwiftLint and checks for installation of correct version.
 
+set -e
+export PATH="$PATH:/opt/homebrew/bin"
+
 PROJECT="Foil.xcodeproj"
 SCHEME="Foil"
 
-VERSION="0.50.3"
+VERSION="0.54.0"
 
 FOUND=$(swiftlint version)
 LINK="https://github.com/realm/SwiftLint"

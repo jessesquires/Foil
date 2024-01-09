@@ -27,10 +27,6 @@ struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
 
     var rawValue: [String: TestFruit]
 
-    init(rawValue: [String: TestFruit]) {
-        self.rawValue = rawValue
-    }
-
     subscript(_ key: Key) -> TestFruit? {
         get { self.rawValue[key.rawValue] }
         set { self.rawValue[key.rawValue] = newValue }
