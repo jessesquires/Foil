@@ -31,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B315D1E2B4E051C000F5034 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0BA382372602C1A7005D7B2E /* TestSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSettings.swift; sourceTree = "<group>"; };
 		0BA3823E2602C498005D7B2E /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		0BC99BA7266C27AE009B8CD4 /* ObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationTests.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		0BF54A8225BF589E008484F8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0B315D1E2B4E051C000F5034 /* PrivacyInfo.xcprivacy */,
 				1CC00F2328DAB1FC00EC2C63 /* ObserverTrampoline.swift */,
 				0BF54A9C25BF58B1008484F8 /* UserDefaults+Extensions.swift */,
 				0BF5FD9525C14A960003B078 /* UserDefaultsSerializable.swift */,

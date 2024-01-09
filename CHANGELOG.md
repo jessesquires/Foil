@@ -7,6 +7,20 @@ NEXT
 
 - TBA
 
+5.0.0
+-----
+
+This release closes the [5.0.0 milestone](https://github.com/jessesquires/Foil/milestone/7?closed=1).
+
+### New
+
+- Added [privacy manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) for iOS 17
+
+### Changed
+
+- Upgrade to Xcode 15
+- Upgrade to Swift 5.9
+
 4.0.1
 -----
 
