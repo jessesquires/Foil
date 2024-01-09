@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
    s.summary = 'A lightweight property wrapper for UserDefaults'
    s.homepage = 'https://github.com/jessesquires/Foil'
    s.documentation_url = 'https://jessesquires.github.io/Foil'
-   s.social_media_url = 'https://twitter.com/jesse_squires'
+   s.social_media_url = 'https://www.jessesquires.com'
    s.author = 'Jesse Squires'
 
    s.source = { :git => 'https://github.com/jessesquires/Foil.git', :tag => s.version }
