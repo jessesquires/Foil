@@ -160,6 +160,7 @@ struct User: Codable, UserDefaultsSerializable {
 var user: User?
 
 // NO, do NOT this
+// This will crash if you change User by adding/removing properties
 @WrappedDefault(key: "user")
 var user = User()
 ```
