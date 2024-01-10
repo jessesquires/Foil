@@ -122,9 +122,11 @@ AppSettings.shared
 
 The following types are supported by default for use with `@WrappedDefault`.
 
-Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged**. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
-
-While `Foil` directly supports storing `Codable` types, you should **use this sparingly** and _only_ for small objects with few properties.
+> **Important**
+>
+> Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged** as all `plist` types are supported by default. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
+>
+> Also, while `Foil` supports storing `Codable` types by default, you should **use this sparingly** and _only_ for small objects with few properties.
 
 - `Bool`
 - `Int`
@@ -140,6 +142,22 @@ While `Foil` directly supports storing `Codable` types, you should **use this sp
 - `Dictionary`
 - `RawRepresentable` types
 - `Codable` types
+
+> **Warning**
+>
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must** use the optional variant of the property wrapper, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable`.
+>
+> **Example:**
+>
+> ```swift
+> // Do this
+> @WrappedDefaultOptional(key: "user", userDefaults: store)
+> var user: User?
+>
+> // Do NOT this
+> @WrappedDefault(key: "user", userDefaults: store)
+> var user = User()
+> ```
 
 ## Additional Resources
 

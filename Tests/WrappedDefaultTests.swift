@@ -327,7 +327,7 @@ final class WrappedDefaultTests: XCTestCase {
         XCTAssertNil(defaultValue)
         XCTAssertNil(model.wrappedValue)
 
-        let newValue = User(id: 42, name: "John Doe", highScore: 9_000.0, lastLogin: Date())
+        let newValue = User(id: UUID(), name: "John Doe", highScore: 9_000, lastLogin: Date())
         model.wrappedValue = newValue
         XCTAssertEqual(self.testDefaults.fetch(key), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)
@@ -337,19 +337,5 @@ final class WrappedDefaultTests: XCTestCase {
 
         let fetchedValue: User? = self.testDefaults.fetchOptional(key)
         XCTAssertNil(fetchedValue)
-    }
-
-    func test_WrappedValue_Codable_NonOptional() {
-        let key = "key_\(#function)"
-        let defaultValue = Session.default
-        var model = WrappedDefault<Session>(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
-
-        XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
-        XCTAssertEqual(model.wrappedValue, defaultValue)
-
-        let newValue = Session(id: UUID(), lastActivity: Date())
-        model.wrappedValue = newValue
-        XCTAssertEqual(self.testDefaults.fetch(key), newValue)
-        XCTAssertEqual(model.wrappedValue, newValue)
     }
 }

@@ -34,17 +34,10 @@ struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
 }
 
 struct User: Hashable, Codable, UserDefaultsSerializable {
-    let id: Int
+    let id: UUID
     let name: String
     let highScore: Double
     let lastLogin: Date
-}
-
-struct Session: Hashable, Codable, UserDefaultsSerializable {
-    static var `default`: Self { Self(id: UUID(), lastActivity: .distantPast) }
-
-    let id: UUID
-    let lastActivity: Date
 }
 
 final class TestSettings: NSObject {
@@ -104,7 +97,4 @@ final class TestSettings: NSObject {
 
     @WrappedDefaultOptional(key: "user", userDefaults: store)
     var user: User?
-
-    @WrappedDefault(key: "session", userDefaults: store)
-    var session = Session.default
 }

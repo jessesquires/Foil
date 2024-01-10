@@ -168,7 +168,7 @@ final class IntegrationTests: XCTestCase {
         let defaultValue = self.settings.user
         XCTAssertNil(defaultValue)
 
-        let newValue = User(id: 42, name: "John Doe", highScore: 9_999.0, lastLogin: Date())
+        let newValue = User(id: UUID(), name: "John Doe", highScore: 9_999, lastLogin: Date())
         self.settings.user = newValue
         XCTAssertEqual(self.settings.user, newValue)
     }
