@@ -182,7 +182,7 @@ extension UserDefaultsSerializable where Self: Codable {
         }
     }
 
-    public init?(storedValue: Data?) throws {
+    public init?(storedValue: Data?) {
         do {
             self = try JSONDecoder().decode(Self.self, from: storedValue ?? Data())
         } catch {

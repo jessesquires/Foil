@@ -163,4 +163,13 @@ final class IntegrationTests: XCTestCase {
         let expectedValue = ["key1": TestFruit.apple.rawValue, "key2": TestFruit.orange.rawValue]
         XCTAssertEqual(TestSettings.store.fetch("customRawRepresented"), expectedValue)
     }
+
+    func test_Integration_Codable() {
+        let defaultValue = self.settings.user
+        XCTAssertNil(defaultValue)
+
+        let newValue = User(id: 42, name: "John Doe", highScore: 9_999.0, lastLogin: Date())
+        self.settings.user = newValue
+        XCTAssertEqual(self.settings.user, newValue)
+    }
 }
