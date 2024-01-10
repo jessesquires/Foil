@@ -95,7 +95,8 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
-**Note:** that `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
+> [!NOTE]
+> The `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
 
 ```swift
 AppSettings.shared.$average
@@ -107,7 +108,8 @@ AppSettings.shared.$average
 
 #### Combine Alternative with KVO
 
-**Note:** in this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
+> [!NOTE]
+> In this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
 
 ```swift
 AppSettings.shared
@@ -125,7 +127,7 @@ The following types are supported by default for use with `@WrappedDefault`.
 > [!IMPORTANT]  
 > Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged** as all `plist` types are supported by default. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
 >
-> Also, while `Foil` supports storing `Codable` types by default, you should **use this sparingly** and _only_ for small objects with few properties.
+> While `Foil` supports storing `Codable` types by default, you should **use this sparingly** and _only_ for small objects with few properties.
 
 - `Bool`
 - `Int`
@@ -143,7 +145,7 @@ The following types are supported by default for use with `@WrappedDefault`.
 - `Codable` types
 
 > [!WARNING]  
-> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must** use the optional variant of the property wrapper, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable`.
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable`.
 >
 > **Example:**
 >
