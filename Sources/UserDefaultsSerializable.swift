@@ -126,6 +126,9 @@ extension Data: UserDefaultsSerializable {
 }
 
 /// :nodoc:
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
         self.compactMap { $0.storedValue }
@@ -137,6 +140,9 @@ extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializabl
 }
 
 /// :nodoc:
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
         self.map { $0.storedValue }
@@ -148,6 +154,9 @@ extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable 
 }
 
 /// :nodoc:
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 extension Dictionary: UserDefaultsSerializable where Key == String, Value: UserDefaultsSerializable {
     public var storedValue: [String: Value.StoredValue] {
         self.compactMapValues { $0.storedValue }
