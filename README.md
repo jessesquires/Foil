@@ -145,19 +145,24 @@ The following types are supported by default for use with `@WrappedDefault`.
 - `Codable` types
 
 > [!WARNING]  
-> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable`.
->
-> **Example:**
->
-> ```swift
-> // Do this
-> @WrappedDefaultOptional(key: "user", userDefaults: store)
-> var user: User?
->
-> // Do NOT this
-> @WrappedDefault(key: "user", userDefaults: store)
-> var user = User()
-> ```
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
+
+**Codable Example:**
+```swift
+// Note: uses the default implementation of UserDefaultsSerializable
+struct User: Codable, UserDefaultsSerializable {
+    let id: UUID
+    let name: String
+}
+
+// Yes, do this
+@WrappedDefaultOptional(key: "user")
+var user: User?
+
+// NO, do NOT this
+@WrappedDefault(key: "user")
+var user = User()
+```
 
 ## Additional Resources
 
