@@ -18,7 +18,7 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Foil/m
 
 ### New
 
-- Support for `Codable` types. (Please don't abuse this.) ([#72](https://github.com/jessesquires/Foil/issues/72), [#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
+- Support for `Codable` types. (Please don't abuse this. See the docs.) ([#72](https://github.com/jessesquires/Foil/issues/72), [#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
 - Added [privacy manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) for iOS 17. ([@jessesquires](https://github.com/jessesquires))
 
 ### Changed
