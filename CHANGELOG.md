@@ -14,12 +14,12 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Foil/m
 
 ### Breaking
 
-- The `UserDefaultsSerializable` protocol has changed. Previously, it declared the initializer `init(storedValue:)`. This is now failable, `init?(storedValue:)`. This change was necessary to accommodate `Codable` types (see below). ([#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
+- The `UserDefaultsSerializable` protocol has changed. Previously, it declared the initializer `init(storedValue:)`. It is now failable: `init?(storedValue:)`. This change was necessary to accommodate `Codable` types (see below). ([#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
 
 ### New
 
 - Support for `Codable` types. (Please don't abuse this.) ([#72](https://github.com/jessesquires/Foil/issues/72), [#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
-- Added [privacy manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) for iOS 17
+- Added [privacy manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) for iOS 17. ([@jessesquires](https://github.com/jessesquires))
 
 ### Changed
 
