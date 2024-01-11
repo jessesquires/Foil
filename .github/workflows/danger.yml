@@ -29,9 +29,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-
-      - name: jazzy docs
-        run: bundle exec jazzy --output docs/
+      
+      # Disable for now. Broken on GitHub CI for some reason.
+      # - name: jazzy docs
+      #   run: bundle exec jazzy --output docs/
 
       - name: danger
         env:
