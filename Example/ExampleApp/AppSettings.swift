@@ -24,28 +24,28 @@ enum AppSettingsKey: String, CaseIterable {
 final class AppSettings: NSObject, ObservableObject {
     static let shared = AppSettings()
 
-    @WrappedDefault(.flagEnabled)
+    @FoilDefaultStorage(.flagEnabled)
     @objc dynamic var flagEnabled = true {
         willSet {
             objectWillChange.send()
         }
     }
 
-    @WrappedDefault(.totalCount)
+    @FoilDefaultStorage(.totalCount)
     var totalCount = 0 {
         willSet {
             objectWillChange.send()
         }
     }
 
-    @WrappedDefaultOptional(.timestamp)
+    @FoilDefaultStorageOptional(.timestamp)
     var timestamp: Date? {
         willSet {
             objectWillChange.send()
         }
     }
 
-    @WrappedDefaultOptional(.option)
+    @FoilDefaultStorageOptional(.option)
     var option: String? {
         willSet {
             objectWillChange.send()
@@ -60,13 +60,13 @@ final class AppSettings: NSObject, ObservableObject {
     }
 }
 
-extension WrappedDefault {
+extension FoilDefaultStorage {
     init(wrappedValue: T, _ key: AppSettingsKey) {
         self.init(wrappedValue: wrappedValue, key: key.rawValue)
     }
 }
 
-extension WrappedDefaultOptional {
+extension FoilDefaultStorageOptional {
     init(_ key: AppSettingsKey) {
         self.init(key: key.rawValue)
     }

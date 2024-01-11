@@ -17,7 +17,7 @@ import Foundation
 /// A property wrapper that uses `UserDefaults` as a backing store,
 /// whose `wrappedValue` is non-optional and registers a **non-optional default value**.
 @propertyWrapper
-public struct WrappedDefault<T: UserDefaultsSerializable> {
+public struct FoilDefaultStorage<T: UserDefaultsSerializable> {
     private let _userDefaults: UserDefaults
     private let _publisher: CurrentValueSubject<T, Never>
     private let _observer: ObserverTrampoline

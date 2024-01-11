@@ -50,51 +50,51 @@ final class TestSettings: NSObject {
         Self.store.reset(name: Self.suiteName)
     }
 
-    @WrappedDefault(key: "flag", userDefaults: store)
+    @FoilDefaultStorage(key: "flag", userDefaults: store)
     var flag = true
 
-    @WrappedDefault(key: "count", userDefaults: store)
+    @FoilDefaultStorage(key: "count", userDefaults: store)
     var count = 42
 
-    @WrappedDefault(key: "max", userDefaults: store)
+    @FoilDefaultStorage(key: "max", userDefaults: store)
     var max = UInt(42)
 
-    @WrappedDefault(key: "mean", userDefaults: store)
+    @FoilDefaultStorage(key: "mean", userDefaults: store)
     var mean = Float(4.2)
 
-    @WrappedDefault(key: "average", userDefaults: store)
+    @FoilDefaultStorage(key: "average", userDefaults: store)
     var average = 42.0
 
-    @WrappedDefaultOptional(key: "username", userDefaults: store)
+    @FoilDefaultStorageOptional(key: "username", userDefaults: store)
     var username: String?
 
-    @WrappedDefaultOptional(key: "website", userDefaults: store)
+    @FoilDefaultStorageOptional(key: "website", userDefaults: store)
     var website: URL?
 
-    @WrappedDefault(key: "timestamp", userDefaults: store)
+    @FoilDefaultStorage(key: "timestamp", userDefaults: store)
     var timestamp = Date.distantPast
 
-    @WrappedDefaultOptional(key: "data", userDefaults: store)
+    @FoilDefaultStorageOptional(key: "data", userDefaults: store)
     var data: Data?
 
-    @WrappedDefault(key: "list", userDefaults: store)
+    @FoilDefaultStorage(key: "list", userDefaults: store)
     var list = [Double]()
 
-    @WrappedDefault(key: "set", userDefaults: store)
+    @FoilDefaultStorage(key: "set", userDefaults: store)
     var set = Set([1, 2, 3])
 
-    @WrappedDefault(key: "pairs", userDefaults: store)
+    @FoilDefaultStorage(key: "pairs", userDefaults: store)
     var pairs = [String: Int]()
 
-    @WrappedDefault(key: "fruit", userDefaults: store)
+    @FoilDefaultStorage(key: "fruit", userDefaults: store)
     var fruit = TestFruit.apple
 
-    @WrappedDefault(key: "customRawRepresented", userDefaults: store)
+    @FoilDefaultStorage(key: "customRawRepresented", userDefaults: store)
     var customRawRepresented = TestCustomRepresented(rawValue: [:])
 
-    @WrappedDefaultOptional(key: "userId", userDefaults: store)
+    @FoilDefaultStorageOptional(key: "userId", userDefaults: store)
     @objc dynamic var userId: String?
 
-    @WrappedDefaultOptional(key: "user", userDefaults: store)
+    @FoilDefaultStorageOptional(key: "user", userDefaults: store)
     var user: User?
 }
