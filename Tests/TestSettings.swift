@@ -33,6 +33,13 @@ struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
     }
 }
 
+struct User: Hashable, Codable, UserDefaultsSerializable {
+    let id: UUID
+    let name: String
+    let highScore: Double
+    let lastLogin: Date
+}
+
 final class TestSettings: NSObject {
     static let suiteName = UUID().uuidString
 
@@ -87,4 +94,7 @@ final class TestSettings: NSObject {
 
     @WrappedDefaultOptional(key: "userId", userDefaults: store)
     @objc dynamic var userId: String?
+
+    @WrappedDefaultOptional(key: "user", userDefaults: store)
+    var user: User?
 }
