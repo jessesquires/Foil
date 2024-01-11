@@ -16,7 +16,7 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Foil/m
 
 - The `UserDefaultsSerializable` protocol has changed. Previously, it declared the initializer `init(storedValue:)`. It is now failable: `init?(storedValue:)`. This change was necessary to accommodate `Codable` types (see below). ([#92](https://github.com/jessesquires/Foil/issues/92), [@jessesquires](https://github.com/jessesquires))
 
-- Both property wrappers **have been renamed**. `@WrappedDefault` is now `@FoilDefaultStorage` and `@WrappedDefaultOptional` is now `@FoilDefaultStorageOptional`. To migrate, you can simply find-and-replace these names. Nothing else has changed. ([#73](https://github.com/jessesquires/Foil/issues/73), [@jessesquires](https://github.com/jessesquires))
+- Both property wrappers **have been renamed**. `@WrappedDefault` is now `@FoilDefaultStorage` and `@WrappedDefaultOptional` is now `@FoilDefaultStorageOptional`. To migrate, you can simply find-and-replace these names. Nothing else has changed. ([#73](https://github.com/jessesquires/Foil/issues/73), [#94](https://github.com/jessesquires/Foil/issues/94), [@jessesquires](https://github.com/jessesquires))
 
 ### New
 
