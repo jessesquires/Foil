@@ -19,20 +19,20 @@ Foil, as in "let me quickly and easily **wrap** and **store** this leftover food
 
 ## Usage
 
-You can use `@WrappedDefault` for non-optional values and `@WrappedDefaultOptional` for optional ones.
+You can use `@FoilDefaultStorage` for non-optional values and `@FoilDefaultStorageOptional` for optional ones.
 You may wish to store all your user defaults in one place, however, that is not necessary. **Any** property on **any type** can use this wrapper.
 
 ```swift
 final class AppSettings {
     static let shared = AppSettings()
 
-    @WrappedDefault(key: "flagEnabled")
+    @FoilDefaultStorage(key: "flagEnabled")
     var flagEnabled = true
 
-    @WrappedDefault(key: "totalCount")
+    @FoilDefaultStorage(key: "totalCount")
     var totalCount = 0
 
-    @WrappedDefaultOptional(key: "timestamp")
+    @FoilDefaultStorageOptional(key: "timestamp")
     var timestamp: Date?
 }
 
@@ -56,13 +56,13 @@ enum AppSettingsKey: String, CaseIterable {
     case timestamp
 }
 
-extension WrappedDefault {
+extension FoilDefaultStorage {
     init(wrappedValue: T, _ key: AppSettingsKey) {
         self.init(wrappedValue: wrappedValue, key: key.rawValue)
     }
 }
 
-extension WrappedDefaultOptional {
+extension FoilDefaultStorageOptional {
     init(_ key: AppSettingsKey) {
         self.init(key: key.rawValue)
     }
@@ -77,10 +77,10 @@ There are [many ways to observe property changes](https://www.jessesquires.com/b
 final class AppSettings: NSObject {
     static let shared = AppSettings()
 
-    @WrappedDefaultOptional(key: "userId")
+    @FoilDefaultStorageOptional(key: "userId")
     @objc dynamic var userId: String?
 
-    @WrappedDefaultOptional(key: "average")
+    @FoilDefaultStorageOptional(key: "average")
     var average: Double?
 }
 ```
@@ -122,9 +122,9 @@ AppSettings.shared
 
 ### Supported types
 
-The following types are supported by default for use with `@WrappedDefault`.
+The following types are supported by default for use with `@FoilDefaultStorage`.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged** as all `plist` types are supported by default. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
 >
 > While `Foil` supports storing `Codable` types by default, you should **use this sparingly** and _only_ for small objects with few properties.
@@ -144,8 +144,8 @@ The following types are supported by default for use with `@WrappedDefault`.
 - `RawRepresentable` types
 - `Codable` types
 
-> [!WARNING]  
-> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@WrappedDefaultOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
+> [!WARNING]
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@FoilDefaultStorageOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
 
 **Codable Example:**
 ```swift
@@ -156,12 +156,12 @@ struct User: Codable, UserDefaultsSerializable {
 }
 
 // Yes, do this
-@WrappedDefaultOptional(key: "user")
+@FoilDefaultStorageOptional(key: "user")
 var user: User?
 
 // NO, do NOT this
 // This will crash if you change User by adding/removing properties
-@WrappedDefault(key: "user")
+@FoilDefaultStorage(key: "user")
 var user = User()
 ```
 
@@ -190,14 +190,14 @@ var user = User()
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'Foil', '~> 4.0.0'
+pod 'Foil', '~> 5.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "4.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "5.0.0")
 ]
 ```
 

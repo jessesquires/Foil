@@ -17,7 +17,7 @@
     <a title="Structures  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Foil 4.0.1 Docs</a> (100% documented)</p>
+        <p><a href="index.html">Foil 5.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
@@ -48,10 +48,10 @@
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/WrappedDefault.html">WrappedDefault</a>
+                <a href="Structs/FoilDefaultStorage.html">FoilDefaultStorage</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/WrappedDefaultOptional.html">WrappedDefaultOptional</a>
+                <a href="Structs/FoilDefaultStorageOptional.html">FoilDefaultStorageOptional</a>
               </li>
             </ul>
           </li>
@@ -70,9 +70,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Foil14WrappedDefaultV"></a>
-                    <a name="//apple_ref/swift/Struct/WrappedDefault" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Foil14WrappedDefaultV">WrappedDefault</a>
+                    <a name="/s:4Foil0A14DefaultStorageV"></a>
+                    <a name="//apple_ref/swift/Struct/FoilDefaultStorage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Foil0A14DefaultStorageV">FoilDefaultStorage</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -83,14 +83,14 @@
                         <p>A property wrapper that uses <code>UserDefaults</code> as a backing store,
 whose <code>wrappedValue</code> is non-optional and registers a <strong>non-optional default value</strong>.</p>
 
-                        <a href="Structs/WrappedDefault.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/FoilDefaultStorage.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@propertyWrapper</span>
-<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">WrappedDefault</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></span></code></pre>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">FoilDefaultStorage</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -100,9 +100,9 @@ whose <code>wrappedValue</code> is non-optional and registers a <strong>non-opti
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Foil22WrappedDefaultOptionalV"></a>
-                    <a name="//apple_ref/swift/Struct/WrappedDefaultOptional" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Foil22WrappedDefaultOptionalV">WrappedDefaultOptional</a>
+                    <a name="/s:4Foil0A22DefaultStorageOptionalV"></a>
+                    <a name="//apple_ref/swift/Struct/FoilDefaultStorageOptional" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Foil0A22DefaultStorageOptionalV">FoilDefaultStorageOptional</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -113,14 +113,14 @@ whose <code>wrappedValue</code> is non-optional and registers a <strong>non-opti
                         <p>A property wrapper that uses <code>UserDefaults</code> as a backing store,
 whose <code>wrappedValue</code> is optional and <strong>does not provide default value</strong>.</p>
 
-                        <a href="Structs/WrappedDefaultOptional.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/FoilDefaultStorageOptional.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@propertyWrapper</span>
-<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">WrappedDefaultOptional</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></span></code></pre>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">FoilDefaultStorageOptional</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -132,7 +132,7 @@ whose <code>wrappedValue</code> is optional and <strong>does not provide default
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2024-01-09)</p>
+          <p>&copy; 2024 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2024-01-11)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
