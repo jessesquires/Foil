@@ -149,10 +149,10 @@ The following types are supported by default for use with `@FoilDefaultStorage`.
 - `RawRepresentable` types
 - `Codable` types
 
-#### Notes on `Codable` types
+#### Notes on [`Codable`](https://developer.apple.com/documentation/swift/codable) types
 
 > [!WARNING]
-> If you are storing custom [`Codable`](https://developer.apple.com/documentation/swift/codable) types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@FoilDefaultStorageOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@FoilDefaultStorageOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
 
 **Codable Example:**
 ```swift
@@ -172,12 +172,12 @@ var user: User?
 var user = User()
 ```
 
-#### Notes on `RawRepresentable` types
+#### Notes on [`RawRepresentable`](https://developer.apple.com/documentation/swift/rawrepresentable) types
 
 Using `RawRepresentable` types, especially as properties of a `Codable` type require special considerations. As mentioned above, `Codable` types must use `@FoilDefaultStorageOptional` out-of-the-box, unless you provide a custom implementation of `UserDefaultsSerializable`. The same is true for `RawRepresentable` types.
 
 > [!WARNING]
-> [`RawRepresentable`](https://developer.apple.com/documentation/swift/rawrepresentable) must use `@FoilDefaultStorageOptional` in case you modify the cases of your `enum` (or otherwise modify your `RawRepresentable` with a breaking change). Additionally, `RawRepresentable` types have a designated initializer that is failable, `init?(rawValue:)`, and thus could return `nil`.
+> `RawRepresentable` types must use `@FoilDefaultStorageOptional` in case you modify the cases of your `enum` (or otherwise modify your `RawRepresentable` with a breaking change). Additionally, `RawRepresentable` types have a designated initializer that is failable, `init?(rawValue:)`, and thus could return `nil`.
 >
 > Or, if you are storing a `Codable` type that has `RawRepresentable` properties, by default those properties should be optional to accommodate the optionality described above.
 
