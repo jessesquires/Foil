@@ -16,7 +16,7 @@
     <a title="Foil  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Foil 5.0.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">Foil 5.0.1 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/jessesquires/Foil"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
@@ -80,18 +80,18 @@ A very thin, pliable, easily torn sheet of aluminum used for cooking, packaging,
 </blockquote>
 <h2 id='usage' class='heading'>Usage</h2>
 
-<p>You can use <code>@WrappedDefault</code> for non-optional values and <code>@WrappedDefaultOptional</code> for optional ones.
+<p>You can use <code><a href="Structs/FoilDefaultStorage.html">@FoilDefaultStorage</a></code> for non-optional values and <code><a href="Structs/FoilDefaultStorageOptional.html">@FoilDefaultStorageOptional</a></code> for optional ones.
 You may wish to store all your user defaults in one place, however, that is not necessary. <strong>Any</strong> property on <strong>any type</strong> can use this wrapper.</p>
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
-    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"flagEnabled"</span><span class="p">)</span>
+    <span class="kd">@FoilDefaultStorage</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"flagEnabled"</span><span class="p">)</span>
     <span class="k">var</span> <span class="nv">flagEnabled</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"totalCount"</span><span class="p">)</span>
+    <span class="kd">@FoilDefaultStorage</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"totalCount"</span><span class="p">)</span>
     <span class="k">var</span> <span class="nv">totalCount</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"timestamp"</span><span class="p">)</span>
+    <span class="kd">@FoilDefaultStorageOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"timestamp"</span><span class="p">)</span>
     <span class="k">var</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span>
 <span class="p">}</span>
 
@@ -112,13 +112,13 @@ You may wish to store all your user defaults in one place, however, that is not 
     <span class="k">case</span> <span class="n">timestamp</span>
 <span class="p">}</span>
 
-<span class="kd">extension</span> <span class="kt">WrappedDefault</span> <span class="p">{</span>
+<span class="kd">extension</span> <span class="kt">FoilDefaultStorage</span> <span class="p">{</span>
     <span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="n">wrappedValue</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">extension</span> <span class="kt">WrappedDefaultOptional</span> <span class="p">{</span>
+<span class="kd">extension</span> <span class="kt">FoilDefaultStorageOptional</span> <span class="p">{</span>
     <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">AppSettingsKey</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
     <span class="p">}</span>
@@ -130,10 +130,10 @@ You may wish to store all your user defaults in one place, however, that is not 
 <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppSettings</span><span class="p">:</span> <span class="kt">NSObject</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="kt">AppSettings</span><span class="p">()</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
+    <span class="kd">@FoilDefaultStorageOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"userId"</span><span class="p">)</span>
     <span class="kd">@objc</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
 
-    <span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"average"</span><span class="p">)</span>
+    <span class="kd">@FoilDefaultStorageOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"average"</span><span class="p">)</span>
     <span class="k">var</span> <span class="nv">average</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span>
 <span class="p">}</span>
 </code></pre>
@@ -169,9 +169,14 @@ In this case, <code>userId</code> needs the <code>@objc dynamic</code> annotatio
 </code></pre>
 <h3 id='supported-types' class='heading'>Supported types</h3>
 
-<p>The following types are supported by default for use with <code>@WrappedDefault</code>.</p>
+<p>The following types are supported by default for use with <code><a href="Structs/FoilDefaultStorage.html">@FoilDefaultStorage</a></code>.</p>
 
 <blockquote>
+<p>[!NOTE]
+While the <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> protocol defines a <em>failable</em> initializer, <code>init?(storedValue:)</code>, it is possible to provide a custom implementation with a <strong>non-failable</strong> initializer, which still satisfies the protocol requirements.</p>
+
+<p>For all of Swift&rsquo;s built-in types (<code>Bool</code>, <code>Int</code>, <code>Double</code>, <code>String</code>, etc.), the default implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> is <strong>non-failable</strong>.</p>
+
 <p>[!IMPORTANT]
 Adding support for custom types is possible by conforming to <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code>. However, <strong>this is highly discouraged</strong> as all <code>plist</code> types are supported by default. <code>UserDefaults</code> is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via <code>Codable</code>) instead.</p>
 
@@ -194,10 +199,11 @@ Adding support for custom types is possible by conforming to <code><a href="Prot
 <li><code>RawRepresentable</code> types</li>
 <li><code>Codable</code> types</li>
 </ul>
+<h4 id='notes-on-a-href-https-developer-apple-com-documentation-swift-codable-code-codable-code-a-types' class='heading'>Notes on <a href="https://developer.apple.com/documentation/swift/codable"><code>Codable</code></a> types</h4>
 
 <blockquote>
 <p>[!WARNING]
-If you are storing custom <code>Codable</code> types and using the default implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> provided by <code>Foil</code>, then <strong>you must use the optional variant of the property wrapper</strong>, <code>@WrappedDefaultOptional</code>. This will allow you to make breaking changes to your <code>Codable</code> type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of <code>Codable</code> that supports migration, or provide a custom implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> that handles encoding/decoding failures. See the example below.</p>
+If you are storing custom <code>Codable</code> types and using the default implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> provided by <code>Foil</code>, then <strong>you must use the optional variant of the property wrapper</strong>, <code><a href="Structs/FoilDefaultStorageOptional.html">@FoilDefaultStorageOptional</a></code>. This will allow you to make breaking changes to your <code>Codable</code> type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of <code>Codable</code> that supports migration, or provide a custom implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code> that handles encoding/decoding failures. See the example below.</p>
 </blockquote>
 
 <p><strong>Codable Example:</strong></p>
@@ -208,13 +214,34 @@ If you are storing custom <code>Codable</code> types and using the default imple
 <span class="p">}</span>
 
 <span class="c1">// Yes, do this</span>
-<span class="kd">@WrappedDefaultOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"user"</span><span class="p">)</span>
+<span class="kd">@FoilDefaultStorageOptional</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"user"</span><span class="p">)</span>
 <span class="k">var</span> <span class="nv">user</span><span class="p">:</span> <span class="kt">User</span><span class="p">?</span>
 
 <span class="c1">// NO, do NOT this</span>
 <span class="c1">// This will crash if you change User by adding/removing properties</span>
-<span class="kd">@WrappedDefault</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"user"</span><span class="p">)</span>
+<span class="kd">@FoilDefaultStorage</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"user"</span><span class="p">)</span>
 <span class="k">var</span> <span class="nv">user</span> <span class="o">=</span> <span class="kt">User</span><span class="p">()</span>
+</code></pre>
+<h4 id='notes-on-a-href-https-developer-apple-com-documentation-swift-rawrepresentable-code-rawrepresentable-code-a-types' class='heading'>Notes on <a href="https://developer.apple.com/documentation/swift/rawrepresentable"><code>RawRepresentable</code></a> types</h4>
+
+<p>Using <code>RawRepresentable</code> types, especially as properties of a <code>Codable</code> type require special considerations. As mentioned above, <code>Codable</code> types must use <code><a href="Structs/FoilDefaultStorageOptional.html">@FoilDefaultStorageOptional</a></code> out-of-the-box, unless you provide a custom implementation of <code><a href="Protocols/UserDefaultsSerializable.html">UserDefaultsSerializable</a></code>. The same is true for <code>RawRepresentable</code> types.</p>
+
+<blockquote>
+<p>[!WARNING]
+<code>RawRepresentable</code> types must use <code><a href="Structs/FoilDefaultStorageOptional.html">@FoilDefaultStorageOptional</a></code> in case you modify the cases of your <code>enum</code> (or otherwise modify your <code>RawRepresentable</code> with a breaking change). Additionally, <code>RawRepresentable</code> types have a designated initializer that is failable, <code>init?(rawValue:)</code>, and thus could return <code>nil</code>.</p>
+
+<p>Or, if you are storing a <code>Codable</code> type that has <code>RawRepresentable</code> properties, by default those properties should be optional to accommodate the optionality described above.</p>
+</blockquote>
+
+<p>If you wish to avoid these edge cases with <code>RawRepresentable</code> types, you can provide a non-failable initializer:</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MyStringEnum</span><span class="p">:</span> <span class="kt">UserDefaultsSerializable</span> <span class="p">{</span>
+    <span class="c1">// Default init provided by Foil</span>
+    <span class="c1">// public init?(storedValue: RawValue.StoredValue) { ... }</span>
+
+    <span class="c1">// New, non-failable init using force-unwrap.</span>
+    <span class="c1">// Only do this if you know you will not make breaking changes.</span>
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">storedValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span> <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="n">storedValue</span><span class="p">)</span><span class="o">!</span> <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 <h2 id='additional-resources' class='heading'>Additional Resources</h2>
 
@@ -279,7 +306,7 @@ If you are storing custom <code>Codable</code> types and using the default imple
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2024-01-11)</p>
+          <p>&copy; 2024 <a class="link" href="https://jessesquires.com" target="_blank" rel="external noopener">Jesse Squires</a>. All rights reserved. (Last updated: 2024-01-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
