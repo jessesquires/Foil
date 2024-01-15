@@ -124,6 +124,11 @@ AppSettings.shared
 
 The following types are supported by default for use with `@FoilDefaultStorage`.
 
+> [!NOTE]
+> While the `UserDefaultsSerializable` protocol defines a _failable_ initializer, `init?(storedValue:)`, it is possible to provide a custom implementation with a **non-failable** initializer, which still satisfies the protocol requirements.
+>
+> For all of Swift's built-in types (`Bool`, `Int`, `Double`, `String`, etc.), the default implementation of `UserDefaultsSerializable` is **non-failable**.
+
 > [!IMPORTANT]
 > Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged** as all `plist` types are supported by default. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
 >
@@ -144,6 +149,8 @@ The following types are supported by default for use with `@FoilDefaultStorage`.
 - `RawRepresentable` types
 - `Codable` types
 
+#### Notes on [`Codable`](https://developer.apple.com/documentation/swift/codable) types
+
 > [!WARNING]
 > If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@FoilDefaultStorageOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
 
@@ -163,6 +170,28 @@ var user: User?
 // This will crash if you change User by adding/removing properties
 @FoilDefaultStorage(key: "user")
 var user = User()
+```
+
+#### Notes on [`RawRepresentable`](https://developer.apple.com/documentation/swift/rawrepresentable) types
+
+Using `RawRepresentable` types, especially as properties of a `Codable` type require special considerations. As mentioned above, `Codable` types must use `@FoilDefaultStorageOptional` out-of-the-box, unless you provide a custom implementation of `UserDefaultsSerializable`. The same is true for `RawRepresentable` types.
+
+> [!WARNING]
+> `RawRepresentable` types must use `@FoilDefaultStorageOptional` in case you modify the cases of your `enum` (or otherwise modify your `RawRepresentable` with a breaking change). Additionally, `RawRepresentable` types have a designated initializer that is failable, `init?(rawValue:)`, and thus could return `nil`.
+>
+> Or, if you are storing a `Codable` type that has `RawRepresentable` properties, by default those properties should be optional to accommodate the optionality described above.
+
+If you wish to avoid these edge cases with `RawRepresentable` types, you can provide a non-failable initializer:
+
+```swift
+extension MyStringEnum: UserDefaultsSerializable {
+    // Default init provided by Foil
+    // public init?(storedValue: RawValue.StoredValue) { ... }
+
+    // New, non-failable init using force-unwrap.
+    // Only do this if you know you will not make breaking changes.
+    public init(storedValue: String) { self.init(rawValue: storedValue)! }
+}
 ```
 
 ## Additional Resources
