@@ -48,7 +48,7 @@ public protocol UserDefaultsSerializable {
 extension Bool: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -57,7 +57,7 @@ extension Bool: UserDefaultsSerializable {
 extension Int: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -66,7 +66,7 @@ extension Int: UserDefaultsSerializable {
 extension UInt: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -75,7 +75,7 @@ extension UInt: UserDefaultsSerializable {
 extension Float: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -84,7 +84,7 @@ extension Float: UserDefaultsSerializable {
 extension Double: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -93,7 +93,7 @@ extension Double: UserDefaultsSerializable {
 extension String: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -102,7 +102,7 @@ extension String: UserDefaultsSerializable {
 extension URL: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -111,7 +111,7 @@ extension URL: UserDefaultsSerializable {
 extension Date: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -120,7 +120,7 @@ extension Date: UserDefaultsSerializable {
 extension Data: UserDefaultsSerializable {
     public var storedValue: Self { self }
 
-    public init?(storedValue: Self) {
+    public init(storedValue: Self) {
         self = storedValue
     }
 }
@@ -134,7 +134,7 @@ extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializabl
         self.compactMap { $0.storedValue }
     }
 
-    public init?(storedValue: [Element.StoredValue]) {
+    public init(storedValue: [Element.StoredValue]) {
         self = storedValue.compactMap { Element(storedValue: $0) }
     }
 }
@@ -148,7 +148,7 @@ extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable 
         self.map { $0.storedValue }
     }
 
-    public init?(storedValue: [Element.StoredValue]) {
+    public init(storedValue: [Element.StoredValue]) {
         self = Set(storedValue.compactMap { Element(storedValue: $0) })
     }
 }
@@ -162,7 +162,7 @@ extension Dictionary: UserDefaultsSerializable where Key == String, Value: UserD
         self.compactMapValues { $0.storedValue }
     }
 
-    public init?(storedValue: [String: Value.StoredValue]) {
+    public init(storedValue: [String: Value.StoredValue]) {
         self = storedValue.compactMapValues { Value(storedValue: $0) }
     }
 }
@@ -174,6 +174,7 @@ extension UserDefaultsSerializable where Self: RawRepresentable, Self.RawValue: 
     public init?(storedValue: RawValue.StoredValue) {
         guard let rawValue = Self.RawValue(storedValue: storedValue),
               let value = Self(rawValue: rawValue) else {
+            assertionFailure("[Foil] RawRepresentable error: found unexpected stored value: \(storedValue)")
             return nil
         }
         self = value

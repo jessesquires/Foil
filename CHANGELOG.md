@@ -7,6 +7,16 @@ NEXT
 
 - TBA
 
+5.0.1
+-----
+
+This release closes the [5.0.1 milestone](https://github.com/jessesquires/Foil/milestone/8?closed=1).
+
+- Addressed some potential edge cases and issues with optional types and failable initializers.
+    - The default implementation of `UserDefaultsSerializable` for Swift built-in types (`Int`, `Double`, `String`, etc.) now provides a **non-failable** initializer because these initializers cannot fail. This still satisfies the protocol requirements.
+    - Added an `assertionFailure` to the `UserDefaultsSerializable` implementation for `RawRepresentable` to catch potential bugs when storing and fetching data after making changes to a `RawRepresentable` type.
+    - Documentation has been updated with thorough explanations of edge cases and considerations for `RawRepresentable` types. Please see the `README` for further details.
+
 5.0.0
 -----
 
