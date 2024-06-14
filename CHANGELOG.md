@@ -6,6 +6,7 @@ NEXT
 -----
 
 - Enable Swift Strict Concurrency checking
+- Add visionOS support in Package.swift
 
 5.0.1
 -----
