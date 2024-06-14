@@ -40,3 +40,14 @@ let package = Package(
     ],
     swiftLanguageVersions: [.v5]
 )
+
+#warning("Remove this when it stops being broken. Xcode 16? Swift 6?")
+let swiftSettings = [
+    SwiftSetting.enableExperimentalFeature("StrictConcurrency")
+]
+
+for target in package.targets {
+    var settings = target.swiftSettings ?? []
+    settings.append(contentsOf: swiftSettings)
+    target.swiftSettings = settings
+}

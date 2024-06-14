@@ -5,7 +5,7 @@ The changelog for `Foil`. Also see the [releases](https://github.com/jessesquire
 NEXT
 -----
 
-- TBA
+- Enable Swift Strict Concurrency checking
 
 5.0.1
 -----
