@@ -182,6 +182,7 @@ GEM
       rexml (~> 3.2.4)
 
 PLATFORMS
+  arm64-darwin-22
   arm64-darwin-23
   x86_64-darwin-19
   x86_64-darwin-22
