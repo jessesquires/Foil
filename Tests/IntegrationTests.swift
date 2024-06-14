@@ -104,7 +104,7 @@ final class IntegrationTests: XCTestCase {
         let defaultValue = self.settings.data
         XCTAssertNil(defaultValue)
 
-        let newValue = "text data".data(using: .utf8)
+        let newValue = Data("text data".utf8)
         self.settings.data = newValue
         XCTAssertEqual(TestSettings.store.fetch("data"), newValue)
 

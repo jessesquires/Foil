@@ -16,8 +16,8 @@ import Foundation
 
 enum TestFruit: String, UserDefaultsSerializable {
     case apple
-    case orange
     case banana
+    case orange
 }
 
 struct TestCustomRepresented: RawRepresentable, UserDefaultsSerializable {
@@ -40,7 +40,7 @@ struct User: Hashable, Codable, UserDefaultsSerializable {
     let lastLogin: Date
 }
 
-final class TestSettings: NSObject {
+final class TestSettings: NSObject, @unchecked Sendable {
     static let suiteName = UUID().uuidString
 
     static let store = UserDefaults.testSuite(name: suiteName)

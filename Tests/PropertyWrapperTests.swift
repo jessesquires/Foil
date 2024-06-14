@@ -138,13 +138,13 @@ final class PropertyWrapperTests: XCTestCase {
 
     func test_WrappedValue_Data() {
         let key = "key_\(#function)"
-        let defaultValue = "default-data".data(using: .utf8)!
+        let defaultValue = Data("default-data".utf8)
         var model = FoilDefaultStorage(wrappedValue: defaultValue, key: key, userDefaults: self.testDefaults)
 
         XCTAssertEqual(self.testDefaults.fetch(key), defaultValue)
         XCTAssertEqual(model.wrappedValue, defaultValue)
 
-        let newValue = "new-data".data(using: .utf8)!
+        let newValue = Data("new-data".utf8)
         model.wrappedValue = newValue
         XCTAssertEqual(self.testDefaults.fetch(key), newValue)
         XCTAssertEqual(model.wrappedValue, newValue)

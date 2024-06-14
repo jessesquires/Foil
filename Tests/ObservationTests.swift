@@ -15,7 +15,7 @@ import Combine
 @testable import Foil
 import XCTest
 
-let timeout = TimeInterval(5)
+let defaultTimeout = TimeInterval(3)
 
 final class ObservationTests: XCTestCase {
 
@@ -48,7 +48,7 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         settings.average = expectedValue
-        self.wait(for: [expectation], timeout: timeout)
+        self.wait(for: [expectation], timeout: defaultTimeout)
 
         XCTAssertEqual(settings.average, publishedValue)
     }
@@ -70,7 +70,7 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         type(of: settings).store.set(expectedValue, forKey: "average")
-        self.wait(for: [expectation], timeout: timeout)
+        self.wait(for: [expectation], timeout: defaultTimeout)
 
         XCTAssertEqual(settings.average, publishedValue)
     }
@@ -89,7 +89,7 @@ final class ObservationTests: XCTestCase {
             .store(in: &self.cancellable)
 
         settings.userId = "test_publisher"
-        self.wait(for: [expectation], timeout: timeout)
+        self.wait(for: [expectation], timeout: defaultTimeout)
 
         XCTAssertEqual(settings.userId, publishedValue)
     }
@@ -97,19 +97,16 @@ final class ObservationTests: XCTestCase {
     func test_Integration_KVO() {
         let settings = TestSettings()
         let expectation = self.expectation(description: #function)
-        var changedValue: String?
 
         self.observer = settings.observe(\.userId, options: [.new, .old]) { _, change in
             guard let newValue = change.newValue else {
                 return
             }
-            changedValue = newValue
             expectation.fulfill()
+            XCTAssertEqual(settings.userId, newValue)
         }
 
         settings.userId = "test_kvo"
-        self.wait(for: [expectation], timeout: timeout)
-
-        XCTAssertEqual(settings.userId, changedValue)
+        self.wait(for: [expectation], timeout: defaultTimeout)
     }
 }

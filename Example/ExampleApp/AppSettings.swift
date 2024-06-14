@@ -16,12 +16,12 @@ import Foundation
 
 enum AppSettingsKey: String, CaseIterable {
     case flagEnabled
-    case totalCount
-    case timestamp
     case option
+    case timestamp
+    case totalCount
 }
 
-final class AppSettings: NSObject, ObservableObject {
+final class AppSettings: NSObject, ObservableObject, @unchecked Sendable {
     static let shared = AppSettings()
 
     @FoilDefaultStorage(.flagEnabled)
