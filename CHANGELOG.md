@@ -5,8 +5,14 @@ The changelog for `Foil`. Also see the [releases](https://github.com/jessesquire
 NEXT
 -----
 
+- TBA
+
+5.1.0
+-----
+
 - Enable Swift Strict Concurrency checking
 - Add visionOS support in Package.swift
+- Swift 5.10
 
 5.0.1
 -----
