@@ -206,12 +206,13 @@ extension MyStringEnum: UserDefaultsSerializable {
 - iOS 13.0+
 - tvOS 13.0+
 - watchOS 6.0+
-- macOS 11+
+- macOS 11.0+
+- visionOS 1.0+
 
 ## Requirements
 
-- Swift 5.9+
-- Xcode 15.0+
+- Swift 5.10+
+- Xcode 15.4+
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
