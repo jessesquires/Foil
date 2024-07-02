@@ -317,7 +317,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -375,7 +375,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
