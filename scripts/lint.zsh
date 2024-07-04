@@ -68,6 +68,7 @@ else
     Download: $LINK
     Install: $INSTALL
     "
+    exit
 fi
 
 if [ $FOUND != $VERSION ]; then
