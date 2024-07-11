@@ -237,7 +237,7 @@ Alternatively, you can add the package [directly via Xcode](https://developer.ap
 
 You can read the [documentation here](https://jessesquires.github.io/Foil). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
 
-Documentation is also available on the [Swift Package Index](https://swiftpackageindex.com/jessesquires/Foil/main/documentation/foil).
+Documentation is also available on the [Swift Package Index](https://swiftpackageindex.com/jessesquires/Foil/documentation).
 
 ## Contributing
 
