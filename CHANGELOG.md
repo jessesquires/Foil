@@ -7,6 +7,11 @@ NEXT
 
 - TBA
 
+5.1.1
+-----
+
+- Fix build issues for [Swift Package Index](https://swiftpackageindex.com/jessesquires/Foil/builds)
+
 5.1.0
 -----
 
