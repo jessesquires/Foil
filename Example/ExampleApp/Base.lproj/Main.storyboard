@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QOV-Zk-VuO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QOV-Zk-VuO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23068.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                     <tabBarItem key="tabBarItem" title="Example" image="gear" catalog="system" id="Gtk-yk-EbZ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UFY-h1-JS7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HDr-MP-Xcj">
@@ -58,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7IB-6X-UEM">
-                                <rect key="frame" x="16" y="435" width="382" height="31"/>
+                                <rect key="frame" x="16" y="437" width="382" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-KK-B3T">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -96,17 +96,17 @@
         <!--SwiftUI Example-->
         <scene sceneID="aYl-9w-e1l">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6wg-hq-V21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qeM-ea-Ji2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="SwiftUI Example" image="sparkles" catalog="system" id="51J-9b-V70"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PDi-2h-UFd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="OgM-4o-cBL" kind="relationship" relationship="rootViewController" id="VIL-ja-D7w"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6wg-hq-V21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1374" y="-660"/>
         </scene>
@@ -150,10 +150,10 @@
         <scene sceneID="CQo-QX-Tih">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zf-9Z-6TF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Combine Example" image="arrow.triangle.2.circlepath" catalog="system" id="cuf-gX-29c"/>
+                    <tabBarItem key="tabBarItem" title="Combine Example" image="arrow.trianglehead.2.clockwise.rotate.90" catalog="system" id="cuf-gX-29c"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="anf-E0-vRG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -167,9 +167,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="sparkles" catalog="system" width="112" height="128"/>
+        <image name="arrow.trianglehead.2.clockwise.rotate.90" catalog="system" width="128" height="117"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="sparkles" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
