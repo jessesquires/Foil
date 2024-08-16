@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
    s.name = 'Foil'
-   s.version = '5.1.0'
+   s.version = '5.1.2'
    s.license = 'MIT'
 
    s.summary = 'A lightweight property wrapper for UserDefaults'
