@@ -51,9 +51,10 @@ public struct FoilDefaultStorageOptional<T: UserDefaultsSerializable> {
     public init(key keyName: String, userDefaults: UserDefaults = .standard) {
         self.key = keyName
         self._userDefaults = userDefaults
-        self._publisher = CurrentValueSubject<T?, Never>(userDefaults.fetchOptional(keyName))
-        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [_publisher] in
-            _publisher.send(userDefaults.fetchOptional(keyName))
+        let publisher = CurrentValueSubject<T?, Never>(userDefaults.fetchOptional(keyName))
+        self._publisher = publisher
+        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) {
+            publisher.send(userDefaults.fetchOptional(keyName))
         }
     }
 }
