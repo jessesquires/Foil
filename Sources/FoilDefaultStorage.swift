@@ -53,10 +53,11 @@ public struct FoilDefaultStorage<T: UserDefaultsSerializable> {
         // Publisher must be initialized after `registerDefault`,
         // because `fetch` assumes that `registerDefault` has been called before
         // and uses force unwrap
-        self._publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
+        let publisher = CurrentValueSubject<T, Never>(userDefaults.fetch(keyName))
+        self._publisher = publisher
 
-        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) { [unowned _publisher] in
-            _publisher.send(userDefaults.fetch(keyName))
+        self._observer = ObserverTrampoline(userDefaults: userDefaults, key: keyName) {
+            publisher.send(userDefaults.fetch(keyName))
         }
     }
 }
