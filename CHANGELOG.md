@@ -7,6 +7,11 @@ NEXT
 
 - TBA
 
+5.1.2
+-----
+
+- Fix crash when receiving a KVO notification and so attempting to send a value to `FoilDefaultStorage` or `FoilDefaultStorageOptional`'s publisher after the storage is deallocated.
+
 5.1.1
 -----
 
