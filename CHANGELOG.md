@@ -10,7 +10,7 @@ NEXT
 5.1.2
 -----
 
-- Fix crash when receiving a KVO notification and so attempting to send a value to `FoilDefaultStorage` or `FoilDefaultStorageOptional`'s publisher after the storage is deallocated.
+- Fixed possible crash when receiving a KVO notification and so attempting to send a value to `FoilDefaultStorage` or `FoilDefaultStorageOptional`'s publisher after the storage is deallocated. ([#112](https://github.com/jessesquires/Foil/issues/112), [@nolanw](https://github.com/nolanw))
 
 5.1.1
 -----
