@@ -52,6 +52,7 @@ final class AppSettings: NSObject, ObservableObject, @unchecked Sendable {
         }
     }
 
+    // swiftlint:disable:next no_empty_block
     override private init() { }
 
     func reset(for key: AppSettingsKey) {

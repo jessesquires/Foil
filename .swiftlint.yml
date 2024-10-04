@@ -50,6 +50,8 @@ opt_in_rules:
   - xct_specific_matcher
   - unneeded_synthesized_initializer
   - static_over_final_class
+  - prefer_key_path
+  - no_empty_block
 
   # style
   - attributes

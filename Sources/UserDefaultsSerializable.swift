@@ -145,7 +145,7 @@ extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializabl
 /// :nodoc:
 extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
-        self.map { $0.storedValue }
+        self.map(\.storedValue)
     }
 
     public init(storedValue: [Element.StoredValue]) {
