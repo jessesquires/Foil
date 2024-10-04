@@ -22,9 +22,9 @@ env:
 
   DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
 
-  IOS_DEST: "platform=iOS Simulator,name=iPhone 15,OS=latest"
+  IOS_DEST: "platform=iOS Simulator,name=iPhone 16,OS=latest"
   TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
-  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 9 (41mm),OS=latest"
+  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 10 (42mm),OS=latest"
   VISIONOS_DEST: "platform=visionOS Simulator,name=Apple Vision Pro,OS=latest"
   MACOS_DEST: "platform=macOS,arch=x86_64"
 
@@ -89,21 +89,23 @@ jobs:
               -destination "$WATCHOS_DEST" \
               CODE_SIGN_IDENTITY="-" | xcpretty -c
 
-  test-visionOS:
-    name: visionOS unit test
-    runs-on: macos-14
-    steps:
-      - name: git checkout
-        uses: actions/checkout@v4
-
-      - name: test
-        run: |
-          set -o pipefail
-          xcodebuild clean test \
-              -project "$PROJECT" \
-              -scheme "$SCHEME" \
-              -destination "$VISIONOS_DEST" \
-              CODE_SIGN_IDENTITY="-" | xcpretty -c
+# VisionOS simulator not install on GitHub Actions anymore?
+#
+#   test-visionOS:
+#     name: visionOS unit test
+#     runs-on: macos-14
+#     steps:
+#       - name: git checkout
+#         uses: actions/checkout@v4
+#
+#       - name: test
+#         run: |
+#           set -o pipefail
+#           xcodebuild clean test \
+#               -project "$PROJECT" \
+#               -scheme "$SCHEME" \
+#               -destination "$VISIONOS_DEST" \
+#               CODE_SIGN_IDENTITY="-" | xcpretty -c
 
   test-macOS:
     name: macOS unit test
