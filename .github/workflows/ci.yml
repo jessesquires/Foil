@@ -31,7 +31,7 @@ env:
 jobs:
   env-details:
     name: Environment details
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: xcode version
         run: xcodebuild -version -sdk
@@ -43,7 +43,7 @@ jobs:
 
   test-iOS:
     name: iOS unit test
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -59,7 +59,7 @@ jobs:
 
   test-tvOS:
     name: tvOS unit test
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -75,7 +75,7 @@ jobs:
 
   test-watchOS:
     name: watchOS unit test
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -91,7 +91,7 @@ jobs:
 
   test-visionOS:
     name: visionOS unit test
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -107,7 +107,7 @@ jobs:
 
   test-macOS:
     name: macOS unit test
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -123,7 +123,7 @@ jobs:
 
   build-example:
     name: build example project
-    runs-on: macos-14-large
+    runs-on: macos-15
     steps:
       - name: git checkout
         uses: actions/checkout@v4
