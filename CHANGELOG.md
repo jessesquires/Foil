@@ -7,6 +7,15 @@ NEXT
 
 - TBA
 
+6.0.0
+-----
+
+This release closes the [6.0.0 milestone](https://github.com/jessesquires/Foil/milestone/9?closed=1).
+
+- Upgraded to Xcode 16. ([#106](https://github.com/jessesquires/Foil/issues/106), [@jessesquires](https://github.com/jessesquires))
+- Upgraded to Swift 6. ([#106](https://github.com/jessesquires/Foil/issues/106), [@jessesquires](https://github.com/jessesquires))
+- Dropped support for CocoaPods. ([#110](https://github.com/jessesquires/Foil/issues/110), [@jessesquires](https://github.com/jessesquires))
+
 5.1.2
 -----
 
