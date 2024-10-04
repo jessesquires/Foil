@@ -17,7 +17,7 @@ env:
 jobs:
   main:
     name: SwiftPM Build
-    runs-on: macos-14
+    runs-on: macos-14-large
     steps:
       - name: git checkout
         uses: actions/checkout@v4
