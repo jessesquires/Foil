@@ -211,23 +211,17 @@ extension MyStringEnum: UserDefaultsSerializable {
 
 ## Requirements
 
-- Swift 5.10+
-- Xcode 15.4+
+- Swift 6.0+
+- Xcode 16.0+
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
-
-### [CocoaPods](http://cocoapods.org)
-
-````ruby
-pod 'Foil', '~> 5.0.0'
-````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "5.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "6.0.0")
 ]
 ```
 
