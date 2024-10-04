@@ -43,7 +43,7 @@ struct User: Hashable, Codable, UserDefaultsSerializable {
 final class TestSettings: NSObject, @unchecked Sendable {
     static let suiteName = UUID().uuidString
 
-    static let store = UserDefaults.testSuite(name: suiteName)
+    nonisolated(unsafe) static let store = UserDefaults.testSuite(name: suiteName)
 
     // swiftlint:disable:next type_contents_order
     static func reset() {
