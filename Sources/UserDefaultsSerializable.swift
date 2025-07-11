@@ -131,7 +131,7 @@ extension Data: UserDefaultsSerializable {
 /// :nodoc:
 extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
-        self.compactMap { $0.storedValue }
+        self.compactMap(\.storedValue)
     }
 
     public init(storedValue: [Element.StoredValue]) {
