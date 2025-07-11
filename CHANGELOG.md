@@ -10,6 +10,8 @@ NEXT
 6.1.0
 -----
 
+This release closes the [6.1.0 milestone](https://github.com/jessesquires/Foil/milestone/10?closed=1).
+
 - Both property wrappers now conform to `Equatable` and `Hashable` if the `wrappedValue` conforms. ([#116](https://github.com/jessesquires/Foil/issues/116), [@jessesquires](https://github.com/jessesquires))
 
 6.0.0
