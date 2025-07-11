@@ -20,7 +20,7 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
 
   IOS_DEST: "platform=iOS Simulator,name=iPhone 16,OS=latest"
   TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
