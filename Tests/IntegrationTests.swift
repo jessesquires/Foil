@@ -172,4 +172,12 @@ final class IntegrationTests: XCTestCase {
         self.settings.user = newValue
         XCTAssertEqual(self.settings.user, newValue)
     }
+
+    func test_Integration_Equality() {
+        // Testing that a model is equatable, then property wrappers are equatable
+        // and everything works
+        let testModel1 = TestModel()
+        let testModel2 = TestModel()
+        XCTAssertEqual(testModel1, testModel2)
+    }
 }

@@ -60,3 +60,18 @@ public struct FoilDefaultStorageOptional<T: UserDefaultsSerializable> {
         }
     }
 }
+
+extension FoilDefaultStorageOptional: Equatable where T: Equatable {
+    /// :nodoc:
+    public static func == (left: Self, right: Self) -> Bool {
+        left.key == right.key && left.wrappedValue == right.wrappedValue
+    }
+}
+
+extension FoilDefaultStorageOptional: Hashable where T: Hashable {
+    /// :nodoc:
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.key)
+        hasher.combine(self.wrappedValue)
+    }
+}

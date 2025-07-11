@@ -7,6 +7,11 @@ NEXT
 
 - TBA
 
+6.1.0
+-----
+
+- Both property wrappers now conform to `Equatable` and `Hashable` if the `wrappedValue` conforms. ([#116](https://github.com/jessesquires/Foil/issues/116), [@jessesquires](https://github.com/jessesquires))
+
 6.0.0
 -----
 
