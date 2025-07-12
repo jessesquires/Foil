@@ -12,165 +12,178 @@
 //
 
 @testable import Foil
-import XCTest
+import Foundation
+import Testing
 
-final class IntegrationTests: XCTestCase {
 
-    let settings = TestSettings()
+@Suite("Integration tests")
+struct IntegrationTests {
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        TestSettings.reset()
-    }
+    let settings = TestSettings(suiteName: UUID().uuidString)
 
+    @Test
     func test_Integration_Bool() {
-        let defaultValue = self.settings.flag
-        XCTAssertTrue(defaultValue)
+        let defaultValue = settings.flag.wrappedValue
+        #expect(defaultValue)
 
-        self.settings.flag = false
-        XCTAssertFalse(TestSettings.store.fetch("flag"))
+        settings.flag.wrappedValue = false
+        #expect(settings.store.fetch("flag") == false)
     }
 
+    @Test
     func test_Integration_Int() {
-        let defaultValue = self.settings.count
-        XCTAssertEqual(defaultValue, 42)
+        let defaultValue = settings.count.wrappedValue
+        #expect(defaultValue == 42)
 
         let newValue = 666
-        self.settings.count = newValue
-        XCTAssertEqual(TestSettings.store.fetch("count"), newValue)
+        settings.count.wrappedValue = newValue
+        #expect(settings.store.fetch("count") == newValue)
     }
 
+    @Test
     func test_Integration_UInt() {
-        let defaultValue = self.settings.max
-        XCTAssertEqual(defaultValue, 42)
+        let defaultValue = settings.max.wrappedValue
+        #expect(defaultValue == 42)
 
         let newValue = UInt(666)
-        self.settings.max = newValue
-        XCTAssertEqual(TestSettings.store.fetch("max"), newValue)
+        settings.max.wrappedValue = newValue
+        #expect(settings.store.fetch("max") == newValue)
     }
 
+    @Test
     func test_Integration_Float() {
-        let defaultValue = self.settings.mean
-        XCTAssertEqual(defaultValue, 4.2)
+        let defaultValue = settings.mean.wrappedValue
+        #expect(defaultValue == 4.2)
 
         let newValue = Float(66.6)
-        self.settings.mean = newValue
-        XCTAssertEqual(TestSettings.store.fetch("mean"), newValue)
+        settings.mean.wrappedValue = newValue
+        #expect(settings.store.fetch("mean") == newValue)
     }
 
+    @Test
     func test_Integration_Double() {
-        let defaultValue = self.settings.average
-        XCTAssertEqual(defaultValue, 42.0)
+        let defaultValue = settings.average.wrappedValue
+        #expect(defaultValue == 42.0)
 
         let newValue = 6.66
-        self.settings.average = newValue
-        XCTAssertEqual(TestSettings.store.fetch("average"), newValue)
+        settings.average.wrappedValue = newValue
+        #expect(settings.store.fetch("average") == newValue)
     }
 
+    @Test
     func test_Integration_StringOptional() {
-        let defaultValue = self.settings.username
-        XCTAssertNil(defaultValue)
+        let defaultValue = settings.username.wrappedValue
+        #expect(defaultValue == nil)
 
         let newValue = "@jessesquires"
-        self.settings.username = newValue
-        XCTAssertEqual(TestSettings.store.fetch("username"), newValue)
+        settings.username.wrappedValue = newValue
+        #expect(settings.store.fetch("username") == newValue)
 
-        self.settings.username = nil
-        XCTAssertNil(TestSettings.store.fetchOptional("username") as String?)
+        settings.username.wrappedValue = nil
+        #expect(settings.store.fetchOptional("username") as String? == nil)
     }
 
+    @Test
     func test_Integration_URLOptional() {
-        let defaultValue = self.settings.website
-        XCTAssertNil(defaultValue)
+        let defaultValue = settings.website.wrappedValue
+        #expect(defaultValue == nil)
 
         let newValue = URL(string: "www.jessesquires.com")
-        self.settings.website = newValue
-        XCTAssertEqual(TestSettings.store.fetch("website"), newValue)
+        settings.website.wrappedValue = newValue
+        #expect(settings.store.fetch("website") == newValue)
 
-        self.settings.website = nil
-        XCTAssertNil(TestSettings.store.fetchOptional("website") as URL?)
+        settings.website.wrappedValue = nil
+        #expect(settings.store.fetchOptional("website") as URL? == nil)
     }
 
+    @Test
     func test_Integration_Date() {
-        let defaultValue = self.settings.timestamp
-        XCTAssertEqual(defaultValue, .distantPast)
+        let defaultValue = settings.timestamp.wrappedValue
+        #expect(defaultValue == .distantPast)
 
         let newValue = Date()
-        self.settings.timestamp = newValue
-        XCTAssertEqual(TestSettings.store.fetch("timestamp"), newValue)
+        settings.timestamp.wrappedValue = newValue
+        #expect(settings.store.fetch("timestamp") == newValue)
     }
 
+    @Test
     func test_Integration_DataOptional() {
-        let defaultValue = self.settings.data
-        XCTAssertNil(defaultValue)
+        let defaultValue = settings.data.wrappedValue
+        #expect(defaultValue == nil)
 
         let newValue = Data("text data".utf8)
-        self.settings.data = newValue
-        XCTAssertEqual(TestSettings.store.fetch("data"), newValue)
+        settings.data.wrappedValue = newValue
+        #expect(settings.store.fetch("data") == newValue)
 
-        self.settings.data = nil
-        XCTAssertNil(TestSettings.store.fetchOptional("data") as Data?)
+        settings.data.wrappedValue = nil
+        #expect(settings.store.fetchOptional("data") as Data? == nil)
     }
 
+    @Test
     func test_Integration_Array() {
-        let defaultValue = self.settings.list
-        XCTAssertEqual(defaultValue, [])
+        let defaultValue = settings.list.wrappedValue
+        #expect(defaultValue == [])
 
         let newValue = [6.66, 7.77, 8.88]
-        self.settings.list = newValue
-        XCTAssertEqual(TestSettings.store.fetch("list"), newValue)
+        settings.list.wrappedValue = newValue
+        #expect(settings.store.fetch("list") == newValue)
     }
 
+    @Test
     func test_Integration_Set() {
-        let defaultValue = self.settings.set
-        XCTAssertEqual(defaultValue, [1, 2, 3])
+        let defaultValue = settings.set.wrappedValue
+        #expect(defaultValue == [1, 2, 3])
 
         let newValue = Set([6, 77, 888])
-        self.settings.set = newValue
-        XCTAssertEqual(TestSettings.store.fetch("set"), newValue)
+        settings.set.wrappedValue = newValue
+        #expect(settings.store.fetch("set") == newValue)
     }
 
+    @Test
     func test_Integration_Dictionary() {
-        let defaultValue = self.settings.pairs
-        XCTAssertEqual(defaultValue, [:])
+        let defaultValue = settings.pairs.wrappedValue
+        #expect(defaultValue == [:])
 
         let newValue = ["six": 6, "seventy-seven": 77, "eight-hundred eighty eight": 888]
-        self.settings.pairs = newValue
-        XCTAssertEqual(TestSettings.store.fetch("pairs"), newValue)
+        settings.pairs.wrappedValue = newValue
+        #expect(settings.store.fetch("pairs") == newValue)
     }
 
+    @Test
     func test_Integration_RawRepresentable() {
-        let defaultValue = self.settings.fruit
-        XCTAssertEqual(defaultValue, .apple)
+        let defaultValue = settings.fruit.wrappedValue
+        #expect(defaultValue == .apple)
 
         let newValue = TestFruit.orange
-        self.settings.fruit = newValue
-        XCTAssertEqual(TestSettings.store.fetch("fruit"), newValue)
+        settings.fruit.wrappedValue = newValue
+        #expect(settings.store.fetch("fruit") == newValue)
     }
 
+    @Test
     func test_Integration_Custom_RawRepresentable() {
-        let defaultValue = self.settings.customRawRepresented
-        XCTAssert(defaultValue.rawValue.isEmpty)
+        let defaultValue = settings.customRawRepresented.wrappedValue
+        #expect(defaultValue.rawValue.isEmpty)
 
         var newValue = TestFruit.apple
-        self.settings.customRawRepresented[.key1] = newValue
-        XCTAssertEqual(self.settings.customRawRepresented[.key1], newValue)
+        settings.customRawRepresented.wrappedValue[.key1] = newValue
+        #expect(settings.customRawRepresented.wrappedValue[.key1] == newValue)
 
         newValue = TestFruit.orange
-        self.settings.customRawRepresented[.key2] = newValue
-        XCTAssertEqual(self.settings.customRawRepresented[.key2], newValue)
+        settings.customRawRepresented.wrappedValue[.key2] = newValue
+        #expect(settings.customRawRepresented.wrappedValue[.key2] == newValue)
 
         let expectedValue = ["key1": TestFruit.apple.rawValue, "key2": TestFruit.orange.rawValue]
-        XCTAssertEqual(TestSettings.store.fetch("customRawRepresented"), expectedValue)
+        #expect(settings.store.fetch("customRawRepresented") == expectedValue)
     }
 
+    @Test
     func test_Integration_Codable() {
-        let defaultValue = self.settings.user
-        XCTAssertNil(defaultValue)
+        let defaultValue = settings.user.wrappedValue
+        #expect(defaultValue == nil)
 
         let newValue = User(id: UUID(), name: "John Doe", highScore: 9_999, lastLogin: Date())
-        self.settings.user = newValue
-        XCTAssertEqual(self.settings.user, newValue)
+        settings.user.wrappedValue = newValue
+        #expect(settings.user.wrappedValue == newValue)
     }
 
     func test_Integration_Equality() {
