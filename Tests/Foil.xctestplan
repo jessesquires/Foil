@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "EB10D442-1A35-4A66-AB30-A347A8C8FC36",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FoilTests",
+        "name" : "FoilTests"
+      }
+    }
+  ],
+  "version" : 1
+}

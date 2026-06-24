@@ -41,60 +41,58 @@ struct User: Hashable, Codable, UserDefaultsSerializable {
 }
 
 final class TestSettings: NSObject, @unchecked Sendable {
-    static let suiteName = UUID().uuidString
+    let suiteName: String
+    let store: UserDefaults
 
-    nonisolated(unsafe) static let store = UserDefaults.testSuite(name: suiteName)
+    var flag: FoilDefaultStorage<Bool>
+    var count: FoilDefaultStorage<Int>
+    var max: FoilDefaultStorage<UInt>
+    var mean: FoilDefaultStorage<Float>
+    var average: FoilDefaultStorage<Double>
+    var username: FoilDefaultStorageOptional<String>
+    var website: FoilDefaultStorageOptional<URL>
+    var timestamp: FoilDefaultStorage<Date>
+    var data: FoilDefaultStorageOptional<Data>
+    var list: FoilDefaultStorage<Array<Double>>
+    var set: FoilDefaultStorage<Set<Int>>
+    var pairs: FoilDefaultStorage<[String:Int]>
+    var fruit: FoilDefaultStorage<TestFruit>
+    var customRawRepresented: FoilDefaultStorage<TestCustomRepresented>
+    var _userId: FoilDefaultStorageOptional<String>
+    @objc dynamic var userId: String? {
+        get { _userId.wrappedValue }
+        set { _userId.wrappedValue = newValue }
+    }
+    var user: FoilDefaultStorageOptional<User>
 
-    // swiftlint:disable:next type_contents_order
-    static func reset() {
-        Self.store.reset(name: Self.suiteName)
+    init(suiteName: String) {
+        self.suiteName = suiteName
+        self.store = UserDefaults.testSuite(name: suiteName)
+
+        self.flag = .init(wrappedValue: true, key: "flag", userDefaults: store)
+        self.count = .init(wrappedValue: 42, key: "count", userDefaults: store)
+        self.max = .init(wrappedValue: UInt(42), key: "max", userDefaults: store)
+        self.mean = .init(wrappedValue: Float(4.2), key: "mean", userDefaults: store)
+        self.average = .init(wrappedValue: Double(42.0), key: "average", userDefaults: store)
+        self.username = .init(key: "username", userDefaults: store)
+        self.website = .init(key: "website", userDefaults: store)
+        self.timestamp = .init(wrappedValue: Date.distantPast, key: "timestamp", userDefaults: store)
+        self.data = .init(key: "data", userDefaults: store)
+        self.list = .init(wrappedValue: [Double](), key: "list", userDefaults: store)
+        self.set = .init(wrappedValue:  Set([1, 2, 3]), key: "set", userDefaults: store)
+        self.pairs = .init(wrappedValue: [String: Int](), key: "pairs", userDefaults: store)
+        self.fruit = .init(wrappedValue: TestFruit.apple, key: "fruit", userDefaults: store)
+        self.customRawRepresented = FoilDefaultStorage(
+            wrappedValue: TestCustomRepresented(rawValue: [:]),
+            key: "customRawRepresented",
+            userDefaults: store
+        )
+        self._userId =  .init(key: "userId", userDefaults: store)
+        self.user = .init(key: "user", userDefaults: store)
     }
 
-    @FoilDefaultStorage(key: "flag", userDefaults: store)
-    var flag = true
-
-    @FoilDefaultStorage(key: "count", userDefaults: store)
-    var count = 42
-
-    @FoilDefaultStorage(key: "max", userDefaults: store)
-    var max = UInt(42)
-
-    @FoilDefaultStorage(key: "mean", userDefaults: store)
-    var mean = Float(4.2)
-
-    @FoilDefaultStorage(key: "average", userDefaults: store)
-    var average = 42.0
-
-    @FoilDefaultStorageOptional(key: "username", userDefaults: store)
-    var username: String?
-
-    @FoilDefaultStorageOptional(key: "website", userDefaults: store)
-    var website: URL?
-
-    @FoilDefaultStorage(key: "timestamp", userDefaults: store)
-    var timestamp = Date.distantPast
-
-    @FoilDefaultStorageOptional(key: "data", userDefaults: store)
-    var data: Data?
-
-    @FoilDefaultStorage(key: "list", userDefaults: store)
-    var list = [Double]()
-
-    @FoilDefaultStorage(key: "set", userDefaults: store)
-    var set = Set([1, 2, 3])
-
-    @FoilDefaultStorage(key: "pairs", userDefaults: store)
-    var pairs = [String: Int]()
-
-    @FoilDefaultStorage(key: "fruit", userDefaults: store)
-    var fruit = TestFruit.apple
-
-    @FoilDefaultStorage(key: "customRawRepresented", userDefaults: store)
-    var customRawRepresented = TestCustomRepresented(rawValue: [:])
-
-    @FoilDefaultStorageOptional(key: "userId", userDefaults: store)
-    @objc dynamic var userId: String?
-
-    @FoilDefaultStorageOptional(key: "user", userDefaults: store)
-    var user: User?
+    // swiftlint:disable:next type_contents_order
+    func reset() {
+        store.reset(name: suiteName)
+    }
 }
